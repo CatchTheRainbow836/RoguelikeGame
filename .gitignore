@@ -1,0 +1,13 @@
+.godot/
+
+.autoconverted/
+
+logs/
+
+objectdb_snapshots/
+
+shader_cache/
+
+vulkan/
+
+
