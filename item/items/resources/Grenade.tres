@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://duryrnpi4iik6"]
+
+[ext_resource type="PackedScene" uid="uid://bnfbgogowbdds" path="res://item/items/scenes/grenade.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_2e0jm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwer8"]
+atlas = ExtResource("3_2e0jm")
+region = Rect2(480, 96, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 40
+range = 20
+type = 300
+name = "Grenade"
+description = "Kaboom!"
+stackable = true
+texture = SubResource("AtlasTexture_fwer8")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

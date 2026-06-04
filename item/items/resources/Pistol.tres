@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://chwwxs1bnov8h"]
+
+[ext_resource type="PackedScene" path="res://item/items/scenes/Gun.scn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnd3u"]
+atlas = ExtResource("3")
+region = Rect2(128, 192, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 10
+range = 50
+type = 100
+reload_time = 5
+max_bullets_loaded = 36
+random_sway_amount = 3.0
+name = "Pistol"
+description = "It goes pew pew"
+texture = SubResource("AtlasTexture_cnd3u")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

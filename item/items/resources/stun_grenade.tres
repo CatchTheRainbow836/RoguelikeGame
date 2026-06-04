@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://7omtdo8r1q6s"]
+
+[ext_resource type="PackedScene" path="res://item/items/scenes/MK13 Flash Bang.scn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_iywpg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iywpg"]
+atlas = ExtResource("3_iywpg")
+region = Rect2(384, 320, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+range = 20
+type = 302
+name = "Stun Grenade"
+description = "An electrified canister that releases a non-lethal, but debilitating, burst. "
+stackable = true
+texture = SubResource("AtlasTexture_iywpg")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

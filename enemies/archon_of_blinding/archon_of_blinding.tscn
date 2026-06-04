@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://c5ks8rdcp1b78"]
+
+[ext_resource type="Script" uid="uid://dqfuwmfq8q4bp" path="res://enemies/archon_of_blinding/archon_of_blinding.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://1y1x1ql7w5uj" path="res://enemies/halo_sentry/halo_sentry.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="3"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="4"]
+[ext_resource type="Script" uid="uid://bf8m434bcajr" path="res://enemies/furnace_colossus/phase_state_machine.gd" id="5"]
+[ext_resource type="Script" uid="uid://cnvc6qfnfsl8u" path="res://enemies/archon_of_blinding/phase_one_idle_archon_state.gd" id="6"]
+[ext_resource type="Script" uid="uid://bb6n284kc5aqk" path="res://enemies/archon_of_blinding/phase_one_walking_archon_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://cc6a83eyfq8lm" path="res://enemies/archon_of_blinding/phase_one_running_archon_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://dn46ldrffc5oq" path="res://enemies/archon_of_blinding/phase_one_idle_archon_attack_state.gd" id="9"]
+[ext_resource type="Script" uid="uid://dgtdyty7n0qox" path="res://enemies/archon_of_blinding/phase_one_sweep_archon_attack_state.gd" id="10"]
+[ext_resource type="Script" uid="uid://dggj45bj8oc3b" path="res://enemies/archon_of_blinding/phase_one_splash_archon_attack_state.gd" id="11"]
+[ext_resource type="Script" uid="uid://dhb28q2noxwir" path="res://enemies/archon_of_blinding/phase_two_idle_archon_state.gd" id="12"]
+[ext_resource type="Script" uid="uid://daqwrnumv2hne" path="res://enemies/archon_of_blinding/phase_two_walking_archon_state.gd" id="13"]
+[ext_resource type="Script" uid="uid://dt0jxi5tcd2sp" path="res://enemies/archon_of_blinding/phase_two_running_archon_state.gd" id="14"]
+[ext_resource type="Script" uid="uid://bia8lbgfgsm21" path="res://enemies/archon_of_blinding/phase_two_idle_archon_attack_state.gd" id="15"]
+[ext_resource type="Script" uid="uid://qy06yhetdkbs" path="res://enemies/archon_of_blinding/phase_two_summon_archon_attack_state.gd" id="16"]
+[ext_resource type="Script" uid="uid://bid3vo14somdr" path="res://enemies/archon_of_blinding/phase_two_wave_archon_attack_state.gd" id="17"]
+[ext_resource type="Script" uid="uid://c7jv4vkobwewj" path="res://enemies/archon_of_blinding/phase_three_idle_archon_state.gd" id="18"]
+[ext_resource type="Script" uid="uid://dhmn03oolrovl" path="res://enemies/archon_of_blinding/phase_three_walking_archon_state.gd.gd" id="19"]
+[ext_resource type="Script" uid="uid://b071e74c68v47" path="res://enemies/archon_of_blinding/phase_three_running_archon_state.gd" id="20"]
+[ext_resource type="Script" uid="uid://dlty8whrbx8fo" path="res://enemies/archon_of_blinding/phase_three_idle_archon_attack_state.gd" id="21"]
+[ext_resource type="Script" uid="uid://c3i2rh82xop0r" path="res://enemies/archon_of_blinding/phase_three_melee_archon_attack_state.gd" id="22"]
+[ext_resource type="Script" uid="uid://620t76trd5wv" path="res://enemies/archon_of_blinding/phase_three_orb_archon_attack_state.gd" id="23"]
+[ext_resource type="Script" uid="uid://c60mn1celgle3" path="res://enemies/archon_of_blinding/label_3d.gd" id="24"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q2pw8"]
+height = 3.5
+radius = 0.875
+
+[node name="Archon of Blinding" type="CharacterBody3D" unique_id=334126293]
+collision_layer = 9
+script = ExtResource("1")
+halo_sentry_scene = ExtResource("2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1697525270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("CylinderShape3D_q2pw8")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=289223581]
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("3")]
+transform = Transform3D(-1.75, 0, -1.5298986e-07, 0, 1.75, 0, 1.5298986e-07, 0, -1.75, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2053147597]
+debug_enabled = true
+
+[node name="ArchonStateMachine" type="Node" parent="." unique_id=76279238 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("PhaseOneStateMachine")
+
+[node name="PhaseOneStateMachine" type="Node" parent="ArchonStateMachine" unique_id=2098228802]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine" unique_id=463631188 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("RunningEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=802571829]
+script = ExtResource("6")
+
+[node name="WalkingEnemyState" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=262586760]
+script = ExtResource("7")
+
+[node name="RunningEnemyState" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=422381202]
+script = ExtResource("8")
+
+[node name="AttackStateMachine" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine" unique_id=1392150130 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=1561798165]
+script = ExtResource("9")
+
+[node name="SweepAttackState" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=1345062301]
+script = ExtResource("10")
+
+[node name="SplashAttackState" type="Node" parent="ArchonStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=174869790]
+script = ExtResource("11")
+
+[node name="PhaseTwoStateMachine" type="Node" parent="ArchonStateMachine" unique_id=1652259718]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine" unique_id=679553248 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=1480764202]
+script = ExtResource("12")
+
+[node name="WalkingEnemyState" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=2078257837]
+script = ExtResource("13")
+
+[node name="RunningEnemyState" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=194540628]
+script = ExtResource("14")
+
+[node name="AttackStateMachine" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine" unique_id=391256206 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=2128714095]
+script = ExtResource("15")
+
+[node name="SummonAttackState" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=984074015]
+script = ExtResource("16")
+
+[node name="WaveAttackState" type="Node" parent="ArchonStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=222874217]
+script = ExtResource("17")
+
+[node name="PhaseThreeStateMachine" type="Node" parent="ArchonStateMachine" unique_id=1503122348]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine" unique_id=673131344 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=948294564]
+script = ExtResource("18")
+
+[node name="WalkingEnemyState" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=1339352626]
+script = ExtResource("19")
+
+[node name="RunningEnemyState" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=2062845091]
+script = ExtResource("20")
+
+[node name="AttackStateMachine" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine" unique_id=1006721074 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=1681166368]
+script = ExtResource("21")
+
+[node name="MeleeAttackState" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=2110310065]
+script = ExtResource("22")
+
+[node name="OrbAttackState" type="Node" parent="ArchonStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=459010704]
+script = ExtResource("23")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1405796511]
+billboard = 2
+script = ExtResource("24")

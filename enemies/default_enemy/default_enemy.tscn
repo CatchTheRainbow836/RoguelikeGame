@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b10dxntw3s4po"]
+
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="1"]
+[ext_resource type="Script" uid="uid://dw867f7csnm7k" path="res://enemies/default_enemy/idle_default_enemy_state.gd" id="2"]
+[ext_resource type="Script" uid="uid://bsji7kff0nf70" path="res://enemies/default_enemy/walking_default_enemy_state.gd" id="3"]
+[ext_resource type="Script" uid="uid://cmy5bek66ytxs" path="res://enemies/default_enemy/running_default_enemy_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://bnuowb71woe86" path="res://enemies/default_enemy/idle_default_enemy_attack_state.gd" id="5"]
+[ext_resource type="Script" uid="uid://bxjm34004c1kc" path="res://enemies/default_enemy/attacking_default_enemy_attack_state.gd" id="6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r8d51"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0syp3"]
+
+[node name="Default Enemy" type="CharacterBody3D" unique_id=499324077]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_r8d51")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1682002633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0syp3")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=842561117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1594163890]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1336822027 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("1")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EnemyStateMachine" unique_id=802857722]
+script = ExtResource("2")
+
+[node name="WalkingEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1302237088]
+script = ExtResource("3")
+
+[node name="RunningEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1610436419]
+script = ExtResource("4")
+
+[node name="AttackStateMachine" type="Node" parent="." unique_id=748710376 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("1")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="AttackStateMachine" unique_id=649509817]
+script = ExtResource("5")
+
+[node name="AttackingAttackState" type="Node" parent="AttackStateMachine" unique_id=1423725487]
+script = ExtResource("6")

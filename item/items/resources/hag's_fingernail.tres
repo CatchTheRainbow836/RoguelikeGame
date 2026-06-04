@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://kwlc5ddnb21e"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_7iamg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmbpk"]
+atlas = ExtResource("2_7iamg")
+region = Rect2(64, 384, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 5
+name = "Hag's Fingernail"
+description = "A brittle, painted nail from a witch. Whispers promises of power."
+stackable = true
+texture = SubResource("AtlasTexture_lmbpk")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

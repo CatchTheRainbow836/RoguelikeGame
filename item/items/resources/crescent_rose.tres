@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://b44u6ds026q0p"]
+
+[ext_resource type="PackedScene" uid="uid://bw0ij8vm7ots" path="res://item/items/scenes/scythe.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_kr0gv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr0gv"]
+atlas = ExtResource("3_kr0gv")
+region = Rect2(320, 160, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 40
+range = 50
+type = 104
+reload_time = 5
+swing_forward_speed = 0.15
+swing_backward_speed = 0.3
+max_bullets_loaded = 24
+random_sway_amount = 3.0
+name = "Crescent Rose"
+description = "A masterwork of engineering, this scythe contains a high-caliber rifle in its haft."
+texture = SubResource("AtlasTexture_kr0gv")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

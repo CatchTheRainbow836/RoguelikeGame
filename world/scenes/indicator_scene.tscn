@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bnny3ninl1l72"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4gcap"]
+top_radius = 0.0
+bottom_radius = 2.0
+height = 0.25
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1221465908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("CylinderMesh_4gcap")

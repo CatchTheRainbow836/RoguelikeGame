@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://b3dljyipkgu3t"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_vexgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqvo3"]
+atlas = ExtResource("2_vexgu")
+region = Rect2(256, 416, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 10
+name = "Siren's Locket"
+description = "A beautiful locket containing a single haunting melody."
+stackable = true
+texture = SubResource("AtlasTexture_iqvo3")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

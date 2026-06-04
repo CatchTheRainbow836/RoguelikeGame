@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://httbfpwnvooj"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_4w45a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00oxh"]
+atlas = ExtResource("2_4w45a")
+region = Rect2(416, 448, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 15
+name = "Ambrosia of the Gods"
+description = "The food of Olympus. A single taste can elevate a mortal to divinity for but a moment."
+stackable = true
+texture = SubResource("AtlasTexture_00oxh")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

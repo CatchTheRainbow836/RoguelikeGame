@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://djkwmbd8ck0mq"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_tn6g1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a3qm"]
+atlas = ExtResource("2_tn6g1")
+region = Rect2(224, 128, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 16
+name = "Puzzle Box of Yggdrasil"
+description = "A shifting wooden puzzle that contains the pattern of the World Tree's branches."
+stackable = true
+texture = SubResource("AtlasTexture_4a3qm")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

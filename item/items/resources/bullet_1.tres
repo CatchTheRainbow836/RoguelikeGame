@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataWeaponConsumable" format=3 uid="uid://b2bo053xnmtpy"]
+
+[ext_resource type="Script" uid="uid://db6pu1cukbsj8" path="res://item/scripts/item_data_weapon_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67v0b"]
+atlas = ExtResource("2")
+region = Rect2(0, 576, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 100
+name = "Bullet 1"
+description = "A common bullet type for pistols"
+stackable = true
+texture = SubResource("AtlasTexture_67v0b")
+metadata/_custom_type_script = "uid://db6pu1cukbsj8"

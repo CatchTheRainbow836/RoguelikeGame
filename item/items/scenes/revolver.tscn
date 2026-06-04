@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c0a5vdawbdmhd"]
+
+[ext_resource type="PackedScene" uid="uid://caq6diehfocun" path="res://item/items/scenes/revolver.scn" id="1"]
+
+[node name="revolver" unique_id=2009444535 instance=ExtResource("1")]
+transform = Transform3D(-0.5, 0, -1.5099581e-10, 0, 0.5, 0, 7.54979e-08, 0, -0.001, 0, 0, 0)
+
+[node name="Lamp" parent="." index="1" unique_id=2108228717]
+visible = false
+
+[node name="Camera" parent="." index="2" unique_id=275985262]
+visible = false

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://bgogwvhg0x872"]
+
+[ext_resource type="PackedScene" uid="uid://d2npoh7dkq0cu" path="res://world/scenes/hand.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_ngls3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngls3"]
+atlas = ExtResource("3_ngls3")
+region = Rect2(32, 256, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 5
+range = 3
+type = 200
+swing_forward_speed = 0.05
+swing_backward_speed = 0.1
+name = "Scrap Metal Gauntlet"
+description = "A crude gauntelet with sharpened knuckles and jagged spikes. For close-quarters brawling."
+texture = SubResource("AtlasTexture_ngls3")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

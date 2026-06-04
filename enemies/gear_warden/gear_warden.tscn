@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://c5aofok1mcuvb"]
+
+[ext_resource type="Script" uid="uid://dx0t2mgqw1y6a" path="res://enemies/gear_warden/gear_warden.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="2"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="3"]
+[ext_resource type="Script" uid="uid://cc56je5gaav6r" path="res://enemies/gear_warden/idle_gear_warden_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://biaof6862ofyi" path="res://enemies/gear_warden/walking_gear_warden_state.gd" id="5"]
+[ext_resource type="Script" uid="uid://buu48iui5q8ar" path="res://enemies/gear_warden/running_gear_warden_state.gd" id="6"]
+[ext_resource type="Script" uid="uid://dany4ks4brkwv" path="res://enemies/gear_warden/idle_gear_warden_attack_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://dtwmwomqumly2" path="res://enemies/gear_warden/attacking_gear_warden_attack_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://c6bhwqwchdajr" path="res://enemies/gear_warden/shielding_gear_warden_attack_state.gd" id="9"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qymcv"]
+bottom_radius = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ho131"]
+points = PackedVector3Array(-0.18300337, -0.9767149, -0.9767149, 0.09037921, -0.87357783, 0.963974, -0.0902224, -0.8735856, 0.9639826, -0.24003455, 0.96009076, -0.44997206, 0.9767262, -0.9767567, -0.18299845, -0.9767172, -0.9767167, 0.18299097, 0.17908318, 0.9559565, 0.47797826, 0.41621152, 0.9517102, -0.29736286, -0.4163319, 0.9514883, 0.29729354, 0.84700656, -0.96814847, 0.51421034, -0.88171774, -0.97295403, -0.45600075, 0.4559852, -0.97296894, -0.88172925, -0.6039281, -0.9664263, 0.7851741, 0.47789073, 0.95620173, 0.1791474, -0.5124465, 0.93459177, -0.060253594, 0.06023792, 0.9346042, -0.5124457, 0.45598644, -0.97297156, 0.8817316, -0.17911191, 0.9559438, 0.4779719, -0.60393405, -0.96643585, -0.78518176, 0.7851813, -0.9664692, -0.6039487, 0.97672904, -0.97675955, 0.182999, -0.84700066, -0.96810615, 0.51418793, -0.4163294, 0.9514828, -0.2972918, 0.35693005, 0.89247096, 0.3867747, 0.51243037, 0.93461907, -0.060255356, -0.9767201, -0.9767196, -0.1829915, 0.18297392, -0.97672373, -0.97672373, -0.30491382, -0.9758423, 0.94527555, 0.24000758, 0.9601073, -0.4499798, -0.4779776, 0.95593876, 0.17909816, 0.6824416, -0.8605673, 0.68246764, 0.9104445, -0.97132444, -0.39438662)
+
+[node name="Gear Warden" type="CharacterBody3D" unique_id=499324077]
+collision_layer = 9
+script = ExtResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CylinderMesh_qymcv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1427755372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_ho131")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=842561117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.5, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1594163890]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1336822027 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("3")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EnemyStateMachine" unique_id=802857722]
+script = ExtResource("4")
+
+[node name="WalkingEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1302237088]
+script = ExtResource("5")
+
+[node name="RunningEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1610436419]
+script = ExtResource("6")
+
+[node name="AttackStateMachine" type="Node" parent="." unique_id=748710376 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("3")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="AttackStateMachine" unique_id=649509817]
+script = ExtResource("7")
+
+[node name="AttackingAttackState" type="Node" parent="AttackStateMachine" unique_id=1423725487]
+script = ExtResource("8")
+
+[node name="ShieldingAttackState" type="Node" parent="AttackStateMachine" unique_id=675603206]
+script = ExtResource("9")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=253064938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+text = "Gear Warden"

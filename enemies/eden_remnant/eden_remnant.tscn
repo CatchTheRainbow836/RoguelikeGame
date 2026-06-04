@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://b3ps66ppclemw"]
+
+[ext_resource type="Script" uid="uid://bk0iik6hfnp7r" path="res://enemies/eden_remnant/eden_remnant.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://2klbrijsf4n8" path="res://enemies/petal_flyer/petal_flyer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="3"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="4"]
+[ext_resource type="Script" uid="uid://bf8m434bcajr" path="res://enemies/furnace_colossus/phase_state_machine.gd" id="5"]
+[ext_resource type="Script" uid="uid://b5xwix2reaxaj" path="res://enemies/eden_remnant/phase_one_idle_eden_remnant_state.gd" id="6"]
+[ext_resource type="Script" uid="uid://d0j80xsmi6xhc" path="res://enemies/eden_remnant/phase_one_walking_eden_remnant_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://ui052oeaix5v" path="res://enemies/eden_remnant/phase_one_running_eden_remnant_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://dua2mmjhldes3" path="res://enemies/eden_remnant/phase_one_idle_eden_remnant_attack_state.gd" id="9"]
+[ext_resource type="Script" uid="uid://bf1b48hqesynr" path="res://enemies/eden_remnant/phase_one_attacking_eden_remnant_attack_state.gd" id="10"]
+[ext_resource type="Script" uid="uid://xumcn3hv0xjk" path="res://enemies/eden_remnant/phase_two_idle_eden_remnant_state.gd" id="11"]
+[ext_resource type="Script" uid="uid://dymekxre8klad" path="res://enemies/eden_remnant/phase_two_walking_eden_remnant_state.gd" id="12"]
+[ext_resource type="Script" uid="uid://dpg68akldxovt" path="res://enemies/eden_remnant/phase_two_running_eden_remnant_state.gd" id="13"]
+[ext_resource type="Script" uid="uid://cbajbi84mhb05" path="res://enemies/eden_remnant/phase_two_idle_eden_remnant_attack_state.gd" id="14"]
+[ext_resource type="Script" uid="uid://ba1kkyxmsyx3d" path="res://enemies/eden_remnant/phase_two_attacking_eden_remnant_attack_state.gd" id="15"]
+[ext_resource type="Script" uid="uid://g27ftvmocggq" path="res://enemies/eden_remnant/phase_two_splash_eden_remnant_attack_state.gd" id="16"]
+[ext_resource type="Script" uid="uid://whdqp47jg54o" path="res://enemies/eden_remnant/phase_three_idle_eden_remnant_state.gd" id="17"]
+[ext_resource type="Script" uid="uid://mydnunr644px" path="res://enemies/eden_remnant/phase_three_walking_eden_remnant_state.gd" id="18"]
+[ext_resource type="Script" uid="uid://6wuhbnvj4nxy" path="res://enemies/eden_remnant/phase_three_running_eden_remnant_state.gd" id="19"]
+[ext_resource type="Script" uid="uid://2iqlofkfr3j1" path="res://enemies/eden_remnant/phase_three_idle_eden_remnant_attack_state.gd" id="20"]
+[ext_resource type="Script" uid="uid://cmthw84fhvlbq" path="res://enemies/eden_remnant/phase_three_summon_eden_remnant_attack_state.gd" id="21"]
+[ext_resource type="Script" uid="uid://bt41f001es0sm" path="res://enemies/eden_remnant/phase_three_splash_eden_remnant_attack_state.gd" id="22"]
+[ext_resource type="Script" uid="uid://lqwhjjydl4sp" path="res://enemies/eden_remnant/label_3d.gd" id="23"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q2pw8"]
+height = 3.5
+radius = 0.875
+
+[node name="Eden Remnant" type="CharacterBody3D" unique_id=334126293]
+collision_layer = 9
+script = ExtResource("1")
+petal_flyer_scene = ExtResource("2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1697525270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("CylinderShape3D_q2pw8")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=289223581]
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("3")]
+transform = Transform3D(-1.75, 0, -1.5298986e-07, 0, 1.75, 0, 1.5298986e-07, 0, -1.75, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2053147597]
+debug_enabled = true
+
+[node name="EdenRemnantStateMachine" type="Node" parent="." unique_id=76279238 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("PhaseOneStateMachine")
+
+[node name="PhaseOneStateMachine" type="Node" parent="EdenRemnantStateMachine" unique_id=2098228802]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine" unique_id=463631188 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("RunningEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=802571829]
+script = ExtResource("6")
+
+[node name="WalkingEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=262586760]
+script = ExtResource("7")
+
+[node name="RunningEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=422381202]
+script = ExtResource("8")
+
+[node name="AttackStateMachine" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine" unique_id=1392150130 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=1561798165]
+script = ExtResource("9")
+
+[node name="AttackingAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=1345062301]
+script = ExtResource("10")
+
+[node name="PhaseTwoStateMachine" type="Node" parent="EdenRemnantStateMachine" unique_id=1652259718]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine" unique_id=679553248 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=1480764202]
+script = ExtResource("11")
+
+[node name="WalkingEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=2078257837]
+script = ExtResource("12")
+
+[node name="RunningEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=194540628]
+script = ExtResource("13")
+
+[node name="AttackStateMachine" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine" unique_id=391256206 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=2128714095]
+script = ExtResource("14")
+
+[node name="AttackingAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=984074015]
+script = ExtResource("15")
+
+[node name="SplashAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=222874217]
+script = ExtResource("16")
+
+[node name="PhaseThreeStateMachine" type="Node" parent="EdenRemnantStateMachine" unique_id=1503122348]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine" unique_id=673131344 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=948294564]
+script = ExtResource("17")
+
+[node name="WalkingEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=1339352626]
+script = ExtResource("18")
+
+[node name="RunningEnemyState" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=2062845091]
+script = ExtResource("19")
+
+[node name="AttackStateMachine" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine" unique_id=1006721074 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=1681166368]
+script = ExtResource("20")
+
+[node name="SummonAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=2110310065]
+script = ExtResource("21")
+
+[node name="SplashAttackState" type="Node" parent="EdenRemnantStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=459010704]
+script = ExtResource("22")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1405796511]
+billboard = 2
+script = ExtResource("23")

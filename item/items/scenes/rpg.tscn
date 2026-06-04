@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c41um84gvktk"]
+
+[ext_resource type="PackedScene" uid="uid://cu0hr6ac6cwtq" path="res://item/items/scenes/rpg.scn" id="1"]
+
+[node name="rpg" unique_id=1855157868 instance=ExtResource("1")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 0)
+
+[node name="Plane" parent="." index="0" unique_id=532182378]
+visible = false
+
+[node name="Lamp" parent="." index="2" unique_id=864411370]
+visible = false
+
+[node name="Camera" parent="." index="3" unique_id=1444001532]
+visible = false

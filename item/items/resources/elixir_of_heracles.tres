@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://cg3vy7ppxwa1d"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_uvx2o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbmhs"]
+atlas = ExtResource("2_uvx2o")
+region = Rect2(0, 672, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 2
+name = "Elixir of Heracles"
+description = "A single drop of the Nemean Lion's spilled essence. Grants fleeting, god-like strength."
+stackable = true
+texture = SubResource("AtlasTexture_vbmhs")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://4yuiaj8od33a"]
+
+[ext_resource type="PackedScene" uid="uid://4x7l3t0o575q" path="res://item/items/scenes/sting_sword_lowpoly.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_hu00p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu00p"]
+atlas = ExtResource("3_hu00p")
+region = Rect2(64, 160, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 12
+range = 5
+type = 200
+swing_forward_speed = 0.15
+swing_backward_speed = 0.3
+name = "Standard-Issue Saber"
+description = "A well-balanced, mass-produced cavalry saber. A soldier's best friend. "
+texture = SubResource("AtlasTexture_hu00p")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

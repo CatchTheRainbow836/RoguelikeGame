@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://dgo4ir2seo4jq"]
+
+[ext_resource type="PackedScene" uid="uid://c0qn0bkx75pbs" path="res://item/items/scenes/hammer.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_t42p2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uryqp"]
+atlas = ExtResource("3_t42p2")
+region = Rect2(416, 160, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 25
+range = 5
+type = 200
+swing_forward_speed = 0.3
+swing_backward_speed = 0.6
+name = "Blacksmith's Sledge"
+description = "A heavy forging hammer repurposed for war. It's more about weight than edge."
+texture = SubResource("AtlasTexture_uryqp")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" format=3 uid="uid://uckuy50plvho"]
+
+[ext_resource type="Script" uid="uid://dx60scyjnh37b" path="res://item/scripts/item_data_equip.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75euu"]
+atlas = ExtResource("2")
+region = Rect2(416, 512, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 12
+name = "Runic Ward"
+description = "A stone disk carved with ancient Norse symbols of protection."
+texture = SubResource("AtlasTexture_75euu")
+metadata/_custom_type_script = "uid://dx60scyjnh37b"

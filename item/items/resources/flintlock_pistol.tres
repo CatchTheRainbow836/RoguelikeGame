@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://con7r58gt6t8o"]
+
+[ext_resource type="PackedScene" uid="uid://c0a5vdawbdmhd" path="res://item/items/scenes/revolver.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_jk3sj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk3sj"]
+atlas = ExtResource("3_jk3sj")
+region = Rect2(288, 192, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 35
+range = 40
+type = 100
+reload_time = 2.0
+max_bullets_loaded = 1
+name = "Flintlock Pistol"
+description = "A single-shot black powder pistol. Unreliable, but packs a punch."
+texture = SubResource("AtlasTexture_jk3sj")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

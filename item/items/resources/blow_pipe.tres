@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://04nvosa4pjq4"]
+
+[ext_resource type="PackedScene" uid="uid://cmi3ho3rog3im" path="res://world/scenes/glue_stick.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_ofiq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofiq2"]
+atlas = ExtResource("3_ofiq2")
+region = Rect2(192, 352, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 10
+range = 50
+type = 103
+reload_time = 4.0
+max_bullets_loaded = 6
+random_sway_amount = 3.0
+name = "Blowpipe"
+description = "A long, hollow tube for delivering silent, poisoned darts."
+texture = SubResource("AtlasTexture_ofiq2")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

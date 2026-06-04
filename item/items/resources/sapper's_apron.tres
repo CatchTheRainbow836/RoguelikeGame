@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" format=3 uid="uid://csbcwc6j755rt"]
+
+[ext_resource type="Script" uid="uid://dx60scyjnh37b" path="res://item/scripts/item_data_equip.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cwqp"]
+atlas = ExtResource("2")
+region = Rect2(128, 224, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 11
+name = "Sapper's Apron"
+description = "A thick, leather apron scarred by acid and shrapnel."
+texture = SubResource("AtlasTexture_8cwqp")
+metadata/_custom_type_script = "uid://dx60scyjnh37b"

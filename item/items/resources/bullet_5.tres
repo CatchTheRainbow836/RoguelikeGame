@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataWeaponConsumable" format=3 uid="uid://0c25ednalgrd"]
+
+[ext_resource type="Script" uid="uid://db6pu1cukbsj8" path="res://item/scripts/item_data_weapon_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_xnyub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ojmf"]
+atlas = ExtResource("2_xnyub")
+region = Rect2(128, 576, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 104
+name = "Bullet 5"
+description = "A bullet specialized for use with the Crescent Rose. "
+stackable = true
+texture = SubResource("AtlasTexture_2ojmf")
+metadata/_custom_type_script = "uid://db6pu1cukbsj8"

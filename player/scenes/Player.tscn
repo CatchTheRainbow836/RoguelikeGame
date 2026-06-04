@@ -1,0 +1,552 @@
+[gd_scene format=3 uid="uid://c8ps7lpebhfi5"]
+
+[ext_resource type="Script" uid="uid://ct5y0mhwrxnva" path="res://player/scripts/Player.gd" id="1"]
+[ext_resource type="Script" uid="uid://dxl3c04wvk7wb" path="res://inventory/scripts/inventory_data.gd" id="2"]
+[ext_resource type="Resource" uid="uid://o3pn013b16i5" path="res://item/items/resources/fragmentation_grenade.tres" id="3"]
+[ext_resource type="Script" uid="uid://wtjnbu6suapx" path="res://inventory/scripts/slot_data.gd" id="4"]
+[ext_resource type="Resource" uid="uid://dsfju0fy7nidg" path="res://item/items/resources/gungnir.tres" id="5"]
+[ext_resource type="Resource" uid="uid://httbfpwnvooj" path="res://item/items/resources/ambrosia_of_the_gods.tres" id="6"]
+[ext_resource type="Resource" uid="uid://d2u7xdknxl637" path="res://item/items/resources/bullet_4.tres" id="7"]
+[ext_resource type="Resource" uid="uid://b2bo053xnmtpy" path="res://item/items/resources/bullet_1.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dws75647lcq3m" path="res://item/items/resources/bullet_2.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c0lw56mqgpq1v" path="res://item/items/resources/bullet_3.tres" id="10"]
+[ext_resource type="Resource" uid="uid://0c25ednalgrd" path="res://item/items/resources/bullet_5.tres" id="11"]
+[ext_resource type="Resource" uid="uid://bdre0legeyxgc" path="res://item/items/resources/bullet_6.tres" id="12"]
+[ext_resource type="Resource" uid="uid://l5p4fpthncf8" path="res://item/items/resources/bullet_7.tres" id="13"]
+[ext_resource type="Script" uid="uid://duaj02vqf7lxc" path="res://inventory/scripts/inventory_data_equip.gd" id="14"]
+[ext_resource type="Resource" uid="uid://bhqwjid0gcsuy" path="res://item/items/resources/boots_of_mercury.tres" id="15"]
+[ext_resource type="Script" uid="uid://b3nposq4bg8ox" path="res://inventory/scripts/inventory_data_weapon.gd" id="16"]
+[ext_resource type="Script" uid="uid://cmf0l881xqevt" path="res://player/scripts/pivot.gd" id="17"]
+[ext_resource type="Script" uid="uid://nnb8nskf5vgk" path="res://player/scripts/recoil_position.gd" id="18"]
+[ext_resource type="PackedScene" uid="uid://5vhrjmms6v87" path="res://item/items/scenes/weapon.tscn" id="19"]
+[ext_resource type="Script" uid="uid://c1bc0o5xwtf8u" path="res://player/scripts/reticle.gd" id="20"]
+[ext_resource type="Script" uid="uid://pda472jrj5ht" path="res://inventory/scripts/inventory_interface.gd" id="21"]
+[ext_resource type="PackedScene" uid="uid://c6wwmr7hja3t8" path="res://inventory/scenes/inventory.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://bql4csgo1dnh" path="res://inventory/scenes/shop_panel.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://dqfi7apfvykwy" path="res://inventory/scenes/slot.tscn" id="24"]
+[ext_resource type="PackedScene" uid="uid://cdwhpi7kxsyry" path="res://inventory/scenes/hot_bar_inventory.tscn" id="25"]
+[ext_resource type="Texture2D" uid="uid://cirg4fxh65kj3" path="res://player/resources/black.jpg" id="26"]
+[ext_resource type="Texture2D" uid="uid://djl25uu6sl540" path="res://player/resources/red.jpg" id="27"]
+[ext_resource type="Script" uid="uid://bbegc2qnl12ny" path="res://player/scripts/health_bar.gd" id="28"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="29"]
+[ext_resource type="Script" uid="uid://bgeogt8scigb0" path="res://state_scripts/idle_player_state.gd" id="30"]
+[ext_resource type="Script" uid="uid://bi35id8rhx4nj" path="res://state_scripts/walking_player_state.gd" id="31"]
+[ext_resource type="Script" uid="uid://dk7bt72ypfrll" path="res://state_scripts/sprinting_player_state.gd" id="32"]
+[ext_resource type="Script" uid="uid://dp44s1l23o3tp" path="res://state_scripts/crouch_player_state.gd" id="33"]
+[ext_resource type="Script" uid="uid://cctlrmcv6g2ej" path="res://state_scripts/jump_player_state.gd" id="34"]
+[ext_resource type="Script" uid="uid://dhodicoloa07h" path="res://state_scripts/unequipped_weapon_state.gd" id="35"]
+[ext_resource type="Script" uid="uid://bmxq0qir6tq20" path="res://state_scripts/idle_weapon_state.gd" id="36"]
+[ext_resource type="Script" uid="uid://ckrum7aal3gcn" path="res://state_scripts/firing_weapon_state.gd" id="37"]
+[ext_resource type="Script" uid="uid://wcb62i65uct2" path="res://state_scripts/reloading_weapon_state.gd" id="38"]
+
+[sub_resource type="Resource" id="Resource_nyeso"]
+script = ExtResource("4")
+item_data = ExtResource("3")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_btc3q"]
+script = ExtResource("4")
+item_data = ExtResource("5")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_be1ro"]
+script = ExtResource("4")
+item_data = ExtResource("6")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_ysybh"]
+script = ExtResource("4")
+item_data = ExtResource("7")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_3jgoj"]
+script = ExtResource("4")
+item_data = ExtResource("8")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_8ywbr"]
+script = ExtResource("4")
+item_data = ExtResource("9")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_sglx3"]
+script = ExtResource("4")
+item_data = ExtResource("10")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_msyuy"]
+script = ExtResource("4")
+item_data = ExtResource("11")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_iekba"]
+script = ExtResource("4")
+item_data = ExtResource("12")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_3pw13"]
+script = ExtResource("4")
+item_data = ExtResource("13")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_lnwue"]
+script = ExtResource("2")
+slot_datas = [SubResource("Resource_nyeso"), SubResource("Resource_btc3q"), SubResource("Resource_be1ro"), null, null, null, null, null, null, null, null, SubResource("Resource_ysybh"), SubResource("Resource_3jgoj"), SubResource("Resource_8ywbr"), SubResource("Resource_sglx3"), SubResource("Resource_msyuy"), SubResource("Resource_iekba"), SubResource("Resource_3pw13")]
+metadata/_custom_type_script = "uid://dxl3c04wvk7wb"
+
+[sub_resource type="Resource" id="Resource_qk5qu"]
+script = ExtResource("4")
+item_data = ExtResource("15")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_8tqfn"]
+script = ExtResource("14")
+slot_datas = [SubResource("Resource_qk5qu")]
+metadata/_custom_type_script = "uid://duaj02vqf7lxc"
+
+[sub_resource type="Resource" id="Resource_stbqk"]
+script = ExtResource("16")
+slot_datas = [null]
+metadata/_custom_type_script = "uid://b3nposq4bg8ox"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aqcbf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kpjcp"]
+
+[sub_resource type="Animation" id="Animation_gskgj"]
+resource_name = "Crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.671, 0), Vector3(0, 1.171, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_06mnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.171, 0)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.671, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ndjxb"]
+resource_name = "Sprinting"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 3, 3, 3, 3, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.3, 0.0224536, 0.0648168, -0.0333333, -0.013547, 0.0333333, 0.013547, 0.0753208, -0.0666667, 0.00845856, 0.0666667, -0.00845856, -0.0652188, -0.0333333, 0.0144027, 0.0333333, -0.0144027, -0.0754899, -0.0333334, -0.00816613, 0.0333334, 0.00816613, 0, -0.133333, -0.0372586, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 3, 0, 0),
+"points": PackedFloat32Array(1.671, -0.25, 0, 0.2, 0.0427525, 1.73675, -0.133333, 0.00161386, 0.133235, -0.00161267, 1.63508, -0.1, 0.00645542, 0.1, 0.00524497, 1.73635, -0.166667, 0.000806928, 0.166667, -0.000806928, 1.63508, -0.1, 0.00645542, 0.1, 0.00443804, 1.671, -0.133333, -0.0153455, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.2)
+}
+
+[sub_resource type="Animation" id="Animation_mhpjh"]
+resource_name = "Walking"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.0152258, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.0148111, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.0149503, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.03333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1.671, -0.25, 0, 0.2, 0.00865483, 1.71438, -0.25, 0, 0.25, 0, 1.671, -0.2, 0.00893033, 0.266667, 0.00948155, 1.71383, -0.25, 0, 0.25, 0, 1.671, -0.266667, 0.00893033, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhpjh"]
+_data = {
+&"Crouch": SubResource("Animation_gskgj"),
+&"RESET": SubResource("Animation_06mnu"),
+&"Sprinting": SubResource("Animation_ndjxb"),
+&"Walking": SubResource("Animation_mhpjh")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqcbf"]
+
+[node name="Player" type="CharacterBody3D" unique_id=760544238]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1")
+inventory_data = SubResource("Resource_lnwue")
+equip_inventory_data = SubResource("Resource_8tqfn")
+weapon_inventory_data = SubResource("Resource_stbqk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1425689407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_aqcbf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1442056463]
+mesh = SubResource("CapsuleMesh_kpjcp")
+skeleton = NodePath("../..")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=371982010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.671, 0)
+script = ExtResource("17")
+
+[node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=1487518414]
+
+[node name="InteractRay" type="RayCast3D" parent="Pivot/Camera3D" unique_id=597173866]
+target_position = Vector3(0, 0, -2.5)
+collision_mask = 4
+
+[node name="RecoilPosition" type="Node3D" parent="Pivot/Camera3D" unique_id=557007017]
+script = ExtResource("18")
+
+[node name="Weapon" parent="Pivot/Camera3D/RecoilPosition" unique_id=665606686 instance=ExtResource("19")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 1, 0.590125, -0.649997, -0.895851)
+skeleton = NodePath("../../../..")
+
+[node name="UserInterface" type="Control" parent="." unique_id=1531039262]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Reticle" type="CenterContainer" parent="UserInterface" unique_id=1700742050 node_paths=PackedStringArray("RETICLE_LINES", "PLAYER_CONTROLLER")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+script = ExtResource("20")
+RETICLE_LINES = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
+PLAYER_CONTROLLER = NodePath("../..")
+
+[node name="Top" type="Line2D" parent="UserInterface/Reticle" unique_id=1650070768]
+points = PackedVector2Array(20, 15, 20, 5)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UserInterface/Reticle" unique_id=2033455974]
+points = PackedVector2Array(25, 20, 35, 20)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UserInterface/Reticle" unique_id=1993075786]
+points = PackedVector2Array(20, 25, 20, 35)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UserInterface/Reticle" unique_id=856091239]
+points = PackedVector2Array(15, 20, 5, 20)
+width = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=560231508]
+libraries/ = SubResource("AnimationLibrary_mhpjh")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=336370200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_aqcbf")
+target_position = Vector3(0, 0.5, 0)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=445441132]
+
+[node name="InventoryInterface" type="Control" parent="UI" unique_id=2101415289]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("21")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" unique_id=1470402079 instance=ExtResource("22")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="EquipInventory" parent="UI/InventoryInterface" unique_id=1061049017 instance=ExtResource("22")]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 10.0
+offset_right = 490.0
+offset_bottom = 50.0
+
+[node name="WeaponInventory" parent="UI/InventoryInterface" unique_id=598880118 instance=ExtResource("22")]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 146.0
+offset_right = 490.0
+offset_bottom = 186.0
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" unique_id=1942356004 instance=ExtResource("22")]
+visible = false
+layout_mode = 0
+offset_left = 706.0
+offset_top = 10.0
+offset_right = 746.0
+offset_bottom = 50.0
+
+[node name="ShopPanel" parent="UI/InventoryInterface" unique_id=1823973342 instance=ExtResource("23")]
+visible = false
+layout_mode = 0
+offset_left = 706.0
+offset_top = 10.0
+offset_right = 888.0
+offset_bottom = 111.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" unique_id=1803471512 instance=ExtResource("24")]
+visible = false
+modulate = Color(1, 1, 1, 0.494118)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="CurrencyLabel" type="Label" parent="UI/InventoryInterface" unique_id=1080198480]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 230.0
+offset_right = 98.0
+offset_bottom = 253.0
+text = "Currency: 0"
+
+[node name="HotBarInventory" parent="UI" unique_id=1602476191 instance=ExtResource("25")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -80.0
+offset_right = 176.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1083654934]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -129.0
+offset_right = 124.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.587, 0.158)
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/HBoxContainer" unique_id=2031874945]
+custom_minimum_size = Vector2(40, 165.75)
+layout_mode = 2
+size_flags_horizontal = 3
+nine_patch_stretch = true
+texture_under = ExtResource("26")
+texture_progress = ExtResource("27")
+script = ExtResource("28")
+
+[node name="ReloadLabel" type="Label" parent="UI" unique_id=1578537890]
+offset_left = 576.0
+offset_top = 519.0
+offset_right = 752.0
+offset_bottom = 566.0
+horizontal_alignment = 1
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=952721919 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("29")
+CURRENT_STATE = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=201859633]
+script = ExtResource("30")
+
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1802841264]
+script = ExtResource("31")
+
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=27671072]
+script = ExtResource("32")
+metadata/_custom_type_script = "uid://rtlgpsqxt38s"
+
+[node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1831013862]
+script = ExtResource("33")
+
+[node name="JumpPlayerState" type="Node" parent="PlayerStateMachine" unique_id=735705376]
+script = ExtResource("34")
+
+[node name="WeaponStateMachine" type="Node" parent="." unique_id=1307438586 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("29")
+CURRENT_STATE = NodePath("UnequippedWeaponState")
+
+[node name="UnequippedWeaponState" type="Node" parent="WeaponStateMachine" unique_id=77347668]
+script = ExtResource("35")
+
+[node name="IdleWeaponState" type="Node" parent="WeaponStateMachine" unique_id=1981666364]
+script = ExtResource("36")
+
+[node name="FiringWeaponState" type="Node" parent="WeaponStateMachine" unique_id=1319173397]
+script = ExtResource("37")
+
+[node name="ReloadingWeaponState" type="Node" parent="WeaponStateMachine" unique_id=1838276011]
+script = ExtResource("38")
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_gui_input"]
+[connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_visibility_changed"]

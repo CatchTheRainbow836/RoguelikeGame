@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c6p6jsidjwune"]
+
+[ext_resource type="Texture2D" uid="uid://c3xc3xukepth" path="res://world/resources/debug_textures_dark.png" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cqfq"]
+albedo_texture = ExtResource("1")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cgngl"]
+material = SubResource("StandardMaterial3D_2cqfq")
+size = Vector2(4, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wd3ws"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[node name="Ground" type="MeshInstance3D" unique_id=96404041]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_cgngl")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=899193048]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1399326871]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_wd3ws")

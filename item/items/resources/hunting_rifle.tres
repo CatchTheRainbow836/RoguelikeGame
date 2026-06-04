@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://b6rp2p4vcjwud"]
+
+[ext_resource type="PackedScene" uid="uid://13o5qu6limdc" path="res://item/items/scenes/m_1_garand.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_vswcf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vswcf"]
+atlas = ExtResource("3_vswcf")
+region = Rect2(256, 192, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 35
+range = 40
+type = 101
+reload_time = 10
+max_bullets_loaded = 4
+name = "Hunting Rifle"
+description = "A long barreled, bolt action rifle. Accurate and powerful. "
+texture = SubResource("AtlasTexture_vswcf")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

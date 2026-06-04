@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cj68v6clpu0gh"]
+
+[ext_resource type="Script" uid="uid://11re0gyod00g" path="res://enemies/crucible_core/crucible_core_spirit.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_albwu"]
+
+[node name="Crucible Core Spirit" type="CharacterBody3D" unique_id=371342596]
+collision_layer = 8
+script = ExtResource("1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=764018475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("CylinderShape3D_albwu")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=441136022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("2")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1971101932]
+debug_enabled = true

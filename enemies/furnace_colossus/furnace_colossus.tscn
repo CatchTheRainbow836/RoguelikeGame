@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://k717v1s4pymn"]
+
+[ext_resource type="Script" uid="uid://bw0dfqaksax30" path="res://enemies/furnace_colossus/furnace_colossus.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dj54fnm4b1khp" path="res://enemies/arc_turret/arc_turret.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="3"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="4"]
+[ext_resource type="Script" uid="uid://bf8m434bcajr" path="res://enemies/furnace_colossus/phase_state_machine.gd" id="5"]
+[ext_resource type="Script" uid="uid://b77eleyaed43g" path="res://enemies/furnace_colossus/phase_one_idle_furnace_colossus_state.gd" id="6"]
+[ext_resource type="Script" uid="uid://d0w6s7ob012n7" path="res://enemies/furnace_colossus/phase_one_walking_furnace_colossus_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://dwl3cw4n2tkks" path="res://enemies/furnace_colossus/phase_one_running_furnace_colossus_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://guabxceufc0e" path="res://enemies/furnace_colossus/phase_one_idle_furnace_colossus_attack_state.gd" id="9"]
+[ext_resource type="Script" uid="uid://oforw0vdnrar" path="res://enemies/furnace_colossus/phase_one_attacking_furnace_colossus_attack_state.gd" id="10"]
+[ext_resource type="Script" uid="uid://rbcqq6t7eown" path="res://enemies/furnace_colossus/phase_one_sweeping_furnace_colossus_attack_state.gd" id="11"]
+[ext_resource type="Script" uid="uid://ddx470s3gdid5" path="res://enemies/furnace_colossus/phase_two_idle_furnace_colossus_state.gd" id="12"]
+[ext_resource type="Script" uid="uid://th0rjl65qdcm" path="res://enemies/furnace_colossus/phase_two_walking_furnace_colossus_state.gd" id="13"]
+[ext_resource type="Script" uid="uid://c424lp8lobmiw" path="res://enemies/furnace_colossus/phase_two_running_furnace_colossus_state.gd" id="14"]
+[ext_resource type="Script" uid="uid://c680itlsyhg2k" path="res://enemies/furnace_colossus/phase_two_idle_furnace_colossus_attack_state.gd" id="15"]
+[ext_resource type="Script" uid="uid://cdm5umj1w5wml" path="res://enemies/furnace_colossus/phase_two_slam_furnace_colossus_attack_state.gd" id="16"]
+[ext_resource type="Script" uid="uid://gm7e2uau7giq" path="res://enemies/furnace_colossus/phase_two_summon_furnace_colossus_attack_state.gd" id="17"]
+[ext_resource type="Script" uid="uid://b0sfvf7oiicxa" path="res://enemies/furnace_colossus/phase_three_idle_furnace_colossus_state.gd" id="18"]
+[ext_resource type="Script" uid="uid://cke37qk5u110d" path="res://enemies/furnace_colossus/phase_three_walking_furnace_colossus_state.gd" id="19"]
+[ext_resource type="Script" uid="uid://cri6luq5liuua" path="res://enemies/furnace_colossus/phase_three_running_furnace_colossus_state.gd" id="20"]
+[ext_resource type="Script" uid="uid://xkp21ohpq1k7" path="res://enemies/furnace_colossus/phase_three_idle_furnace_colossus_attack_state.gd" id="21"]
+[ext_resource type="Script" uid="uid://bdjnd1toidkb0" path="res://enemies/furnace_colossus/phase_three_attacking_furnace_colossus_attack_state.gd" id="22"]
+[ext_resource type="Script" uid="uid://cj4ou66rttplo" path="res://enemies/furnace_colossus/phase_three_splashing_furnace_colossus_attack_state.gd" id="23"]
+[ext_resource type="Script" uid="uid://bryy7im6camqn" path="res://enemies/furnace_colossus/label_3d.gd" id="24"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_234le"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pkpd2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a5e68"]
+top_radius = 0.1
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2727"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="Furnace Colossus" type="CharacterBody3D" unique_id=499324077]
+collision_layer = 9
+script = ExtResource("1")
+arc_turret_scene = ExtResource("2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CylinderMesh_234le")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1682002633]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 1.75, 0)
+shape = SubResource("CylinderShape3D_pkpd2")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=842561117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("3")]
+transform = Transform3D(-1.75, 0, 1.5298986e-07, 0, 1.75, 0, -1.5298986e-07, 0, -1.75, 0, -1.5, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot" unique_id=553955029]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.25, -1.35)
+mesh = SubResource("CylinderMesh_a5e68")
+surface_material_override/0 = SubResource("StandardMaterial3D_n2727")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1594163890]
+debug_enabled = true
+debug_path_custom_point_size = 20.0
+
+[node name="FurnaceColossusStateMachine" type="Node" parent="." unique_id=694674611 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("PhaseOneStateMachine")
+
+[node name="PhaseOneStateMachine" type="Node" parent="FurnaceColossusStateMachine" unique_id=576928984]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine" unique_id=1179647761 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=114722780]
+script = ExtResource("6")
+
+[node name="WalkingEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=1826667684]
+script = ExtResource("7")
+
+[node name="RunningEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine/EnemyStateMachine" unique_id=1018977040]
+script = ExtResource("8")
+
+[node name="AttackStateMachine" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine" unique_id=131072624 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=597869090]
+script = ExtResource("9")
+
+[node name="AttackingAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=1217064779]
+script = ExtResource("10")
+
+[node name="SweepingAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseOneStateMachine/AttackStateMachine" unique_id=1182591820]
+script = ExtResource("11")
+
+[node name="PhaseTwoStateMachine" type="Node" parent="FurnaceColossusStateMachine" unique_id=1471747635]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine" unique_id=1209491546 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=458061141]
+script = ExtResource("12")
+
+[node name="WalkingEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=2003054118]
+script = ExtResource("13")
+
+[node name="RunningEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine/EnemyStateMachine" unique_id=1257301682]
+script = ExtResource("14")
+
+[node name="AttackStateMachine" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine" unique_id=1410239632 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=981917338]
+script = ExtResource("15")
+
+[node name="SlamAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=884302973]
+script = ExtResource("16")
+
+[node name="SummonAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseTwoStateMachine/AttackStateMachine" unique_id=1954160003]
+script = ExtResource("17")
+
+[node name="PhaseThreeStateMachine" type="Node" parent="FurnaceColossusStateMachine" unique_id=470307466]
+script = ExtResource("5")
+
+[node name="EnemyStateMachine" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine" unique_id=2144364470 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=1058741623]
+script = ExtResource("18")
+
+[node name="WalkingEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=1706825555]
+script = ExtResource("19")
+
+[node name="RunningEnemyState" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine/EnemyStateMachine" unique_id=1080394166]
+script = ExtResource("20")
+
+[node name="AttackStateMachine" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine" unique_id=1259317764 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("4")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=1678061184]
+script = ExtResource("21")
+
+[node name="AttackingAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=58088023]
+script = ExtResource("22")
+
+[node name="SplashingAttackState" type="Node" parent="FurnaceColossusStateMachine/PhaseThreeStateMachine/AttackStateMachine" unique_id=1319975937]
+script = ExtResource("23")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1156352682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+script = ExtResource("24")

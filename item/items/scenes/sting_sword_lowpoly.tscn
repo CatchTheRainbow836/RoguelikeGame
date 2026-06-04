@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4x7l3t0o575q"]
+
+[ext_resource type="PackedScene" uid="uid://c5x4f11f1pa2x" path="res://item/items/scenes/Sting-Sword lowpoly.scn" id="1"]
+
+[node name="Sting-Sword lowpoly" unique_id=866856545 instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="Garde" parent="." index="0" unique_id=1237439480]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 0, 0.117626384)
+
+[node name="Pommeau" parent="." index="1" unique_id=428833177]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 7.3409625e-09, 0.44756645)
+
+[node name="Manche" parent="." index="2" unique_id=516263036]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, 2, 0, -2, -8.742278e-08, 0, -4.9420095e-09, -0.11306)
+
+[node name="Lame" parent="." index="3" unique_id=405587716]
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, 2, 0, -2, -8.742278e-08, 0, -5.4151736e-09, -0.12388474)

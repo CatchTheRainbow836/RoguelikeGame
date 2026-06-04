@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://dr6il3y1c67co"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_ca0tr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hciw7"]
+atlas = ExtResource("2_ca0tr")
+region = Rect2(352, 512, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 3
+name = "World Eater's tooth"
+description = "A molar from a creature that knew only hunger. It still aches to bite."
+stackable = true
+texture = SubResource("AtlasTexture_hciw7")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

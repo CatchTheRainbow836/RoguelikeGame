@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://coilixa2e7fu"]
+
+[ext_resource type="Script" uid="uid://conhauwvugl87" path="res://interactable/shop.gd" id="1"]
+[ext_resource type="Resource" uid="uid://5hau8gtkyho7" path="res://item/items/resources/aegis_fragment.tres" id="2"]
+[ext_resource type="Resource" uid="uid://httbfpwnvooj" path="res://item/items/resources/ambrosia_of_the_gods.tres" id="3"]
+[ext_resource type="Resource" uid="uid://l2300hvme0a0" path="res://item/items/resources/artillery_helmet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dgo4ir2seo4jq" path="res://item/items/resources/blacksmith's_sledge.tres" id="5"]
+[ext_resource type="Resource" uid="uid://04nvosa4pjq4" path="res://item/items/resources/blow_pipe.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bhqwjid0gcsuy" path="res://item/items/resources/boots_of_mercury.tres" id="7"]
+[ext_resource type="Resource" uid="uid://bpbrbavfvg3c1" path="res://item/items/resources/brigandine_vest.tres" id="8"]
+[ext_resource type="Resource" uid="uid://b2bo053xnmtpy" path="res://item/items/resources/bullet_1.tres" id="9"]
+[ext_resource type="Resource" uid="uid://dws75647lcq3m" path="res://item/items/resources/bullet_2.tres" id="10"]
+[ext_resource type="Resource" uid="uid://c0lw56mqgpq1v" path="res://item/items/resources/bullet_3.tres" id="11"]
+[ext_resource type="Resource" uid="uid://d2u7xdknxl637" path="res://item/items/resources/bullet_4.tres" id="12"]
+[ext_resource type="Resource" uid="uid://0c25ednalgrd" path="res://item/items/resources/bullet_5.tres" id="13"]
+[ext_resource type="Resource" uid="uid://bdre0legeyxgc" path="res://item/items/resources/bullet_6.tres" id="14"]
+[ext_resource type="Resource" uid="uid://l5p4fpthncf8" path="res://item/items/resources/bullet_7.tres" id="15"]
+[ext_resource type="Resource" uid="uid://01fc4p8ufcm2" path="res://item/items/resources/clockwork_scarab.tres" id="16"]
+[ext_resource type="Resource" uid="uid://ylloisufo4x2" path="res://item/items/resources/cowl_of_the_unseen.tres" id="17"]
+[ext_resource type="Resource" uid="uid://b4ylgkbmp0ccj" path="res://item/items/resources/cracked_reinforced_shield.tres" id="18"]
+[ext_resource type="Resource" uid="uid://b44u6ds026q0p" path="res://item/items/resources/crescent_rose.tres" id="19"]
+[ext_resource type="Resource" uid="uid://n1sih737j66f" path="res://item/items/resources/dowsing_rod.tres" id="20"]
+[ext_resource type="Resource" uid="uid://cfpqnwvsg6s4o" path="res://item/items/resources/duelist's_gloves.tres" id="21"]
+[ext_resource type="Resource" uid="uid://7lfdigs4brni" path="res://item/items/resources/echo_of_valhalla.tres" id="22"]
+[ext_resource type="Resource" uid="uid://cg3vy7ppxwa1d" path="res://item/items/resources/elixir_of_heracles.tres" id="23"]
+[ext_resource type="Resource" uid="uid://con7r58gt6t8o" path="res://item/items/resources/flintlock_pistol.tres" id="24"]
+[ext_resource type="Resource" uid="uid://o3pn013b16i5" path="res://item/items/resources/fragmentation_grenade.tres" id="25"]
+[ext_resource type="Resource" uid="uid://ddx8gpwibe6a0" path="res://item/items/resources/gjallarhorn.tres" id="26"]
+[ext_resource type="Resource" uid="uid://cbbmwrky0f8hu" path="res://item/items/resources/goblin_fire_oil.tres" id="27"]
+[ext_resource type="Resource" uid="uid://dsfju0fy7nidg" path="res://item/items/resources/gungnir.tres" id="28"]
+[ext_resource type="Resource" uid="uid://kwlc5ddnb21e" path="res://item/items/resources/hag's_fingernail.tres" id="29"]
+[ext_resource type="Resource" uid="uid://b6rp2p4vcjwud" path="res://item/items/resources/hunting_rifle.tres" id="30"]
+[ext_resource type="Resource" uid="uid://vd4f1c4704r5" path="res://item/items/resources/iron_soled_boots.tres" id="31"]
+[ext_resource type="Resource" uid="uid://cdr4txlrjxgk4" path="res://item/items/resources/kraken's_ink.tres" id="32"]
+[ext_resource type="Resource" uid="uid://c022piqa3m5gx" path="res://item/items/resources/leather_pauldrons.tres" id="33"]
+[ext_resource type="Resource" uid="uid://bsm62yvs0rwd" path="res://item/items/resources/lifeblood_syrette.tres" id="34"]
+[ext_resource type="Resource" uid="uid://cxtfcc3lm1svb" path="res://item/items/resources/marksman's_monocle.tres" id="35"]
+[ext_resource type="Resource" uid="uid://q52d35xxg4jg" path="res://item/items/resources/mjolnir's_replica.tres" id="36"]
+[ext_resource type="Resource" uid="uid://ble73w3e6yw7c" path="res://item/items/resources/pandora's_box.tres" id="37"]
+[ext_resource type="Resource" uid="uid://jjh6rfrgj51g" path="res://item/items/resources/phantom's_hand.tres" id="38"]
+[ext_resource type="Resource" uid="uid://bw6b1w3jh4k0s" path="res://item/items/resources/plague_doctor's_mask.tres" id="39"]
+[ext_resource type="Resource" uid="uid://cudnc23ov7qs3" path="res://item/items/resources/potion_belt.tres" id="40"]
+[ext_resource type="Resource" uid="uid://djkwmbd8ck0mq" path="res://item/items/resources/puzzle_box_of_yggdrasil.tres" id="41"]
+[ext_resource type="Resource" uid="uid://c187o12d2cup4" path="res://item/items/resources/quicksilver_brooch.tres" id="42"]
+[ext_resource type="Resource" uid="uid://df7x8jsy82tjf" path="res://item/items/resources/repeating_crossbow.tres" id="43"]
+[ext_resource type="Resource" uid="uid://uckuy50plvho" path="res://item/items/resources/runic_ward.tres" id="44"]
+[ext_resource type="Resource" uid="uid://csbcwc6j755rt" path="res://item/items/resources/sapper's_apron.tres" id="45"]
+[ext_resource type="Resource" uid="uid://bgogwvhg0x872" path="res://item/items/resources/scrap_metal_gauntlet.tres" id="46"]
+[ext_resource type="Resource" uid="uid://b3dljyipkgu3t" path="res://item/items/resources/siren's_locket.tres" id="47"]
+[ext_resource type="Resource" uid="uid://b14umoh0p1gb3" path="res://item/items/resources/smoke_grenade.tres" id="48"]
+[ext_resource type="Resource" uid="uid://dmx5xvmvkjjmc" path="res://item/items/resources/soldier's_medallion.tres" id="49"]
+[ext_resource type="Resource" uid="uid://4yuiaj8od33a" path="res://item/items/resources/standard-issue_saber.tres" id="50"]
+[ext_resource type="Resource" uid="uid://beukcvrnnhofh" path="res://item/items/resources/stone_giant's_pebble.tres" id="51"]
+[ext_resource type="Resource" uid="uid://7omtdo8r1q6s" path="res://item/items/resources/stun_grenade.tres" id="52"]
+[ext_resource type="Resource" uid="uid://cy2f2vkaugs3v" path="res://item/items/resources/tithonus'_curse.tres" id="53"]
+[ext_resource type="Resource" uid="uid://brir3b2ykkvjy" path="res://item/items/resources/vial_of_starlight.tres" id="54"]
+[ext_resource type="Resource" uid="uid://cc22woekywaya" path="res://item/items/resources/vulcan's_fury.tres" id="55"]
+[ext_resource type="Resource" uid="uid://d3g4qqgeqlvw0" path="res://item/items/resources/will_o'_the_wisps.tres" id="56"]
+[ext_resource type="Resource" uid="uid://dr6il3y1c67co" path="res://item/items/resources/world_eater's_tooth.tres" id="57"]
+[ext_resource type="Resource" uid="uid://bg3c50gl3ywmo" path="res://item/items/resources/vorpal_blade.tres" id="58"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew2ts"]
+albedo_color = Color(0.596078, 0.462745, 0.329412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t4nxu"]
+material = SubResource("StandardMaterial3D_ew2ts")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a43qq"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Shop" type="StaticBody3D" unique_id=198105987 groups=["external_inventory"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1")
+sold_items = [ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15"), ExtResource("16"), ExtResource("17"), ExtResource("18"), ExtResource("19"), ExtResource("20"), ExtResource("21"), ExtResource("22"), ExtResource("23"), ExtResource("24"), ExtResource("25"), ExtResource("26"), ExtResource("27"), ExtResource("28"), ExtResource("29"), ExtResource("30"), ExtResource("31"), ExtResource("32"), ExtResource("33"), ExtResource("34"), ExtResource("35"), ExtResource("36"), ExtResource("37"), ExtResource("38"), ExtResource("39"), ExtResource("40"), ExtResource("41"), ExtResource("42"), ExtResource("43"), ExtResource("44"), ExtResource("45"), ExtResource("46"), ExtResource("47"), ExtResource("48"), ExtResource("49"), ExtResource("50"), ExtResource("51"), ExtResource("52"), ExtResource("53"), ExtResource("54"), ExtResource("55"), ExtResource("56"), ExtResource("57"), ExtResource("58")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=878924924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_t4nxu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1745080928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_a43qq")

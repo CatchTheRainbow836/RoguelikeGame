@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c0qn0bkx75pbs"]
+
+[ext_resource type="PackedScene" uid="uid://deq0xbuwnr3cd" path="res://item/items/scenes/Hammer.scn" id="1"]
+
+[node name="Hammer" unique_id=9687022 instance=ExtResource("1")]
+
+[node name="Cylinder_008" parent="." index="0" unique_id=391295394]
+transform = Transform3D(-14.491796, 0, -1.266913e-06, 0, 14.4917965, 0, 1.266913e-06, 0, -14.491796, 1.446828, 0.18877137, -3.136179e-10)
+
+[node name="Lamp" parent="." index="1" unique_id=266680228]
+visible = false
+
+[node name="Camera" parent="." index="2" unique_id=651654804]
+visible = false

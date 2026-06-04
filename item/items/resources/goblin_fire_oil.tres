@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://cbbmwrky0f8hu"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_wipwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofcop"]
+atlas = ExtResource("2_wipwb")
+region = Rect2(288, 0, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 6
+name = "Goblin Fire Oil"
+description = "A volatile concoction that sears everything that touches it."
+stackable = true
+texture = SubResource("AtlasTexture_ofcop")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

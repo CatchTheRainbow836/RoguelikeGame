@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cqh4orlaawa6r"]
+
+[ext_resource type="Script" uid="uid://b5ve4j743e2vl" path="res://item/enemies/scripts/test_enemy.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://d2k8ltlwqjwhj" path="res://player/scenes/bullet_hole.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bbvruedw8xldf" path="res://item/items/scenes/Gun.scn" id="3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gih2t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gih2t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gitx8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7km3o"]
+angle_min = -73.0
+angle_max = 73.0
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_seida"]
+offsets = PackedFloat32Array(0, 0.973684)
+colors = PackedColorArray(0.968627, 0.752941, 0.298039, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wwh04"]
+gradient = SubResource("Gradient_seida")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10u38"]
+transparency = 1
+blend_mode = 1
+albedo_texture = SubResource("GradientTexture2D_wwh04")
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture2D_wwh04")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3c5ky"]
+material = SubResource("StandardMaterial3D_10u38")
+size = Vector2(0.1, 0.1)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=325612641]
+collision_layer = 9
+script = ExtResource("1")
+view_distance = 50.0
+bullet_hole_sprite = ExtResource("2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=359085043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_gih2t")
+surface_material_override/0 = SubResource("StandardMaterial3D_gih2t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=254745864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_gitx8")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1583118320]
+
+[node name="MuzzleFlash" type="Node3D" parent="Pivot" unique_id=120451230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49665, 1.12666, 2.19185)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Pivot/MuzzleFlash" unique_id=1992058409]
+visible = false
+light_color = Color(0.968627, 0.752941, 0.298039, 1)
+light_energy = 6.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Pivot/MuzzleFlash" unique_id=1256176606]
+emitting = false
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7km3o")
+draw_pass_1 = SubResource("QuadMesh_3c5ky")
+
+[node name="Gun" parent="Pivot" unique_id=363405409 instance=ExtResource("3")]
+transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, -0.5, 1, 1)
+
+[node name="NavAgent" type="NavigationAgent3D" parent="." unique_id=933042094]

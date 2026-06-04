@@ -1,0 +1,60 @@
+GDRE Tools v2.5.0-beta.5
+Windows 10.0.26200, Intel(R) UHD Graphics, vulkan
+Opening file: C:/Users/Ryan/Desktop/fpsmovement11.pck
+Loaded 560 imported files
+Detected Engine Version: 4.6.0
+Detected Bytecode Revision: 4.5.0-stable (ebc36a7)
+Verified 1124 files, no errors detected!
+Extracted 1124 files, no errors detected!
+
+Exporting scenes...
+*** Exporting 20 scenes took 1.98s
+
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     391
+Failed scripts:                         0
+Imported resources for export session:  560
+Successfully converted:                 560
+Lossy:                                  6
+Rewrote metadata:                       8
+Non-importable conversions:             19
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+------
+
+The following files were converted and saved to a non-original path, but did not have their import data rewritten.
+These files will not be re-imported when loading the project.
+res://.godot/imported/m1Garand.scn-48119a6cc2c0af180148763e0c664cab.scn to res://.assets/item/items/scenes/m1Garand.glb
+res://.godot/imported/revolver.scn-db0917558d9b3f344eb1838d15aa4104.scn to res://.assets/item/items/scenes/revolver.glb
+res://.godot/imported/Martillo de Thor.scn-d087240713e56e5f249152d621ad69c2.scn to res://.assets/item/items/scenes/Martillo de Thor.glb
+res://.godot/imported/rpg.scn-9661e01f6b65efd6197f99680c8814fc.scn to res://.assets/item/items/scenes/rpg.glb
+res://.godot/imported/Gun.scn-0b3eb08bea34bcf71d0bb3b59ccfd51a.scn to res://.assets/item/items/scenes/Gun.glb
+res://.godot/imported/M60E4.scn-2a106d5b67ca326ed5f75802a0765a9d.scn to res://.assets/item/items/scenes/M60E4.glb
+res://.godot/imported/Shield.scn-52470a1c4dc5317a76174ceb6688243d.scn to res://.assets/item/items/scenes/Shield.glb
+res://.godot/imported/crossbow.scn-43f2acfadf30c0cbd4b7b7cc5d24fafb.scn to res://.assets/item/items/scenes/crossbow.glb
+res://.godot/imported/MK13 Flash Bang.scn-cc5a37deb3306d8265c4dd587ab73b4d.scn to res://.assets/item/items/scenes/MK13 Flash Bang.glb
+res://.godot/imported/glue stick.scn-9967d57acb549ae22b3e8aa853c58ea5.scn to res://.assets/item/items/scenes/glue stick.glb
+res://.godot/imported/Hand.scn-61972926a2d7f1b615a72c7f4fc816fe.scn to res://.assets/item/items/scenes/Hand.glb
+res://.godot/imported/SOTC SWORD.scn-600391d5d6665f4d514cd6e92d14cc94.scn to res://.assets/item/items/scenes/SOTC SWORD.glb
+res://.godot/imported/Grenade.scn-61d10232149cd67b699d03ba2055df16.scn to res://.assets/item/items/scenes/Grenade.glb
+res://.godot/imported/scythe.scn-319bf46a956fb764f691d1f569da615d.scn to res://.assets/item/items/scenes/scythe.glb
+res://.godot/imported/Sting-Sword lowpoly.scn-e83c30aa8deae5be4c3b3d5a442e4b08.scn to res://.assets/item/items/scenes/Sting-Sword lowpoly.glb
+res://.godot/imported/SmokeGrenade.scn-5726a692872f5cdef2cad1549b6130e6.scn to res://.assets/item/items/scenes/SmokeGrenade.glb
+res://.godot/imported/katana.scn-3550a8996d576f51b0800e0ba040b5d2.scn to res://.assets/item/items/scenes/katana.glb
+res://.godot/imported/Hammer.scn-b5b19df53110d3ec6970e64736f0ff11.scn to res://.assets/item/items/scenes/Hammer.glb
+res://.godot/imported/Wood Blade.scn-2912a718b3ca2b8217abf33c1970aec1.scn to res://.assets/item/items/scenes/Wood Blade.glb
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 4.6.0 to edit the project.
+
+*******************************************************************************
+

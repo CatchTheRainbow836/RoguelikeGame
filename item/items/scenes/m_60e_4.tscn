@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dw2gyv4n6iuwb"]
+
+[ext_resource type="PackedScene" uid="uid://s8bbuag1v76f" path="res://item/items/scenes/M60E4.scn" id="1"]
+
+[node name="M60E4" unique_id=690225219 instance=ExtResource("1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

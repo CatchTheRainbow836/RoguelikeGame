@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" format=3 uid="uid://c022piqa3m5gx"]
+
+[ext_resource type="Script" uid="uid://dx60scyjnh37b" path="res://item/scripts/item_data_equip.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipq6y"]
+atlas = ExtResource("2")
+region = Rect2(288, 224, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 1
+name = "Leather Pauldrons"
+description = "Standard-issue shoulder guards. Scuffed, but reliable."
+texture = SubResource("AtlasTexture_ipq6y")
+metadata/_custom_type_script = "uid://dx60scyjnh37b"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://bsm62yvs0rwd"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_cn1b3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etigh"]
+atlas = ExtResource("2_cn1b3")
+region = Rect2(128, 608, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 9
+name = "Lifeblood Syrette"
+description = "A hollowed needle filled with synthetic, crimson fluid. Has a nasty smell."
+stackable = true
+texture = SubResource("AtlasTexture_etigh")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

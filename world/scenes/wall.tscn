@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b31dsd0jxadqv"]
+
+[ext_resource type="Texture2D" uid="uid://bcg75oliyslf" path="res://world/resources/debug_texture_brick.png" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4f30"]
+albedo_texture = ExtResource("1")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iuee5"]
+material = SubResource("StandardMaterial3D_y4f30")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xduj2"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=748679907]
+transform = Transform3D(0.999164, 0, 0, 0, 0.999164, 0, 0, 0, 0.999164, 0, 0, 0)
+mesh = SubResource("BoxMesh_iuee5")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=417861005]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1504189912]
+shape = SubResource("ConcavePolygonShape3D_xduj2")

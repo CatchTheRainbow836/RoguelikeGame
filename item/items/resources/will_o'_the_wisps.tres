@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://d3g4qqgeqlvw0"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_tbrdo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ty6"]
+atlas = ExtResource("2_tbrdo")
+region = Rect2(224, 672, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 11
+name = "Will-o'-the-wisps"
+description = "To heaven or to hell? Maybe these foolish fires will know."
+stackable = true
+texture = SubResource("AtlasTexture_r4ty6")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://cdr4txlrjxgk4"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_ymcyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhopx"]
+atlas = ExtResource("2_ymcyp")
+region = Rect2(352, 480, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 7
+name = "Kraken's Ink"
+description = "A vial of pitch-black ink, still smelling of the abyss. "
+stackable = true
+texture = SubResource("AtlasTexture_nhopx")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

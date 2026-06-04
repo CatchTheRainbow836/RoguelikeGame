@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://7lfdigs4brni"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c84pm8vsqfvrs" path="res://item/items/resources/item_atlas.tres" id="2_h0ppw"]
+
+[resource]
+script = ExtResource("1")
+type = 14
+name = "Echo of Valhalla"
+description = "The sound of a thousand shields clashing, captured in a horn."
+stackable = true
+texture = ExtResource("2_h0ppw")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

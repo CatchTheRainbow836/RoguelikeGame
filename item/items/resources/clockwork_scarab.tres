@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://01fc4p8ufcm2"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_ejgvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3aol"]
+atlas = ExtResource("2_ejgvx")
+region = Rect2(320, 512, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 13
+name = "Clockwork Scarab"
+description = "A delicate brass insect that ticks with purpose. It seeks to destroy."
+stackable = true
+texture = SubResource("AtlasTexture_q3aol")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

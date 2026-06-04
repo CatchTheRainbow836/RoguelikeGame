@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://o3pn013b16i5"]
+
+[ext_resource type="PackedScene" path="res://item/items/scenes/Grenade.scn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="3_aalul"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aalul"]
+atlas = ExtResource("3_aalul")
+region = Rect2(64, 128, 32, 32)
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 40
+range = 20
+type = 300
+name = "Fragmentation Grenade"
+description = "A cast-iron pineapple. Pull the pin, and let God sort them out. "
+stackable = true
+texture = SubResource("AtlasTexture_aalul")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

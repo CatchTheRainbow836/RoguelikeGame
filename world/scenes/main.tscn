@@ -1,0 +1,440 @@
+[gd_scene format=3 uid="uid://b8bi344b6depi"]
+
+[ext_resource type="Script" uid="uid://drhh7lb53oku" path="res://world/scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c8ps7lpebhfi5" path="res://player/scenes/Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bjqkge6m0v46d" path="res://interactable/chest.tscn" id="3"]
+[ext_resource type="Script" uid="uid://dxl3c04wvk7wb" path="res://inventory/scripts/inventory_data.gd" id="4"]
+[ext_resource type="Resource" uid="uid://4yuiaj8od33a" path="res://item/items/resources/standard-issue_saber.tres" id="5"]
+[ext_resource type="Script" uid="uid://wtjnbu6suapx" path="res://inventory/scripts/slot_data.gd" id="6"]
+[ext_resource type="Resource" uid="uid://df7x8jsy82tjf" path="res://item/items/resources/repeating_crossbow.tres" id="7"]
+[ext_resource type="Resource" uid="uid://o3pn013b16i5" path="res://item/items/resources/fragmentation_grenade.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dgo4ir2seo4jq" path="res://item/items/resources/blacksmith's_sledge.tres" id="9"]
+[ext_resource type="Resource" uid="uid://b6rp2p4vcjwud" path="res://item/items/resources/hunting_rifle.tres" id="10"]
+[ext_resource type="Resource" uid="uid://b14umoh0p1gb3" path="res://item/items/resources/smoke_grenade.tres" id="11"]
+[ext_resource type="Resource" uid="uid://b4ylgkbmp0ccj" path="res://item/items/resources/cracked_reinforced_shield.tres" id="12"]
+[ext_resource type="Resource" uid="uid://con7r58gt6t8o" path="res://item/items/resources/flintlock_pistol.tres" id="13"]
+[ext_resource type="Resource" uid="uid://7omtdo8r1q6s" path="res://item/items/resources/stun_grenade.tres" id="14"]
+[ext_resource type="Resource" uid="uid://bgogwvhg0x872" path="res://item/items/resources/scrap_metal_gauntlet.tres" id="15"]
+[ext_resource type="Resource" uid="uid://04nvosa4pjq4" path="res://item/items/resources/blow_pipe.tres" id="16"]
+[ext_resource type="Resource" uid="uid://q52d35xxg4jg" path="res://item/items/resources/mjolnir's_replica.tres" id="17"]
+[ext_resource type="Resource" uid="uid://b44u6ds026q0p" path="res://item/items/resources/crescent_rose.tres" id="18"]
+[ext_resource type="Resource" uid="uid://bg3c50gl3ywmo" path="res://item/items/resources/vorpal_blade.tres" id="19"]
+[ext_resource type="Resource" uid="uid://ddx8gpwibe6a0" path="res://item/items/resources/gjallarhorn.tres" id="20"]
+[ext_resource type="Resource" uid="uid://dsfju0fy7nidg" path="res://item/items/resources/gungnir.tres" id="21"]
+[ext_resource type="Resource" uid="uid://cc22woekywaya" path="res://item/items/resources/vulcan's_fury.tres" id="22"]
+[ext_resource type="Resource" uid="uid://b2bo053xnmtpy" path="res://item/items/resources/bullet_1.tres" id="23"]
+[ext_resource type="Resource" uid="uid://dws75647lcq3m" path="res://item/items/resources/bullet_2.tres" id="24"]
+[ext_resource type="Resource" uid="uid://c0lw56mqgpq1v" path="res://item/items/resources/bullet_3.tres" id="25"]
+[ext_resource type="Resource" uid="uid://d2u7xdknxl637" path="res://item/items/resources/bullet_4.tres" id="26"]
+[ext_resource type="Resource" uid="uid://0c25ednalgrd" path="res://item/items/resources/bullet_5.tres" id="27"]
+[ext_resource type="Resource" uid="uid://bdre0legeyxgc" path="res://item/items/resources/bullet_6.tres" id="28"]
+[ext_resource type="Resource" uid="uid://l5p4fpthncf8" path="res://item/items/resources/bullet_7.tres" id="29"]
+[ext_resource type="Resource" uid="uid://dmx5xvmvkjjmc" path="res://item/items/resources/soldier's_medallion.tres" id="30"]
+[ext_resource type="Resource" uid="uid://cg3vy7ppxwa1d" path="res://item/items/resources/elixir_of_heracles.tres" id="31"]
+[ext_resource type="Resource" uid="uid://dr6il3y1c67co" path="res://item/items/resources/world_eater's_tooth.tres" id="32"]
+[ext_resource type="Resource" uid="uid://brir3b2ykkvjy" path="res://item/items/resources/vial_of_starlight.tres" id="33"]
+[ext_resource type="Resource" uid="uid://kwlc5ddnb21e" path="res://item/items/resources/hag's_fingernail.tres" id="34"]
+[ext_resource type="Resource" uid="uid://cbbmwrky0f8hu" path="res://item/items/resources/goblin_fire_oil.tres" id="35"]
+[ext_resource type="Resource" uid="uid://cdr4txlrjxgk4" path="res://item/items/resources/kraken's_ink.tres" id="36"]
+[ext_resource type="Resource" uid="uid://beukcvrnnhofh" path="res://item/items/resources/stone_giant's_pebble.tres" id="37"]
+[ext_resource type="Resource" uid="uid://bsm62yvs0rwd" path="res://item/items/resources/lifeblood_syrette.tres" id="38"]
+[ext_resource type="Resource" uid="uid://b3dljyipkgu3t" path="res://item/items/resources/siren's_locket.tres" id="39"]
+[ext_resource type="Resource" uid="uid://d3g4qqgeqlvw0" path="res://item/items/resources/will_o'_the_wisps.tres" id="40"]
+[ext_resource type="Resource" uid="uid://ble73w3e6yw7c" path="res://item/items/resources/pandora's_box.tres" id="41"]
+[ext_resource type="Resource" uid="uid://01fc4p8ufcm2" path="res://item/items/resources/clockwork_scarab.tres" id="42"]
+[ext_resource type="Resource" uid="uid://7lfdigs4brni" path="res://item/items/resources/echo_of_valhalla.tres" id="43"]
+[ext_resource type="Resource" uid="uid://httbfpwnvooj" path="res://item/items/resources/ambrosia_of_the_gods.tres" id="44"]
+[ext_resource type="Resource" uid="uid://djkwmbd8ck0mq" path="res://item/items/resources/puzzle_box_of_yggdrasil.tres" id="45"]
+[ext_resource type="Resource" uid="uid://c022piqa3m5gx" path="res://item/items/resources/leather_pauldrons.tres" id="46"]
+[ext_resource type="Resource" uid="uid://vd4f1c4704r5" path="res://item/items/resources/iron_soled_boots.tres" id="47"]
+[ext_resource type="Resource" uid="uid://cfpqnwvsg6s4o" path="res://item/items/resources/duelist's_gloves.tres" id="48"]
+[ext_resource type="Resource" uid="uid://cxtfcc3lm1svb" path="res://item/items/resources/marksman's_monocle.tres" id="49"]
+[ext_resource type="Resource" uid="uid://c187o12d2cup4" path="res://item/items/resources/quicksilver_brooch.tres" id="50"]
+[ext_resource type="Resource" uid="uid://bpbrbavfvg3c1" path="res://item/items/resources/brigandine_vest.tres" id="51"]
+[ext_resource type="Resource" uid="uid://l2300hvme0a0" path="res://item/items/resources/artillery_helmet.tres" id="52"]
+[ext_resource type="Resource" uid="uid://n1sih737j66f" path="res://item/items/resources/dowsing_rod.tres" id="53"]
+[ext_resource type="Resource" uid="uid://cudnc23ov7qs3" path="res://item/items/resources/potion_belt.tres" id="54"]
+[ext_resource type="Resource" uid="uid://bw6b1w3jh4k0s" path="res://item/items/resources/plague_doctor's_mask.tres" id="55"]
+[ext_resource type="Resource" uid="uid://csbcwc6j755rt" path="res://item/items/resources/sapper's_apron.tres" id="56"]
+[ext_resource type="Resource" uid="uid://uckuy50plvho" path="res://item/items/resources/runic_ward.tres" id="57"]
+[ext_resource type="Resource" uid="uid://ylloisufo4x2" path="res://item/items/resources/cowl_of_the_unseen.tres" id="58"]
+[ext_resource type="Resource" uid="uid://bhqwjid0gcsuy" path="res://item/items/resources/boots_of_mercury.tres" id="59"]
+[ext_resource type="Resource" uid="uid://jjh6rfrgj51g" path="res://item/items/resources/phantom's_hand.tres" id="60"]
+[ext_resource type="Resource" uid="uid://cy2f2vkaugs3v" path="res://item/items/resources/tithonus'_curse.tres" id="61"]
+[ext_resource type="Resource" uid="uid://5hau8gtkyho7" path="res://item/items/resources/aegis_fragment.tres" id="62"]
+[ext_resource type="PackedScene" uid="uid://buxhkapuyehvt" path="res://item/pick_up/pick_up.tscn" id="63"]
+[ext_resource type="Script" uid="uid://d2amkc46bbqxi" path="res://world/scripts/test_spawner.gd" id="64"]
+[ext_resource type="Script" uid="uid://b752dh6uieq8g" path="res://world/scripts/navigation_region_3d.gd" id="65"]
+[ext_resource type="PackedScene" uid="uid://b31dsd0jxadqv" path="res://world/scenes/wall.tscn" id="66"]
+[ext_resource type="PackedScene" uid="uid://c6p6jsidjwune" path="res://world/scenes/floor.tscn" id="67"]
+[ext_resource type="PackedScene" uid="uid://usbhsma4k6fu" path="res://world/scenes/roof.tscn" id="68"]
+[ext_resource type="PackedScene" uid="uid://bkj57vle36mp" path="res://world/scenes/button_scene.tscn" id="69"]
+[ext_resource type="PackedScene" uid="uid://coilixa2e7fu" path="res://interactable/shop.tscn" id="70"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_043iq"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_lij1r"]
+sky_material = SubResource("ProceduralSkyMaterial_043iq")
+
+[sub_resource type="Environment" id="Environment_odefi"]
+background_mode = 2
+sky = SubResource("Sky_lij1r")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_3666i"]
+script = ExtResource("6")
+item_data = ExtResource("5")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_62sy8"]
+script = ExtResource("6")
+item_data = ExtResource("7")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_nh4mh"]
+script = ExtResource("6")
+item_data = ExtResource("8")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_7yb1u"]
+script = ExtResource("6")
+item_data = ExtResource("9")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_mm2v2"]
+script = ExtResource("6")
+item_data = ExtResource("10")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_y45sx"]
+script = ExtResource("6")
+item_data = ExtResource("11")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_gppt6"]
+script = ExtResource("6")
+item_data = ExtResource("12")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_2uroq"]
+script = ExtResource("6")
+item_data = ExtResource("13")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_esbet"]
+script = ExtResource("6")
+item_data = ExtResource("14")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_4grg1"]
+script = ExtResource("6")
+item_data = ExtResource("15")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_narg2"]
+script = ExtResource("6")
+item_data = ExtResource("16")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_60vj2"]
+script = ExtResource("6")
+item_data = ExtResource("17")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_g6ou3"]
+script = ExtResource("6")
+item_data = ExtResource("18")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_nbeus"]
+script = ExtResource("6")
+item_data = ExtResource("19")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_jou6m"]
+script = ExtResource("6")
+item_data = ExtResource("20")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_6g0iw"]
+script = ExtResource("6")
+item_data = ExtResource("21")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_18l5u"]
+script = ExtResource("6")
+item_data = ExtResource("22")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_lu18h"]
+script = ExtResource("6")
+item_data = ExtResource("23")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_27wko"]
+script = ExtResource("6")
+item_data = ExtResource("24")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_ip2fq"]
+script = ExtResource("6")
+item_data = ExtResource("25")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_bctyu"]
+script = ExtResource("6")
+item_data = ExtResource("26")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_4nkdf"]
+script = ExtResource("6")
+item_data = ExtResource("27")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_fs85w"]
+script = ExtResource("6")
+item_data = ExtResource("28")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_t0r42"]
+script = ExtResource("6")
+item_data = ExtResource("29")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_mb3eg"]
+script = ExtResource("6")
+item_data = ExtResource("30")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_1r6xg"]
+script = ExtResource("6")
+item_data = ExtResource("31")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_rbolo"]
+script = ExtResource("6")
+item_data = ExtResource("32")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_musct"]
+script = ExtResource("6")
+item_data = ExtResource("33")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_utlwe"]
+script = ExtResource("6")
+item_data = ExtResource("34")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_gogdr"]
+script = ExtResource("6")
+item_data = ExtResource("35")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_hvmo0"]
+script = ExtResource("6")
+item_data = ExtResource("36")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_k6ui7"]
+script = ExtResource("6")
+item_data = ExtResource("37")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_fodgg"]
+script = ExtResource("6")
+item_data = ExtResource("38")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_exc5p"]
+script = ExtResource("6")
+item_data = ExtResource("39")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_5y5vo"]
+script = ExtResource("6")
+item_data = ExtResource("40")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_imhme"]
+script = ExtResource("6")
+item_data = ExtResource("41")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_sbh33"]
+script = ExtResource("6")
+item_data = ExtResource("42")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_d2yeo"]
+script = ExtResource("6")
+item_data = ExtResource("43")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_ijeyo"]
+script = ExtResource("6")
+item_data = ExtResource("44")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_880gk"]
+script = ExtResource("6")
+item_data = ExtResource("45")
+quantity = 99
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_87xvj"]
+script = ExtResource("6")
+item_data = ExtResource("46")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_q2im4"]
+script = ExtResource("6")
+item_data = ExtResource("47")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_k3elm"]
+script = ExtResource("6")
+item_data = ExtResource("48")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_c8j2e"]
+script = ExtResource("6")
+item_data = ExtResource("49")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_ryc36"]
+script = ExtResource("6")
+item_data = ExtResource("50")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_73wfh"]
+script = ExtResource("6")
+item_data = ExtResource("51")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_n5rya"]
+script = ExtResource("6")
+item_data = ExtResource("52")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_hg3x4"]
+script = ExtResource("6")
+item_data = ExtResource("53")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_mrag6"]
+script = ExtResource("6")
+item_data = ExtResource("54")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_x3cu4"]
+script = ExtResource("6")
+item_data = ExtResource("55")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_3km8o"]
+script = ExtResource("6")
+item_data = ExtResource("56")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_ywfai"]
+script = ExtResource("6")
+item_data = ExtResource("57")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_2mm6i"]
+script = ExtResource("6")
+item_data = ExtResource("58")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_3k07v"]
+script = ExtResource("6")
+item_data = ExtResource("59")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_4mbff"]
+script = ExtResource("6")
+item_data = ExtResource("60")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_dx172"]
+script = ExtResource("6")
+item_data = ExtResource("61")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_thpuy"]
+script = ExtResource("6")
+item_data = ExtResource("62")
+metadata/_custom_type_script = "uid://wtjnbu6suapx"
+
+[sub_resource type="Resource" id="Resource_yhwa2"]
+script = ExtResource("4")
+slot_datas = Array[ExtResource("6")]([SubResource("Resource_3666i"), SubResource("Resource_62sy8"), SubResource("Resource_nh4mh"), SubResource("Resource_7yb1u"), SubResource("Resource_mm2v2"), SubResource("Resource_y45sx"), SubResource("Resource_gppt6"), SubResource("Resource_2uroq"), SubResource("Resource_esbet"), SubResource("Resource_4grg1"), SubResource("Resource_narg2"), SubResource("Resource_60vj2"), SubResource("Resource_g6ou3"), SubResource("Resource_nbeus"), SubResource("Resource_jou6m"), SubResource("Resource_6g0iw"), SubResource("Resource_18l5u"), SubResource("Resource_lu18h"), SubResource("Resource_27wko"), SubResource("Resource_ip2fq"), SubResource("Resource_bctyu"), SubResource("Resource_4nkdf"), SubResource("Resource_fs85w"), SubResource("Resource_t0r42"), SubResource("Resource_mb3eg"), SubResource("Resource_1r6xg"), SubResource("Resource_rbolo"), SubResource("Resource_musct"), SubResource("Resource_utlwe"), SubResource("Resource_gogdr"), SubResource("Resource_hvmo0"), SubResource("Resource_k6ui7"), SubResource("Resource_fodgg"), SubResource("Resource_exc5p"), SubResource("Resource_5y5vo"), SubResource("Resource_imhme"), SubResource("Resource_sbh33"), SubResource("Resource_d2yeo"), SubResource("Resource_ijeyo"), SubResource("Resource_880gk"), SubResource("Resource_87xvj"), SubResource("Resource_q2im4"), SubResource("Resource_k3elm"), SubResource("Resource_c8j2e"), SubResource("Resource_ryc36"), SubResource("Resource_73wfh"), SubResource("Resource_n5rya"), SubResource("Resource_hg3x4"), SubResource("Resource_mrag6"), SubResource("Resource_x3cu4"), SubResource("Resource_3km8o"), SubResource("Resource_ywfai"), SubResource("Resource_2mm6i"), SubResource("Resource_3k07v"), SubResource("Resource_4mbff"), SubResource("Resource_dx172"), SubResource("Resource_thpuy")])
+metadata/_custom_type_script = "uid://dxl3c04wvk7wb"
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yaehf"]
+border_size = 3.0
+
+[node name="Main" type="Node" unique_id=2019358963]
+script = ExtResource("1")
+
+[node name="Player" parent="." unique_id=1095922720 instance=ExtResource("2")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1398251214]
+environment = SubResource("Environment_odefi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=340526373]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Chest" parent="." unique_id=157767799 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+inventory_data = SubResource("Resource_yhwa2")
+
+[node name="PickUp" parent="." unique_id=72149103 instance=ExtResource("63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 10, 0)
+
+[node name="Spawner" type="Node3D" parent="." unique_id=1826812616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+script = ExtResource("64")
+
+[node name="WorldStructures" type="Node" parent="." unique_id=670655489]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="WorldStructures" unique_id=1772018668]
+navigation_mesh = SubResource("NavigationMesh_yaehf")
+script = ExtResource("65")
+wall_scene = ExtResource("66")
+floor_scene = ExtResource("67")
+roof_scene = ExtResource("68")
+button_scene = ExtResource("69")
+
+[node name="Shop" parent="." unique_id=198105987 instance=ExtResource("70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)

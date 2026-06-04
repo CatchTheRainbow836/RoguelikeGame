@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" format=3 uid="uid://5hau8gtkyho7"]
+
+[ext_resource type="Script" uid="uid://dx60scyjnh37b" path="res://item/scripts/item_data_equip.gd" id="1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lflkp"]
+load_path = "res://.godot/imported/transparent_icons.png-de9341073f149eec344aa92262269cf4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwq4a"]
+atlas = SubResource("CompressedTexture2D_lflkp")
+region = Rect2(96, 352, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 17
+name = "Aegis Fragment"
+description = "A shard of Zeus's legendary shield. It still hums with the echo of divine protection."
+texture = SubResource("AtlasTexture_iwq4a")
+metadata/_custom_type_script = "uid://dx60scyjnh37b"

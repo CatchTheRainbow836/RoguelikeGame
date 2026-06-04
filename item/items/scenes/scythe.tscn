@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bw0ij8vm7ots"]
+
+[ext_resource type="PackedScene" uid="uid://dpcq1xi2jmn25" path="res://item/items/scenes/scythe.scn" id="1"]
+
+[node name="scythe" unique_id=484174139 instance=ExtResource("1")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

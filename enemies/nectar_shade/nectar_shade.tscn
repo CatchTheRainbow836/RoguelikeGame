@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://dtjibidtcmvi4"]
+
+[ext_resource type="Script" uid="uid://2jh32rb7iuol" path="res://enemies/nectar_shade/nectar_shade.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="2"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="3"]
+[ext_resource type="Script" uid="uid://5r3esf1ydbjr" path="res://enemies/nectar_shade/idle_nectar_shade_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://db3vyod436vkt" path="res://enemies/nectar_shade/walking_nectar_shade_state.gd" id="5"]
+[ext_resource type="Script" uid="uid://1e223doef0bd" path="res://enemies/nectar_shade/running_nectar_shade_state.gd" id="6"]
+[ext_resource type="Script" uid="uid://dtfgg3md27j73" path="res://enemies/nectar_shade/idle_nectar_shade_attack_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://cr5xv84kcvu7u" path="res://enemies/nectar_shade/attacking_nectar_shade_attack_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://caxalqta0irqv" path="res://enemies/nectar_shade/label_3d.gd" id="9"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lkbx1"]
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6c40e"]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e7bdr"]
+top_radius = 0.05
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7bdr"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ubpue"]
+top_radius = 0.05
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5y1yn"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Nectar Shade" type="CharacterBody3D" unique_id=499324077]
+collision_layer = 9
+script = ExtResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("CylinderMesh_lkbx1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1682002633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_6c40e")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=842561117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("2")]
+transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.5, 0, -4.371139e-08, 0, -0.5, 0, -0.7, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot" unique_id=1926898910]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.25, -0.75)
+visible = false
+mesh = SubResource("CylinderMesh_e7bdr")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7bdr")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1594163890]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1336822027 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("3")
+CURRENT_STATE = NodePath("IdleEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EnemyStateMachine" unique_id=802857722]
+script = ExtResource("4")
+
+[node name="WalkingEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1302237088]
+script = ExtResource("5")
+
+[node name="RunningEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1610436419]
+script = ExtResource("6")
+
+[node name="AttackStateMachine" type="Node" parent="." unique_id=748710376 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("3")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="AttackStateMachine" unique_id=649509817]
+script = ExtResource("7")
+
+[node name="AttackingAttackState" type="Node" parent="AttackStateMachine" unique_id=1423725487]
+script = ExtResource("8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=126760122]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, -0.75)
+visible = false
+mesh = SubResource("CylinderMesh_ubpue")
+surface_material_override/0 = SubResource("StandardMaterial3D_5y1yn")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1715183122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Scrap Crawler"
+script = ExtResource("9")

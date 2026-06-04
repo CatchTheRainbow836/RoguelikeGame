@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataWeaponConsumable" format=3 uid="uid://d2u7xdknxl637"]
+
+[ext_resource type="Script" uid="uid://db6pu1cukbsj8" path="res://item/scripts/item_data_weapon_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_xr8r3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgfmi"]
+atlas = ExtResource("2_xr8r3")
+region = Rect2(96, 576, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 103
+name = "Bullet 4"
+description = "A dart coated with deadly poison"
+stackable = true
+texture = SubResource("AtlasTexture_mgfmi")
+metadata/_custom_type_script = "uid://db6pu1cukbsj8"

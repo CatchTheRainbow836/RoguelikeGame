@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cmi3ho3rog3im"]
+
+[ext_resource type="PackedScene" uid="uid://cidvk7mu3qk1r" path="res://item/items/scenes/glue stick.scn" id="1"]
+
+[node name="glue stick" unique_id=585248932 instance=ExtResource("1")]
+transform = Transform3D(4.7767137e-16, -1.0927847e-08, 0.25, -0.25, -1.0927847e-08, 0, 1.0927847e-08, -0.25, -1.0927847e-08, 0, 0, 0)

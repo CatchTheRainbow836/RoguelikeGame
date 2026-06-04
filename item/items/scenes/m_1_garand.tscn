@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://13o5qu6limdc"]
+
+[ext_resource type="PackedScene" uid="uid://m7usdyl8ceen" path="res://item/items/scenes/m1Garand.scn" id="1"]
+
+[node name="m1Garand" unique_id=706955516 instance=ExtResource("1")]
+transform = Transform3D(-0.0012556408, 0.055664368, 0.99844074, -0.022458544, 0.99563026, -0.055821504, -0.29915553, -0.074978724, -4.364323e-08, 0, 0, 0)
+
+[node name="Cylinder_007_Cylinder_000" parent="." index="0" unique_id=1424863200]
+visible = false
+
+[node name="Cylinder_010_Cylinder_000" parent="." index="1" unique_id=1752626848]
+visible = false
+
+[node name="Cylinder_012_Cylinder_000" parent="." index="2" unique_id=1532251788]
+visible = false
+
+[node name="Cylinder_004" parent="." index="3" unique_id=1168406054]
+visible = false
+
+[node name="Cylinder_013_Cylinder_000" parent="." index="4" unique_id=1830388719]
+visible = false
+
+[node name="Cylinder_006_Cylinder_000" parent="." index="5" unique_id=1010184730]
+visible = false
+
+[node name="Cylinder_005_Cylinder_000" parent="." index="6" unique_id=942584134]
+visible = false
+
+[node name="Cylinder_004_Cylinder_000" parent="." index="7" unique_id=217536750]
+visible = false
+
+[node name="Cylinder_000" parent="." index="8" unique_id=1918949240]
+visible = false
+
+[node name="Cylinder_009_Cylinder_000" parent="." index="9" unique_id=767639384]
+visible = false
+
+[node name="Cylinder_011_Cylinder_000" parent="." index="10" unique_id=1467599513]
+visible = false
+
+[node name="Cylinder_015_Cylinder_000" parent="." index="11" unique_id=761346554]
+visible = false
+
+[node name="Cylinder_003_Cylinder_000" parent="." index="12" unique_id=993746689]
+visible = false
+
+[node name="Cylinder_014_Cylinder_000" parent="." index="13" unique_id=1796282789]
+visible = false
+
+[node name="Cylinder_002_Cylinder_000" parent="." index="14" unique_id=1740322306]
+visible = false
+
+[node name="Cylinder_008_Cylinder_000" parent="." index="15" unique_id=441862076]
+visible = false
+
+[node name="Cube_Cube_000" parent="." index="16" unique_id=643937884]
+visible = false
+
+[node name="Cube_Cube_003" parent="." index="17" unique_id=1397766578]
+visible = false
+
+[node name="Cylinder_008_Cylinder_002" parent="." index="18" unique_id=905708391]
+visible = false
+
+[node name="Cylinder_002_Cylinder_002" parent="." index="19" unique_id=2084495742]
+visible = false
+
+[node name="Cylinder_014_Cylinder_002" parent="." index="20" unique_id=1224324584]
+visible = false
+
+[node name="Cylinder_003_Cylinder_002" parent="." index="21" unique_id=1839233112]
+visible = false
+
+[node name="Cylinder_015_Cylinder_002" parent="." index="22" unique_id=1851540814]
+visible = false
+
+[node name="Cylinder_011_Cylinder_002" parent="." index="23" unique_id=1550685000]
+visible = false
+
+[node name="Cylinder_009_Cylinder_002" parent="." index="24" unique_id=1895479827]
+visible = false
+
+[node name="Cylinder_010" parent="." index="25" unique_id=737296624]
+visible = false
+
+[node name="Cylinder_004_Cylinder_002" parent="." index="26" unique_id=957642390]
+visible = false
+
+[node name="Cylinder_005_Cylinder_002" parent="." index="27" unique_id=137671799]
+visible = false
+
+[node name="Cylinder_006_Cylinder_002" parent="." index="28" unique_id=1755476480]
+visible = false
+
+[node name="Cylinder_013_Cylinder_002" parent="." index="29" unique_id=374441023]
+visible = false
+
+[node name="Cylinder_009" parent="." index="30" unique_id=107801426]
+visible = false
+
+[node name="Cylinder_012_Cylinder_002" parent="." index="31" unique_id=1907678096]
+visible = false
+
+[node name="Cylinder_010_Cylinder_002" parent="." index="32" unique_id=1368671142]
+visible = false
+
+[node name="Cylinder_007_Cylinder_002" parent="." index="33" unique_id=279139675]
+visible = false
+
+[node name="Cube_007" parent="." index="39" unique_id=1558856679]
+transform = Transform3D(8.240834e-05, -0.19878438, 0.0069587925, 0.0022697982, 0.006959884, 0.19875495, -0.13200706, -4.4399717e-06, 0.0034218247, 0.43176487, 1.2734015, 0.010661006)
+
+[node name="Camera" parent="." index="47" unique_id=760083753]
+visible = false

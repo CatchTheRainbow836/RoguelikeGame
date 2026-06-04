@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" format=3 uid="uid://cxtfcc3lm1svb"]
+
+[ext_resource type="Script" uid="uid://dx60scyjnh37b" path="res://item/scripts/item_data_equip.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iwhx"]
+atlas = ExtResource("2")
+region = Rect2(256, 320, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 4
+name = "Marksman's Monocle"
+description = "A single, finely-ground lens. Brings the far-away into sharp focus."
+texture = SubResource("AtlasTexture_1iwhx")
+metadata/_custom_type_script = "uid://dx60scyjnh37b"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://dmx5xvmvkjjmc"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_qx5ay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyrtj"]
+atlas = ExtResource("2_qx5ay")
+region = Rect2(448, 96, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 1
+name = "Soldier's Medallion"
+description = "Deus Vult! An unwavering soul, undeterred even by death."
+stackable = true
+texture = SubResource("AtlasTexture_eyrtj")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"

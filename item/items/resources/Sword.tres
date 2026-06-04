@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" format=3 uid="uid://70d4mo5nxqhl"]
+
+[ext_resource type="PackedScene" uid="uid://ybr7od450lmf" path="res://item/items/scenes/katana.scn" id="1"]
+[ext_resource type="Script" uid="uid://c0tlhqqgxfkhr" path="res://item/scripts/item_data_weapon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c84pm8vsqfvrs" path="res://item/items/resources/item_atlas.tres" id="3"]
+
+[resource]
+script = ExtResource("2")
+model_scene = ExtResource("1")
+damage = 8
+range = 5
+type = 200
+swing_forward_speed = 0.15
+swing_backward_speed = 0.3
+name = "Sword"
+description = "Chop chop"
+texture = ExtResource("3")
+metadata/_custom_type_script = "uid://c0tlhqqgxfkhr"

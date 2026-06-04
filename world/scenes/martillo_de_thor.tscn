@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dh5lmnaw5ex82"]
+
+[ext_resource type="PackedScene" uid="uid://fdtvr2t675eo" path="res://item/items/scenes/Martillo de Thor.scn" id="1"]
+
+[node name="Martillo de Thor" unique_id=21590516 instance=ExtResource("1")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Camera" parent="." index="0" unique_id=204737012]
+visible = false
+
+[node name="Camera_001" parent="." index="1" unique_id=377145870]
+visible = false
+
+[node name="Camera_002" parent="." index="2" unique_id=1905577700]
+visible = false
+
+[node name="Camera_003" parent="." index="3" unique_id=753538979]
+visible = false
+
+[node name="Camera_004" parent="." index="4" unique_id=1330958873]
+visible = false
+
+[node name="Light" parent="." index="5" unique_id=1158017725]
+visible = false

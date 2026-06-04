@@ -1,0 +1,138 @@
+Godot Engine v4.6.stable.official.89cea1439 - https://godotengine.org
+Vulkan 1.4.323 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics
+
+CURRENT_STATE: IdlePlayerState:<Node#306049977140>
+CURRENT_STATE: UnequippedWeaponState:<Node#306150640442>
+Switched to floor: 0 (type: combat)
+Player found: Player:<CharacterBody3D#303818606040>
+Creating elevator at cell: (48.0, 24.0)
+walking_player_state.SPEED_DEFAULT: 7.5
+CURRENT_STATE: IdleEnemyState:<Node#406042190381>
+CURRENT_STATE: IdleAttackState:<Node#406126076466>
+WARNING: Source geometry parsing for navigation mesh baking had to parse RenderingServer meshes at runtime.
+		This poses a significant performance issues as visual meshes store geometry data on the GPU and transferring this data back to the CPU blocks the rendering.
+		For runtime (re)baking navigation meshes use and parse collision shapes as source geometry or create geometry data procedurally in scripts.
+   at: add_mesh (scene/resources/3d/navigation_mesh_source_geometry_data_3d.cpp:202)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://world/scripts/navigation_region_3d.gd:61)
+CURRENT_STATE: IdleEnemyState:<Node#408072233562>
+CURRENT_STATE: IdleAttackState:<Node#408139342430>
+CURRENT_STATE: WalkingEnemyState:<Node#409313747572>
+CURRENT_STATE: IdleAttackState:<Node#409364079223>
+CURRENT_STATE: IdleEnemyState:<Node#410186162828>
+CURRENT_STATE: IdleAttackState:<Node#410253271696>
+scrap_crawler entered walking state
+CURRENT_STATE: IdleEnemyState:<Node#411108909736>
+CURRENT_STATE: IdleAttackState:<Node#411192795821>
+CURRENT_STATE: IdleEnemyState:<Node#412031656636>
+CURRENT_STATE: IdleAttackState:<Node#412115542708>
+CURRENT_STATE: IdleEnemyState:<Node#412971180756>
+CURRENT_STATE: IdleAttackState:<Node#413038289613>
+scrap_crawler entered walking state
+CURRENT_STATE: IdleEnemyState:<Node#413944259325>
+CURRENT_STATE: IdleAttackState:<Node#414011368193>
+CURRENT_STATE: IdleEnemyState:<Node#414833451788>
+CURRENT_STATE: IdleAttackState:<Node#414917337882>
+CURRENT_STATE: IdleEnemyState:<Node#415806530341>
+CURRENT_STATE: IdleAttackState:<Node#415873639221>
+CURRENT_STATE: WalkingEnemyState:<Node#416695722812>
+CURRENT_STATE: IdleAttackState:<Node#416746054478>
+CURRENT_STATE: WalkingEnemyState:<Node#417517806435>
+CURRENT_STATE: IdleAttackState:<Node#417568138086>
+CURRENT_STATE: WalkingEnemyState:<Node#418339890043>
+CURRENT_STATE: IdleAttackState:<Node#418390221694>
+CURRENT_STATE: IdleEnemyState:<Node#419145196434>
+CURRENT_STATE: IdleAttackState:<Node#419212305302>
+CURRENT_STATE: WalkingEnemyState:<Node#420034388893>
+CURRENT_STATE: IdleAttackState:<Node#420084720559>
+CURRENT_STATE: IdleEnemyState:<Node#420839695299>
+CURRENT_STATE: IdleAttackState:<Node#420906804167>
+CURRENT_STATE: IdleEnemyState:<Node#421762442190>
+CURRENT_STATE: IdleAttackState:<Node#421829551073>
+CURRENT_STATE: IdleEnemyState:<Node#422634857450>
+CURRENT_STATE: IdleAttackState:<Node#422718743547>
+CURRENT_STATE: IdleEnemyState:<Node#423574381577>
+CURRENT_STATE: IdleAttackState:<Node#423658267669>
+CURRENT_STATE: WalkingEnemyState:<Node#424530682914>
+CURRENT_STATE: IdleAttackState:<Node#424581014556>
+CURRENT_STATE: IdleEnemyState:<Node#425335989314>
+CURRENT_STATE: IdleAttackState:<Node#425403098182>
+CURRENT_STATE: IdleEnemyState:<Node#426208404559>
+CURRENT_STATE: IdleAttackState:<Node#426275513439>
+CURRENT_STATE: IdleEnemyState:<Node#427013710963>
+CURRENT_STATE: IdleAttackState:<Node#427080819831>
+CURRENT_STATE: IdleEnemyState:<Node#427902903422>
+CURRENT_STATE: IdleAttackState:<Node#427970012305>
+scrap_crawler entered walking state
+CURRENT_STATE: IdleEnemyState:<Node#428758541480>
+CURRENT_STATE: IdleAttackState:<Node#428825650348>
+CURRENT_STATE: WalkingEnemyState:<Node#429580625089>
+CURRENT_STATE: IdleAttackState:<Node#429630956740>
+CURRENT_STATE: IdleEnemyState:<Node#430385931480>
+CURRENT_STATE: IdleAttackState:<Node#430453040348>
+CURRENT_STATE: IdleEnemyState:<Node#431191237872>
+CURRENT_STATE: IdleAttackState:<Node#431258346740>
+CURRENT_STATE: IdleEnemyState:<Node#431996544264>
+CURRENT_STATE: IdleAttackState:<Node#432063653132>
+CURRENT_STATE: IdleEnemyState:<Node#432885736723>
+CURRENT_STATE: IdleAttackState:<Node#432952845606>
+scrap_crawler entered walking state
+Uneqipped transitioning to Idle
+Idle transitioning to Running
+Sprinting transitioning to Walking
+Walking transitioning to Sprinting
+Sprinting transitioning to Walking
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 72.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 64.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 56.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 48.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 40.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 32.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 24.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 16.0
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+Walking transitioning to Idle
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: 8.0
+Idle transitioning to Walking
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 2.0, health left: 6.0
+@CharacterBody3D@1658:<CharacterBody3D#421544338397>took damage: 8.0, health left: -2.0
+CURRENT_STATE: IdleEnemyState:<Node#773379334467>
+CURRENT_STATE: IdleAttackState:<Node#773446443351>
+WARNING: Target and up vectors are colinear. This is not advised as it may cause unwanted rotation around local Z axis.
+   at: looking_at (core/math/basis.cpp:1044)
+   GDScript backtrace (most recent call first):
+       [0] create_bullet_hole (res://state_scripts/firing_weapon_state.gd:233)
+       [1] _machine_gun_fire (res://state_scripts/firing_weapon_state.gd:1449)
+Walking transitioning to Sprinting
+Sprinting transitioning to Walking
+scrap_crawler exited walking state
+Walking transitioning to Idle
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+@CharacterBody3D@1672:<CharacterBody3D#427668022413>took damage: 8.0, health left: 5.0
+CURRENT_STATE: IdleEnemyState:<Node#899426558926>
+CURRENT_STATE: IdleAttackState:<Node#899510445015>
+Idle transitioning to Walking
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+WARNING: Target and up vectors are colinear. This is not advised as it may cause unwanted rotation around local Z axis.
+   at: looking_at (core/math/basis.cpp:1044)
+   GDScript backtrace (most recent call first):
+       [0] create_bullet_hole (res://state_scripts/firing_weapon_state.gd:233)
+       [1] _machine_gun_fire (res://state_scripts/firing_weapon_state.gd:1449)
+Idle transitioning to Firing
+weapon: (res://item/items/resources/vulcan's_fury.tres):<Resource#-9223371967279659011>
+Spark Scout:<CharacterBody3D#409078866544>took damage: 8.0, health left: -3.0
+CURRENT_STATE: IdleEnemyState:<Node#1143803487952>
+CURRENT_STATE: IdleAttackState:<Node#1143870596862>
+scrap_crawler entered walking state
+Walking transitioning to Sprinting
+Sprinting transitioning to Walking
+Walking transitioning to Idle

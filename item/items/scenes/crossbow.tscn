@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lr5u6fukl7qs"]
+
+[ext_resource type="PackedScene" uid="uid://cfupcgm72tpip" path="res://item/items/scenes/crossbow.scn" id="1"]
+
+[node name="crossbow" unique_id=2025404664 instance=ExtResource("1")]
+transform = Transform3D(-4.371139e-09, 0, -1, 0, 0.5, 0, 0.1, 0, -4.371139e-08, 0, 0, 0)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bpe2ls2k8ghn6"]
+
+[ext_resource type="Shape3D" uid="uid://6q5acmu28kcb" path="res://item/enemies/resources/BlobShape.tres" id="1"]
+[ext_resource type="CapsuleMesh" uid="uid://drhxuclaa2vhn" path="res://item/enemies/resources/BlobMesh.tres" id="2"]
+[ext_resource type="Script" uid="uid://bae4ljli3rfml" path="res://item/enemies/scripts/enemy_data.gd" id="3"]
+
+[resource]
+script = ExtResource("3")
+max_health = 10
+current_health = 10
+defenese = 1
+mesh = ExtResource("2")
+collision_shape = ExtResource("1")
+metadata/_custom_type_script = "uid://bae4ljli3rfml"

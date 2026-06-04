@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c60lmfg5ysnad"]
+
+[ext_resource type="Script" uid="uid://bbqk2f3js7nle" path="res://enemies/spark_scout/spark_scout.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://e2uphoexc80f" path="res://exported-model.glb" id="2"]
+[ext_resource type="Script" uid="uid://bwrw77ijnma0" path="res://state_scripts/state_machine.gd" id="3"]
+[ext_resource type="Script" uid="uid://ctx8cjhppd2r7" path="res://enemies/spark_scout/idle_spark_scout_state.gd" id="4"]
+[ext_resource type="Script" uid="uid://bqogcrlnfaaq5" path="res://enemies/spark_scout/walking_spark_scout_state.gd" id="5"]
+[ext_resource type="Script" uid="uid://j1prodddj624" path="res://enemies/spark_scout/running_spark_scout_state.gd" id="6"]
+[ext_resource type="Script" uid="uid://cawsaq1fsahvp" path="res://enemies/spark_scout/idle_spark_scout_attack_state.gd" id="7"]
+[ext_resource type="Script" uid="uid://dowlso7kra73f" path="res://enemies/spark_scout/attacking_spark_scout_attack_state.gd" id="8"]
+[ext_resource type="Script" uid="uid://buc8bjwllew2r" path="res://enemies/spark_scout/label_3d.gd" id="9"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ad20k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mrl75"]
+
+[node name="Spark Scout" type="CharacterBody3D" unique_id=499324077]
+collision_layer = 9
+script = ExtResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("SphereMesh_ad20k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1682002633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_mrl75")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=842561117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="exported-model" parent="Pivot" unique_id=1222166918 instance=ExtResource("2")]
+transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.5, 0, -4.371139e-08, 0, -0.5, 0, -0.5, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1594163890]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1336822027 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("3")
+CURRENT_STATE = NodePath("WalkingEnemyState")
+
+[node name="IdleEnemyState" type="Node" parent="EnemyStateMachine" unique_id=802857722]
+script = ExtResource("4")
+
+[node name="WalkingEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1302237088]
+script = ExtResource("5")
+
+[node name="RunningEnemyState" type="Node" parent="EnemyStateMachine" unique_id=1610436419]
+script = ExtResource("6")
+
+[node name="AttackStateMachine" type="Node" parent="." unique_id=748710376 node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("3")
+CURRENT_STATE = NodePath("IdleAttackState")
+
+[node name="IdleAttackState" type="Node" parent="AttackStateMachine" unique_id=649509817]
+script = ExtResource("7")
+
+[node name="AttackingAttackState" type="Node" parent="AttackStateMachine" unique_id=1423725487]
+script = ExtResource("8")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=510277833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Spark Scout"
+script = ExtResource("9")

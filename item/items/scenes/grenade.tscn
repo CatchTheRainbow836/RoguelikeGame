@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bnfbgogowbdds"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pu16u"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu16u"]
+use_z_clip_scale = true
+z_clip_scale = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1515291044]
+mesh = SubResource("SphereMesh_pu16u")
+surface_material_override/0 = SubResource("StandardMaterial3D_pu16u")

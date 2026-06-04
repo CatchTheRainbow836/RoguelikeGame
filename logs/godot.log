@@ -1,0 +1,202 @@
+Godot Engine v4.6.stable.official.89cea1439 - https://godotengine.org
+Vulkan 1.4.323 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics
+
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/hammer.tscn:3 - ext_resource, invalid UID: uid://deq0xbuwnr3cd - using text path instead: res://item/items/scenes/Hammer.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://world/scenes/glue_stick.tscn:3 - ext_resource, invalid UID: uid://cidvk7mu3qk1r - using text path instead: res://item/items/scenes/glue stick.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/cracked_reinforced_shield.tres:3 - ext_resource, invalid UID: uid://dhwnqjf3ms0r2 - using text path instead: res://item/items/scenes/Shield.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/scythe.tscn:3 - ext_resource, invalid UID: uid://dpcq1xi2jmn25 - using text path instead: res://item/items/scenes/scythe.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/revolver.tscn:3 - ext_resource, invalid UID: uid://caq6diehfocun - using text path instead: res://item/items/scenes/revolver.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/fragmentation_grenade.tres:3 - ext_resource, invalid UID: uid://dneurf57lwrhp - using text path instead: res://item/items/scenes/Grenade.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/rpg.tscn:3 - ext_resource, invalid UID: uid://cu0hr6ac6cwtq - using text path instead: res://item/items/scenes/rpg.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/wood_blade.tscn:3 - ext_resource, invalid UID: uid://8lfratir71bo - using text path instead: res://item/items/scenes/Wood Blade.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/m_1_garand.tscn:3 - ext_resource, invalid UID: uid://m7usdyl8ceen - using text path instead: res://item/items/scenes/m1Garand.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://world/scenes/martillo_de_thor.tscn:3 - ext_resource, invalid UID: uid://fdtvr2t675eo - using text path instead: res://item/items/scenes/Martillo de Thor.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/Pistol.tres:3 - ext_resource, invalid UID: uid://bbvruedw8xldf - using text path instead: res://item/items/scenes/Gun.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/crossbow.tscn:3 - ext_resource, invalid UID: uid://cfupcgm72tpip - using text path instead: res://item/items/scenes/crossbow.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://world/scenes/hand.tscn:3 - ext_resource, invalid UID: uid://dy5ifhvmld83l - using text path instead: res://item/items/scenes/Hand.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/smoke_grenade.tres:3 - ext_resource, invalid UID: uid://di0d5g6xdewog - using text path instead: res://item/items/scenes/SmokeGrenade.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/sting_sword_lowpoly.tscn:3 - ext_resource, invalid UID: uid://c5x4f11f1pa2x - using text path instead: res://item/items/scenes/Sting-Sword lowpoly.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/stun_grenade.tres:3 - ext_resource, invalid UID: uid://dhcy444bs3a5i - using text path instead: res://item/items/scenes/MK13 Flash Bang.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/Sword.tres:3 - ext_resource, invalid UID: uid://ybr7od450lmf - using text path instead: res://item/items/scenes/katana.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/resources/vorpal_blade.tres:3 - ext_resource, invalid UID: uid://l7vwo8xg4m4k - using text path instead: res://item/items/scenes/SOTC SWORD.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+WARNING: res://item/items/scenes/m_60e_4.tscn:3 - ext_resource, invalid UID: uid://s8bbuag1v76f - using text path instead: res://item/items/scenes/M60E4.scn
+   at: load (scene/resources/resource_format_text.cpp:500)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Unable to open file: res://item/items/resources/transparent_icons.png.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+ERROR: Failed to open binary GDScript file 'res://enemies/crucible_core/crucible_core_spirit.gdc'.
+   at: get_binary_tokens (modules/gdscript/gdscript_cache.cpp:288)
+ERROR: Failed loading resource: res://enemies/crucible_core/crucible_core_spirit.gdc.
+   at: _load (core/io/resource_loader.cpp:343)
+ERROR: res://enemies/crucible_core/crucible_core_spirit.tscn:10 - Parse Error: [ext_resource] referenced non-existent resource at: res://enemies/crucible_core/crucible_core_spirit.gd.
+   at: _printerr (scene/resources/resource_format_text.cpp:40)
+CURRENT_STATE: IdlePlayerState:<Node#302610647872>
+CURRENT_STATE: UnequippedWeaponState:<Node#302711311174>
+Switched to floor: 0 (type: combat)
+Player found: Player:<CharacterBody3D#300379276773>
+Creating elevator at cell: (32.0, 40.0)
+walking_player_state.SPEED_DEFAULT: 7.5
+CURRENT_STATE: IdleEnemyState:<Node#402485420600>
+CURRENT_STATE: IdleAttackState:<Node#402569306685>
+WARNING: Source geometry parsing for navigation mesh baking had to parse RenderingServer meshes at runtime.
+		This poses a significant performance issues as visual meshes store geometry data on the GPU and transferring this data back to the CPU blocks the rendering.
+		For runtime (re)baking navigation meshes use and parse collision shapes as source geometry or create geometry data procedurally in scripts.
+   at: add_mesh (scene/resources/3d/navigation_mesh_source_geometry_data_3d.cpp:202)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://world/scripts/navigation_region_3d.gd:61)
+CURRENT_STATE: IdleEnemyState:<Node#403945038427>
+CURRENT_STATE: IdleAttackState:<Node#404028924512>
+CURRENT_STATE: IdleEnemyState:<Node#405253661293>
+CURRENT_STATE: IdleAttackState:<Node#405337547387>
+CURRENT_STATE: IdleEnemyState:<Node#406209962633>
+CURRENT_STATE: IdleAttackState:<Node#406293848725>
+CURRENT_STATE: IdleEnemyState:<Node#407149486755>
+CURRENT_STATE: IdleAttackState:<Node#407216595612>
+CURRENT_STATE: IdleEnemyState:<Node#408122565301>
+CURRENT_STATE: IdleAttackState:<Node#408189674184>
+CURRENT_STATE: IdleEnemyState:<Node#408978203347>
+CURRENT_STATE: IdleAttackState:<Node#409062089441>
+CURRENT_STATE: IdleEnemyState:<Node#409900950256>
+CURRENT_STATE: IdleAttackState:<Node#409984836328>
+CURRENT_STATE: IdleEnemyState:<Node#410924360468>
+CURRENT_STATE: IdleAttackState:<Node#411008246553>
+CURRENT_STATE: IdleEnemyState:<Node#411847107368>
+CURRENT_STATE: IdleAttackState:<Node#411914216226>
+CURRENT_STATE: IdleEnemyState:<Node#412769854281>
+CURRENT_STATE: IdleAttackState:<Node#412836963149>
+CURRENT_STATE: IdleEnemyState:<Node#413659046740>
+CURRENT_STATE: IdleAttackState:<Node#413726155623>
+CURRENT_STATE: IdleEnemyState:<Node#414548239214>
+CURRENT_STATE: IdleAttackState:<Node#414615348097>
+CURRENT_STATE: IdleEnemyState:<Node#415420654474>
+CURRENT_STATE: IdleAttackState:<Node#415487763354>
+CURRENT_STATE: IdleEnemyState:<Node#416309846945>
+CURRENT_STATE: IdleAttackState:<Node#416393733045>
+CURRENT_STATE: IdleEnemyState:<Node#417266148290>
+CURRENT_STATE: IdleAttackState:<Node#417333257167>
+CURRENT_STATE: IdleEnemyState:<Node#418121786340>
+CURRENT_STATE: IdleAttackState:<Node#418205672425>
+CURRENT_STATE: IdleEnemyState:<Node#419094864884>
+CURRENT_STATE: IdleAttackState:<Node#419161973764>
+CURRENT_STATE: IdleEnemyState:<Node#419984057355>
+CURRENT_STATE: IdleAttackState:<Node#420051166238>
+CURRENT_STATE: IdleEnemyState:<Node#420856472615>
+CURRENT_STATE: IdleAttackState:<Node#420940358712>
+CURRENT_STATE: WalkingEnemyState:<Node#421812773957>
+CURRENT_STATE: IdleAttackState:<Node#421863105599>
+CURRENT_STATE: IdleEnemyState:<Node#422618080357>
+CURRENT_STATE: IdleAttackState:<Node#422701966442>
+CURRENT_STATE: IdleEnemyState:<Node#423557604472>
+CURRENT_STATE: IdleAttackState:<Node#423624713329>
+CURRENT_STATE: IdleEnemyState:<Node#424430019724>
+CURRENT_STATE: IdleAttackState:<Node#424497128604>
+CURRENT_STATE: IdleEnemyState:<Node#425302434981>
+CURRENT_STATE: IdleAttackState:<Node#425369543861>
+CURRENT_STATE: IdleEnemyState:<Node#426174850238>
+CURRENT_STATE: IdleAttackState:<Node#426241959118>
+CURRENT_STATE: WalkingEnemyState:<Node#427064042709>
+CURRENT_STATE: IdleAttackState:<Node#427114374375>
+CURRENT_STATE: IdleEnemyState:<Node#427869349115>
+CURRENT_STATE: IdleAttackState:<Node#427936457983>
+CURRENT_STATE: IdleEnemyState:<Node#428741764360>
+CURRENT_STATE: IdleAttackState:<Node#428825650457>
+CURRENT_STATE: IdleEnemyState:<Node#429681288487>
+CURRENT_STATE: IdleAttackState:<Node#429748397344>
+Uneqipped transitioning to Idle

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://beukcvrnnhofh"]
+
+[ext_resource type="Script" uid="uid://cw67q17ka8tpg" path="res://item/scripts/item_data_consumable.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bfa8aoxo5tnkl" path="res://item/items/resources/transparent_icons.png" id="2_msyhn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_excwp"]
+atlas = ExtResource("2_msyhn")
+region = Rect2(480, 384, 32, 32)
+
+[resource]
+script = ExtResource("1")
+type = 8
+name = "Stone Giant's Pebble"
+description = " A smooth, unassuming pebble. When thrown, it remembers its former size."
+stackable = true
+texture = SubResource("AtlasTexture_excwp")
+metadata/_custom_type_script = "uid://cw67q17ka8tpg"
