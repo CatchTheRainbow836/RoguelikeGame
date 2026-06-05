@@ -51,62 +51,62 @@ var _animation_blocked: bool = false
 @onready var animation_player = $Pivot.get_node("exported-model/AnimationPlayer") as AnimationPlayer
 
 func _ready() -> void :
-    add_to_group("eden_remnant")
-    add_to_group("boss_enemies")
-    current_health = max_health
-    top_state_machine = $EdenRemnantStateMachine
-    top_state_machine.on_child_transition("PhaseOneStateMachine")
+	add_to_group("eden_remnant")
+	add_to_group("boss_enemies")
+	current_health = max_health
+	top_state_machine = $EdenRemnantStateMachine
+	top_state_machine.on_child_transition("PhaseOneStateMachine")
 
 func _process(delta: float) -> void :
-    _update_animation()
+	_update_animation()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
+	if _animation_blocked:
+		return
 
-    var current_phase = top_state_machine.CURRENT_STATE
-    if not current_phase:
-        return
+	var current_phase = top_state_machine.CURRENT_STATE
+	if not current_phase:
+		return
 
-    var attack_sm = current_phase.get_node("AttackStateMachine")
-    var attack_state = attack_sm.CURRENT_STATE.name if attack_sm else ""
-    if attack_state == "AttackingAttackState" or attack_state == "SplashAttackState" or attack_state == "SummonAttackState":
-        return
+	var attack_sm = current_phase.get_node("AttackStateMachine")
+	var attack_state = attack_sm.CURRENT_STATE.name if attack_sm else ""
+	if attack_state == "AttackingAttackState" or attack_state == "SplashAttackState" or attack_state == "SummonAttackState":
+		return
 
-    var movement_sm = current_phase.get_node("EnemyStateMachine")
-    var movement_state = movement_sm.CURRENT_STATE.name if movement_sm else ""
+	var movement_sm = current_phase.get_node("EnemyStateMachine")
+	var movement_state = movement_sm.CURRENT_STATE.name if movement_sm else ""
 
-    var anim_name = ""
-    match movement_state:
-        "IdleEnemyState":
-            anim_name = "Fighting Idle"
-        "WalkingEnemyState":
-            anim_name = "Walk"
-        "RunningEnemyState":
-            anim_name = "Sprint"
-        _:
-            return
+	var anim_name = ""
+	match movement_state:
+		"IdleEnemyState":
+			anim_name = "Fighting Idle"
+		"WalkingEnemyState":
+			anim_name = "Walk"
+		"RunningEnemyState":
+			anim_name = "Sprint"
+		_:
+			return
 
-    if animation_player.current_animation != anim_name:
-        animation_player.play(anim_name)
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print("Eden's Remnant took damage: ", amount, ", health left: ", current_health)
+	current_health -= amount
+	print("Eden's Remnant took damage: ", amount, ", health left: ", current_health)
 
-    var health_percent = current_health / max_health
-    if health_percent <= phase3_threshold:
-        top_state_machine.on_child_transition("PhaseThreeStateMachine")
-    elif health_percent <= phase2_threshold:
-        top_state_machine.on_child_transition("PhaseTwoStateMachine")
+	var health_percent = current_health / max_health
+	if health_percent <= phase3_threshold:
+		top_state_machine.on_child_transition("PhaseThreeStateMachine")
+	elif health_percent <= phase2_threshold:
+		top_state_machine.on_child_transition("PhaseTwoStateMachine")
 
-    if current_health <= 0:
-        die()
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    queue_free()
+	queue_free()
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false

@@ -39,52 +39,52 @@ var _animation_blocked: bool = false
 @onready var animation_player = $Pivot.get_node("exported-model/AnimationPlayer") as AnimationPlayer
 
 func _ready() -> void :
-    add_to_group("vein_harvester")
-    current_health = max_health
-    bob_phase = randf_range(0, TAU)
+	add_to_group("vein_harvester")
+	current_health = max_health
+	bob_phase = randf_range(0, TAU)
 
 func _process(delta: float) -> void :
-    _update_animation()
+	_update_animation()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
-    var attack_state = $AttackStateMachine.CURRENT_STATE.name
-    if attack_state == "AttackingAttackState" or attack_state == "ExplodeAttackState":
-        return
-    var movement_state = $EnemyStateMachine.CURRENT_STATE.name
-    var anim_name = ""
-    match movement_state:
-        "IdleEnemyState", "WalkingEnemyState":
-            anim_name = "Flying Forward"
-        "RunningEnemyState":
-            anim_name = "Flying Forward Super"
-        _:
-            return
-    if animation_player.current_animation != anim_name:
-        animation_player.play(anim_name)
+	if _animation_blocked:
+		return
+	var attack_state = $AttackStateMachine.CURRENT_STATE.name
+	if attack_state == "AttackingAttackState" or attack_state == "ExplodeAttackState":
+		return
+	var movement_state = $EnemyStateMachine.CURRENT_STATE.name
+	var anim_name = ""
+	match movement_state:
+		"IdleEnemyState", "WalkingEnemyState":
+			anim_name = "Flying Forward"
+		"RunningEnemyState":
+			anim_name = "Flying Forward Super"
+		_:
+			return
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false
 
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print(self, " took damage: ", amount, ", health left: ", current_health)
-    if current_health <= 0:
-        die()
+	current_health -= amount
+	print(self, " took damage: ", amount, ", health left: ", current_health)
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    queue_free()
+	queue_free()
 
 func maintain_altitude(delta: float, velocity_ref: Vector3) -> Vector3:
-    var current_y = global_position.y
-    var target_y = target_altitude + sin(bob_phase) * bob_amplitude
-    bob_phase += bob_frequency * delta
-    var y_error = target_y - current_y
-    if abs(y_error) > altitude_tolerance:
-        velocity_ref.y = move_toward(velocity_ref.y, y_error * 5.0, accel * delta)
-    else:
-        velocity_ref.y = move_toward(velocity_ref.y, 0.0, accel * delta)
-    return velocity_ref
+	var current_y = global_position.y
+	var target_y = target_altitude + sin(bob_phase) * bob_amplitude
+	bob_phase += bob_frequency * delta
+	var y_error = target_y - current_y
+	if abs(y_error) > altitude_tolerance:
+		velocity_ref.y = move_toward(velocity_ref.y, y_error * 5.0, accel * delta)
+	else:
+		velocity_ref.y = move_toward(velocity_ref.y, 0.0, accel * delta)
+	return velocity_ref

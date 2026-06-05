@@ -20,47 +20,47 @@ var enemy_bottom_y: float = 0.0
 @onready var collision_shape = $CollisionShape3D
 
 func _ready() -> void :
-    add_to_group("grasping_snare")
-    current_health = max_health
-    var shape_height = 0.5
-    shape_height = collision_shape.shape.height
-    enemy_bottom_y = 4.0 - shape_height
-    global_position.y = enemy_bottom_y
+	add_to_group("grasping_snare")
+	current_health = max_health
+	var shape_height = 0.5
+	shape_height = collision_shape.shape.height
+	enemy_bottom_y = 4.0 - shape_height
+	global_position.y = enemy_bottom_y
 
 func _process(delta: float) -> void :
-    _update_animation()
+	_update_animation()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
-    if animation_player.current_animation != "Fighting Idle":
-        animation_player.play("Fighting Idle")
+	if _animation_blocked:
+		return
+	if animation_player.current_animation != "Fighting Idle":
+		animation_player.play("Fighting Idle")
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false
 
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print(self, " took damage: ", amount, ", health left: ", current_health)
-    if current_health <= 0:
-        die()
+	current_health -= amount
+	print(self, " took damage: ", amount, ", health left: ", current_health)
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    if is_latched:
-        _release_player()
-    queue_free()
+	if is_latched:
+		_release_player()
+	queue_free()
 
 func _release_player() -> void :
-    if not is_latched:
-        return
-    is_latched = false
-    if pull_tween and pull_tween.is_valid():
-        pull_tween.kill()
-    if damage_timer:
-        damage_timer.stop()
-        damage_timer.queue_free()
-    if rope_container:
-        rope_container.queue_free()
-        rope_container = null
+	if not is_latched:
+		return
+	is_latched = false
+	if pull_tween and pull_tween.is_valid():
+		pull_tween.kill()
+	if damage_timer:
+		damage_timer.stop()
+		damage_timer.queue_free()
+	if rope_container:
+		rope_container.queue_free()
+		rope_container = null

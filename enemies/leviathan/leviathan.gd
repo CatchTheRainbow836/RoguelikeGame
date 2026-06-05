@@ -66,102 +66,102 @@ signal dive_requested
 @onready var collision_shape = $CollisionShape3D
 
 func _ready() -> void :
-    add_to_group("leviathan")
-    add_to_group("boss_enemies")
-    current_health = max_health
-    top_state_machine = $LeviathanStateMachine
-    top_state_machine.on_child_transition("PhaseOneStateMachine")
+	add_to_group("leviathan")
+	add_to_group("boss_enemies")
+	current_health = max_health
+	top_state_machine = $LeviathanStateMachine
+	top_state_machine.on_child_transition("PhaseOneStateMachine")
 
 func _process(delta: float) -> void :
-    _update_animation()
+	_update_animation()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
+	if _animation_blocked:
+		return
 
-    var phase_sm = top_state_machine.CURRENT_STATE
-    if not phase_sm:
-        return
+	var phase_sm = top_state_machine.CURRENT_STATE
+	if not phase_sm:
+		return
 
-    var movement_sm = phase_sm.get_node("EnemyStateMachine") as StateMachine
-    if not movement_sm:
-        return
-    var movement_state_name = movement_sm.CURRENT_STATE.name
+	var movement_sm = phase_sm.get_node("EnemyStateMachine") as StateMachine
+	if not movement_sm:
+		return
+	var movement_state_name = movement_sm.CURRENT_STATE.name
 
-    var anim_name = ""
-    match movement_state_name:
-        "IdleEnemyState":
-            anim_name = "Fighting Idle"
-        "WalkingEnemyState":
-            anim_name = "Walk"
-        "RunningEnemyState":
-            anim_name = "Sprint"
-        _:
-            return
+	var anim_name = ""
+	match movement_state_name:
+		"IdleEnemyState":
+			anim_name = "Fighting Idle"
+		"WalkingEnemyState":
+			anim_name = "Walk"
+		"RunningEnemyState":
+			anim_name = "Sprint"
+		_:
+			return
 
-    if animation_player.current_animation != anim_name:
-        animation_player.play(anim_name)
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
 var has_transitioned_to_phase_two: bool = false
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print("Leviathan took damage: ", amount, ", health left: ", current_health)
-    var health_percent = current_health / max_health
-    if health_percent <= phase3_threshold:
-        top_state_machine.on_child_transition("PhaseThreeStateMachine")
-    elif health_percent <= phase2_threshold:
-        if not has_transitioned_to_phase_two:
-            await _enter_phase_two()
-            has_transitioned_to_phase_two = true
-        top_state_machine.on_child_transition("PhaseTwoStateMachine")
-    if current_health <= 0:
-        die()
+	current_health -= amount
+	print("Leviathan took damage: ", amount, ", health left: ", current_health)
+	var health_percent = current_health / max_health
+	if health_percent <= phase3_threshold:
+		top_state_machine.on_child_transition("PhaseThreeStateMachine")
+	elif health_percent <= phase2_threshold:
+		if not has_transitioned_to_phase_two:
+			await _enter_phase_two()
+			has_transitioned_to_phase_two = true
+		top_state_machine.on_child_transition("PhaseTwoStateMachine")
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    queue_free()
+	queue_free()
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false
 
 func tween_to_ground(target_y: float, duration: float = 0.5) -> void :
-    var tween = create_tween()
-    tween.set_ease(Tween.EASE_OUT)
-    tween.set_trans(Tween.TRANS_EXPO)
-    tween.tween_property(self, "global_position:y", target_y, duration)
-    await tween.finished
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "global_position:y", target_y, duration)
+	await tween.finished
 
 
 
 func _enter_phase_two() -> void :
-    phase2_original_y = global_position.y
-    var target_y = phase2_original_y - (collision_shape.shape.height + 0.5)
-    var tween = create_tween()
-    tween.set_ease(Tween.EASE_OUT)
-    tween.set_trans(Tween.TRANS_EXPO)
-    tween.tween_property(self, "global_position:y", target_y, 0.5)
-    await tween.finished
+	phase2_original_y = global_position.y
+	var target_y = phase2_original_y - (collision_shape.shape.height + 0.5)
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "global_position:y", target_y, 0.5)
+	await tween.finished
 
 func _exit_phase_two() -> void :
-    var tween = create_tween()
-    tween.set_ease(Tween.EASE_OUT)
-    tween.set_trans(Tween.TRANS_EXPO)
-    tween.tween_property(self, "global_position:y", phase2_original_y, 0.5)
-    await tween.finished
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "global_position:y", phase2_original_y, 0.5)
+	await tween.finished
 
 func surface_for_slam() -> void :
-    var target_y = 0
-    var tween = create_tween()
-    tween.set_ease(Tween.EASE_OUT)
-    tween.set_trans(Tween.TRANS_EXPO)
-    tween.tween_property(self, "global_position:y", target_y, 5.0)
-    await tween.finished
+	var target_y = 0
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "global_position:y", target_y, 5.0)
+	await tween.finished
 
 func dive_after_slam() -> void :
-    var target_y = - (collision_shape.shape.height + 0.5)
-    var tween = create_tween()
-    tween.set_ease(Tween.EASE_IN)
-    tween.set_trans(Tween.TRANS_EXPO)
-    tween.tween_property(self, "global_position:y", target_y, 5.0)
-    await tween.finished
+	var target_y = - (collision_shape.shape.height + 0.5)
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, "global_position:y", target_y, 5.0)
+	await tween.finished

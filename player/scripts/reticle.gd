@@ -11,21 +11,21 @@ extends CenterContainer
 
 
 func _draw() -> void :
-    draw_circle(Vector2(20, 20), DOT_RADIUS, DOT_COLOR)
+	draw_circle(Vector2(20, 20), DOT_RADIUS, DOT_COLOR)
 
 func _ready() -> void :
-    queue_redraw()
+	queue_redraw()
 
 func adjust_reticle_lines():
-    var vel = PLAYER_CONTROLLER.get_real_velocity()
-    var origin = Vector3.ZERO
-    var pos = Vector2.ZERO
-    var speed = origin.distance_to(vel)
+	var vel = PLAYER_CONTROLLER.get_real_velocity()
+	var origin = Vector3.ZERO
+	var pos = Vector2.ZERO
+	var speed = origin.distance_to(vel)
 
-    RETICLE_LINES[0].position = lerp(RETICLE_LINES[0].position, pos + Vector2(0, - speed * RETICLE_DISTANCE), RETICLE_SPEED)
-    RETICLE_LINES[1].position = lerp(RETICLE_LINES[1].position, pos + Vector2(speed * RETICLE_DISTANCE, 0), RETICLE_SPEED)
-    RETICLE_LINES[2].position = lerp(RETICLE_LINES[2].position, pos + Vector2(0, speed * RETICLE_DISTANCE), RETICLE_SPEED)
-    RETICLE_LINES[3].position = lerp(RETICLE_LINES[3].position, pos + Vector2( - speed * RETICLE_DISTANCE, 0), RETICLE_SPEED)
+	RETICLE_LINES[0].position = lerp(RETICLE_LINES[0].position, pos + Vector2(0, - speed * RETICLE_DISTANCE), RETICLE_SPEED)
+	RETICLE_LINES[1].position = lerp(RETICLE_LINES[1].position, pos + Vector2(speed * RETICLE_DISTANCE, 0), RETICLE_SPEED)
+	RETICLE_LINES[2].position = lerp(RETICLE_LINES[2].position, pos + Vector2(0, speed * RETICLE_DISTANCE), RETICLE_SPEED)
+	RETICLE_LINES[3].position = lerp(RETICLE_LINES[3].position, pos + Vector2( - speed * RETICLE_DISTANCE, 0), RETICLE_SPEED)
 
 func _process(delta: float) -> void :
-    adjust_reticle_lines()
+	adjust_reticle_lines()

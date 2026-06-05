@@ -63,61 +63,61 @@ var arena_center: Vector3 = Vector3.ZERO
 @onready var animation_player = $Pivot.get_node("exported-model/AnimationPlayer") as AnimationPlayer
 
 func _ready() -> void :
-    add_to_group("archon_of_blinding")
-    add_to_group("boss_enemies")
-    current_health = max_health
-    top_state_machine = $ArchonStateMachine
-    top_state_machine.on_child_transition("PhaseOneStateMachine")
-    var world_structures = get_tree().root.get_node("Main").get_node("WorldStructures")
-    if world_structures:
-        var nav_region = world_structures.get_node("NavigationRegion3D")
-        if nav_region and nav_region.has_method("get_arena_center_position"):
-            arena_center = nav_region.get_arena_center_position()
-    arena_center.y = 0
+	add_to_group("archon_of_blinding")
+	add_to_group("boss_enemies")
+	current_health = max_health
+	top_state_machine = $ArchonStateMachine
+	top_state_machine.on_child_transition("PhaseOneStateMachine")
+	var world_structures = get_tree().root.get_node("Main").get_node("WorldStructures")
+	if world_structures:
+		var nav_region = world_structures.get_node("NavigationRegion3D")
+		if nav_region and nav_region.has_method("get_arena_center_position"):
+			arena_center = nav_region.get_arena_center_position()
+	arena_center.y = 0
 
 func _process(delta: float) -> void :
-    _update_animation()
+	_update_animation()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
+	if _animation_blocked:
+		return
 
-    var phase_sm = top_state_machine.CURRENT_STATE
-    if not phase_sm:
-        return
+	var phase_sm = top_state_machine.CURRENT_STATE
+	if not phase_sm:
+		return
 
-    var movement_sm = phase_sm.get_node("EnemyStateMachine")
-    var movement_state = movement_sm.CURRENT_STATE.name if movement_sm else ""
+	var movement_sm = phase_sm.get_node("EnemyStateMachine")
+	var movement_state = movement_sm.CURRENT_STATE.name if movement_sm else ""
 
-    var anim_name = ""
-    match movement_state:
-        "IdleEnemyState":
-            anim_name = "Fighting Idle"
-        "WalkingEnemyState":
-            anim_name = "Walk"
-        "RunningEnemyState":
-            anim_name = "Sprint"
-        _:
-            return
+	var anim_name = ""
+	match movement_state:
+		"IdleEnemyState":
+			anim_name = "Fighting Idle"
+		"WalkingEnemyState":
+			anim_name = "Walk"
+		"RunningEnemyState":
+			anim_name = "Sprint"
+		_:
+			return
 
-    if animation_player.current_animation != anim_name:
-        animation_player.play(anim_name)
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print("Archon of Blinding took damage: ", amount, ", health left: ", current_health)
-    var health_percent = current_health / max_health
-    if health_percent <= phase3_threshold:
-        top_state_machine.on_child_transition("PhaseThreeStateMachine")
-    elif health_percent <= phase2_threshold:
-        top_state_machine.on_child_transition("PhaseTwoStateMachine")
-    if current_health <= 0:
-        die()
+	current_health -= amount
+	print("Archon of Blinding took damage: ", amount, ", health left: ", current_health)
+	var health_percent = current_health / max_health
+	if health_percent <= phase3_threshold:
+		top_state_machine.on_child_transition("PhaseThreeStateMachine")
+	elif health_percent <= phase2_threshold:
+		top_state_machine.on_child_transition("PhaseTwoStateMachine")
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    queue_free()
+	queue_free()
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false

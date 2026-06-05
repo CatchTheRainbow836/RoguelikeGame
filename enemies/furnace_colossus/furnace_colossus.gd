@@ -43,61 +43,61 @@ var _animation_blocked: bool = false
 
 
 func _ready() -> void :
-    add_to_group("furnace_colossus")
-    add_to_group("boss_enemies")
-    current_health = max_health
-    top_state_machine = $FurnaceColossusStateMachine
-    top_state_machine.on_child_transition("PhaseOneStateMachine")
+	add_to_group("furnace_colossus")
+	add_to_group("boss_enemies")
+	current_health = max_health
+	top_state_machine = $FurnaceColossusStateMachine
+	top_state_machine.on_child_transition("PhaseOneStateMachine")
 
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print("took damage: ", amount, ", current health: ", current_health)
+	current_health -= amount
+	print("took damage: ", amount, ", current health: ", current_health)
 
-    var health_percent = current_health / max_health
-    if health_percent <= phase3_threshold:
-        top_state_machine.on_child_transition("PhaseThreeStateMachine")
-    elif health_percent <= phase2_threshold:
-        top_state_machine.on_child_transition("PhaseTwoStateMachine")
+	var health_percent = current_health / max_health
+	if health_percent <= phase3_threshold:
+		top_state_machine.on_child_transition("PhaseThreeStateMachine")
+	elif health_percent <= phase2_threshold:
+		top_state_machine.on_child_transition("PhaseTwoStateMachine")
 
-    if current_health <= 0:
-        die()
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    queue_free()
+	queue_free()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
+	if _animation_blocked:
+		return
 
-    var phase_sm = top_state_machine.CURRENT_STATE
-    if not phase_sm:
-        return
-    var attack_sm = phase_sm.get_node("AttackStateMachine")
-    var attack_state = attack_sm.CURRENT_STATE.name if attack_sm else ""
+	var phase_sm = top_state_machine.CURRENT_STATE
+	if not phase_sm:
+		return
+	var attack_sm = phase_sm.get_node("AttackStateMachine")
+	var attack_state = attack_sm.CURRENT_STATE.name if attack_sm else ""
 
-    if attack_state == "AttackingAttackState" or attack_state == "SweepingAttackState" or \
+	if attack_state == "AttackingAttackState" or attack_state == "SweepingAttackState" or \
 attack_state == "SlamAttackState" or attack_state == "SummonAttackState" or \
 attack_state == "SplashingAttackState":
-        return
+		return
 
-    var movement_sm = phase_sm.get_node("EnemyStateMachine")
-    var movement_state = movement_sm.CURRENT_STATE.name if movement_sm else ""
+	var movement_sm = phase_sm.get_node("EnemyStateMachine")
+	var movement_state = movement_sm.CURRENT_STATE.name if movement_sm else ""
 
-    var anim_name = ""
-    match movement_state:
-        "IdleEnemyState":
-            anim_name = "Fighting Idle"
-        "WalkingEnemyState":
-            anim_name = "Walk"
-        "RunningEnemyState":
-            anim_name = "Sprint"
-        _:
-            return
+	var anim_name = ""
+	match movement_state:
+		"IdleEnemyState":
+			anim_name = "Fighting Idle"
+		"WalkingEnemyState":
+			anim_name = "Walk"
+		"RunningEnemyState":
+			anim_name = "Sprint"
+		_:
+			return
 
-    if animation_player.current_animation != anim_name:
-        animation_player.play(anim_name)
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false

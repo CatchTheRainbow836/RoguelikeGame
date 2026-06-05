@@ -6,12 +6,12 @@ extends StaticBody3D
 
 
 func _ready() -> void :
-    mesh_instance_3d.mesh = enemy_resource.mesh
-    collision_shape_3d.shape = enemy_resource.collision_shape
+	mesh_instance_3d.mesh = enemy_resource.mesh
+	collision_shape_3d.shape = enemy_resource.collision_shape
 
 func _physics_process(delta: float) -> void :
-    if enemy_resource.current_health <= 0:
-        visible = false
-        await get_tree().create_timer(10).timeout
-        enemy_resource.current_health = 10
-        visible = true
+	if enemy_resource.current_health <= 0:
+		visible = false
+		await get_tree().create_timer(10).timeout
+		enemy_resource.current_health = 10
+		visible = true

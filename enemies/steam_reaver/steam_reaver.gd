@@ -27,51 +27,51 @@ var _animation_blocked: bool = false
 @onready var animation_player = $Pivot.get_node("exported-model/AnimationPlayer") as AnimationPlayer
 
 func _ready() -> void :
-    add_to_group("enemies")
-    add_to_group("steam_reaver")
-    current_health = max_health
-    attack_state_machine = $AttackStateMachine
-    movement_state_machine = $EnemyStateMachine
+	add_to_group("enemies")
+	add_to_group("steam_reaver")
+	current_health = max_health
+	attack_state_machine = $AttackStateMachine
+	movement_state_machine = $EnemyStateMachine
 
 func _process(delta: float) -> void :
-    _update_animation()
+	_update_animation()
 
 func _update_animation() -> void :
-    if _animation_blocked:
-        return
+	if _animation_blocked:
+		return
 
-    var attack_state = $AttackStateMachine.CURRENT_STATE.name
-    if attack_state == "AttackingAttackState" or attack_state == "ChargingAttackState":
+	var attack_state = $AttackStateMachine.CURRENT_STATE.name
+	if attack_state == "AttackingAttackState" or attack_state == "ChargingAttackState":
 
-        return
+		return
 
-    var movement_state = $EnemyStateMachine.CURRENT_STATE.name
-    var anim_name = ""
-    match movement_state:
-        "IdleEnemyState":
-            anim_name = "Fighting Idle"
-        "WalkingEnemyState":
-            anim_name = "Walk"
-        "RunningEnemyState":
-            anim_name = "Sprint"
-        "ChargingEnemyState":
-            anim_name = "Sword_Dash_RM"
-        _:
-            return
+	var movement_state = $EnemyStateMachine.CURRENT_STATE.name
+	var anim_name = ""
+	match movement_state:
+		"IdleEnemyState":
+			anim_name = "Fighting Idle"
+		"WalkingEnemyState":
+			anim_name = "Walk"
+		"RunningEnemyState":
+			anim_name = "Sprint"
+		"ChargingEnemyState":
+			anim_name = "Sword_Dash_RM"
+		_:
+			return
 
-    if animation_player.current_animation != anim_name:
-        animation_player.play(anim_name)
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
 
 func block_animation_for(duration: float) -> void :
-    _animation_blocked = true
-    await get_tree().create_timer(duration).timeout
-    _animation_blocked = false
+	_animation_blocked = true
+	await get_tree().create_timer(duration).timeout
+	_animation_blocked = false
 
 func take_damage(amount: float) -> void :
-    current_health -= amount
-    print("took damage: ", amount, ", current health: ", current_health)
-    if current_health <= 0:
-        die()
+	current_health -= amount
+	print("took damage: ", amount, ", current health: ", current_health)
+	if current_health <= 0:
+		die()
 
 func die() -> void :
-    queue_free()
+	queue_free()

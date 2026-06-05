@@ -24,10 +24,7 @@ config/icon="res://icon.svg"
 GlobalScript="*res://world/scripts/Global.gd"
 AlertnessManager="*uid://dorg2rryn52d6"
 ShopMasterData="*uid://oh8ye7nx1660"
-
-[editor_overrides]
-
-text_editor/behavior/indent/type=1
+LevelManager="*uid://ctmvbne4ex86n"
 
 [filesystem]
 

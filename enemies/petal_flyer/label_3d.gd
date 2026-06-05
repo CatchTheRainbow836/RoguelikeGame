@@ -6,4 +6,4 @@ extends Label3D
 
 
 func _process(delta: float) -> void :
-    text = "Petal Flyer" + "\n" + enemy_state_machine.CURRENT_STATE.name + "\n" + attack_state_machine.CURRENT_STATE.name + "\n" + "can_see_player: " + str(enemy_state_machine.get_node("RunningEnemyState").can_see_player()) + "\n" + "alertness: " + str(AlertnessManager.get_alert_value(owner.global_position))
+	text = "Petal Flyer" + "\n" + enemy_state_machine.CURRENT_STATE.name + "\n" + attack_state_machine.CURRENT_STATE.name + "\n" + "can_see_player: " + str(enemy_state_machine.get_node("RunningEnemyState").can_see_player()) + "\n" + "alertness: " + str(AlertnessManager.get_alert_value(owner.global_position))

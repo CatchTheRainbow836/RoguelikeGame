@@ -64,466 +64,466 @@ const WILL_O__THE_WISPS = preload("uid://d3g4qqgeqlvw0")
 const WORLD_EATER_S_TOOTH = preload("uid://dr6il3y1c67co")
 
 static var master_data = {
-    SOLDIER_S_MEDALLION.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    ELIXIR_OF_HERACLES.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    WORLD_EATER_S_TOOTH.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    VIAL_OF_STARLIGHT.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    HAG_S_FINGERNAIL.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    GOBLIN_FIRE_OIL.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    KRAKEN_S_INK.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    STONE_GIANT_S_PEBBLE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    LIFEBLOOD_SYRETTE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    SIREN_S_LOCKET.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "consumable", 
-        "unlock_conditions": {}
-    }, 
-    WILL_O__THE_WISPS.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "consumable": 7
-            }
-        }
-    }, 
-    PANDORA_S_BOX.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "consumable": 7
-            }
-        }
-    }, 
-    CLOCKWORK_SCARAB.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "consumable": 7
-            }
-        }
-    }, 
-    ECHO_OF_VALHALLA.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "consumable": 7
-            }
-        }
-    }, 
-    AMBROSIA_OF_THE_GODS.resource_path: {
-        "sell_price": 750, 
-        "buy_price": 1000, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "consumable": 12
-            }, 
-            "requires_total_purchases": 40
-        }
-    }, 
-    PUZZLE_BOX_OF_YGGDRASIL.resource_path: {
-        "sell_price": 750, 
-        "buy_price": 1000, 
-        "category": "consumable", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "consumable": 12
-            }, 
-            "requires_total_purchases": 40
-        }
-    }, 
-    LEATHER_PAULDRONS.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    IRON_SOLED_BOOTS.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    DUELIST_S_GLOVES.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    MARKSMAN_S_MONOCLE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    QUICKSILVER_BROOCH.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    BRIGANDINE_VEST.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    ARTILLERY_HELMET.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    DOWSING_ROD.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    POTION_BELT.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    PLAGUE_DOCTOR_S_MASK.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {}
-    }, 
-    SAPPER_S_APRON.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    RUNIC_WARD.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "equipment": 7
-            }
-        }
-    }, 
-    COWL_OF_THE_UNSEEN.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "equipment": 7
-            }
-        }
-    }, 
-    BOOTS_OF_MERCURY.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "equipment": 7
-            }
-        }
-    }, 
-    PHANTOM_S_HAND.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "equipment": 7
-            }
-        }
-    }, 
-    TITHONUS__CURSE.resource_path: {
-        "sell_price": 750, 
-        "buy_price": 1000, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "equipment": 12
-            }, 
-            "requires_total_purchases": 40
-        }
-    }, 
-    AEGIS_FRAGMENT.resource_path: {
-        "sell_price": 750, 
-        "buy_price": 1000, 
-        "category": "equipment", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "equipment": 12
-            }, 
-            "requires_total_purchases": 40
-        }
-    }, 
-    STANDARD_ISSUE_SABER.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    REPEATING_CROSSBOW.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    FRAGMENTATION_GRENADE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    BLACKSMITH_S_SLEDGE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    HUNTING_RIFLE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    SMOKE_GRENADE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    CRACKED_REINFORCED_SHIELD.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    FLINTLOCK_PISTOL.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {}
-    }, 
-    STUN_GRENADE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    SCRAP_METAL_GAUNTLET.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    BLOW_PIPE.resource_path: {
-        "sell_price": 100, 
-        "buy_price": 250, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_total_purchases": 6
-        }
-    }, 
-    MJOLNIR_S_REPLICA.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "weapon": 7
-            }
-        }
-    }, 
-    CRESCENT_ROSE.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "weapon": 7
-            }
-        }
-    }, 
-    VORPAL_BLADE.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "weapon": 7
-            }
-        }
-    }, 
-    GJALLARHORN.resource_path: {
-        "sell_price": 250, 
-        "buy_price": 500, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "weapon": 7
-            }
-        }
-    }, 
-    GUNGNIR.resource_path: {
-        "sell_price": 750, 
-        "buy_price": 1000, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "weapon": 12
-            }, 
-            "requires_total_purchases": 40
-        }
-    }, 
-    VULCAN_S_FURY.resource_path: {
-        "sell_price": 750, 
-        "buy_price": 1000, 
-        "category": "weapon", 
-        "unlock_conditions": {
-            "requires_category_counts": {
-                "weapon": 12
-            }, 
-            "requires_total_purchases": 40
-        }
-    }, 
-    BULLET_1.resource_path: {
-        "sell_price": 1, 
-        "buy_price": 1, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {}
-    }, 
-    BULLET_2.resource_path: {
-        "sell_price": 1, 
-        "buy_price": 1, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {}
-    }, 
-    BULLET_3.resource_path: {
-        "sell_price": 1, 
-        "buy_price": 1, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {}
-    }, 
-    BULLET_4.resource_path: {
-        "sell_price": 2, 
-        "buy_price": 2, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {
-            "requires_items": [BLOW_PIPE.resource_path]
-        }
-    }, 
-    BULLET_5.resource_path: {
-        "sell_price": 1, 
-        "buy_price": 1, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {
-            "requires_items": [CRESCENT_ROSE.resource_path]
-        }
-    }, 
-    BULLET_6.resource_path: {
-        "sell_price": 5, 
-        "buy_price": 5, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {
-            "requires_items": [GJALLARHORN.resource_path]
-        }
-    }, 
-    BULLET_7.resource_path: {
-        "sell_price": 1, 
-        "buy_price": 1, 
-        "category": "weapon_consumable", 
-        "unlock_conditions": {
-            "requires_items": [VULCAN_S_FURY.resource_path]
-        }
-    }, 
+	SOLDIER_S_MEDALLION.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	ELIXIR_OF_HERACLES.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	WORLD_EATER_S_TOOTH.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	VIAL_OF_STARLIGHT.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	HAG_S_FINGERNAIL.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	GOBLIN_FIRE_OIL.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	KRAKEN_S_INK.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	STONE_GIANT_S_PEBBLE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	LIFEBLOOD_SYRETTE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	SIREN_S_LOCKET.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "consumable", 
+		"unlock_conditions": {}
+	}, 
+	WILL_O__THE_WISPS.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"consumable": 7
+			}
+		}
+	}, 
+	PANDORA_S_BOX.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"consumable": 7
+			}
+		}
+	}, 
+	CLOCKWORK_SCARAB.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"consumable": 7
+			}
+		}
+	}, 
+	ECHO_OF_VALHALLA.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"consumable": 7
+			}
+		}
+	}, 
+	AMBROSIA_OF_THE_GODS.resource_path: {
+		"sell_price": 750, 
+		"buy_price": 1000, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"consumable": 12
+			}, 
+			"requires_total_purchases": 40
+		}
+	}, 
+	PUZZLE_BOX_OF_YGGDRASIL.resource_path: {
+		"sell_price": 750, 
+		"buy_price": 1000, 
+		"category": "consumable", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"consumable": 12
+			}, 
+			"requires_total_purchases": 40
+		}
+	}, 
+	LEATHER_PAULDRONS.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	IRON_SOLED_BOOTS.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	DUELIST_S_GLOVES.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	MARKSMAN_S_MONOCLE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	QUICKSILVER_BROOCH.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	BRIGANDINE_VEST.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	ARTILLERY_HELMET.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	DOWSING_ROD.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	POTION_BELT.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	PLAGUE_DOCTOR_S_MASK.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {}
+	}, 
+	SAPPER_S_APRON.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	RUNIC_WARD.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"equipment": 7
+			}
+		}
+	}, 
+	COWL_OF_THE_UNSEEN.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"equipment": 7
+			}
+		}
+	}, 
+	BOOTS_OF_MERCURY.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"equipment": 7
+			}
+		}
+	}, 
+	PHANTOM_S_HAND.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"equipment": 7
+			}
+		}
+	}, 
+	TITHONUS__CURSE.resource_path: {
+		"sell_price": 750, 
+		"buy_price": 1000, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"equipment": 12
+			}, 
+			"requires_total_purchases": 40
+		}
+	}, 
+	AEGIS_FRAGMENT.resource_path: {
+		"sell_price": 750, 
+		"buy_price": 1000, 
+		"category": "equipment", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"equipment": 12
+			}, 
+			"requires_total_purchases": 40
+		}
+	}, 
+	STANDARD_ISSUE_SABER.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	REPEATING_CROSSBOW.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	FRAGMENTATION_GRENADE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	BLACKSMITH_S_SLEDGE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	HUNTING_RIFLE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	SMOKE_GRENADE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	CRACKED_REINFORCED_SHIELD.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	FLINTLOCK_PISTOL.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {}
+	}, 
+	STUN_GRENADE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	SCRAP_METAL_GAUNTLET.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	BLOW_PIPE.resource_path: {
+		"sell_price": 100, 
+		"buy_price": 250, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_total_purchases": 6
+		}
+	}, 
+	MJOLNIR_S_REPLICA.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"weapon": 7
+			}
+		}
+	}, 
+	CRESCENT_ROSE.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"weapon": 7
+			}
+		}
+	}, 
+	VORPAL_BLADE.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"weapon": 7
+			}
+		}
+	}, 
+	GJALLARHORN.resource_path: {
+		"sell_price": 250, 
+		"buy_price": 500, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"weapon": 7
+			}
+		}
+	}, 
+	GUNGNIR.resource_path: {
+		"sell_price": 750, 
+		"buy_price": 1000, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"weapon": 12
+			}, 
+			"requires_total_purchases": 40
+		}
+	}, 
+	VULCAN_S_FURY.resource_path: {
+		"sell_price": 750, 
+		"buy_price": 1000, 
+		"category": "weapon", 
+		"unlock_conditions": {
+			"requires_category_counts": {
+				"weapon": 12
+			}, 
+			"requires_total_purchases": 40
+		}
+	}, 
+	BULLET_1.resource_path: {
+		"sell_price": 1, 
+		"buy_price": 1, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {}
+	}, 
+	BULLET_2.resource_path: {
+		"sell_price": 1, 
+		"buy_price": 1, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {}
+	}, 
+	BULLET_3.resource_path: {
+		"sell_price": 1, 
+		"buy_price": 1, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {}
+	}, 
+	BULLET_4.resource_path: {
+		"sell_price": 2, 
+		"buy_price": 2, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {
+			"requires_items": [BLOW_PIPE.resource_path]
+		}
+	}, 
+	BULLET_5.resource_path: {
+		"sell_price": 1, 
+		"buy_price": 1, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {
+			"requires_items": [CRESCENT_ROSE.resource_path]
+		}
+	}, 
+	BULLET_6.resource_path: {
+		"sell_price": 5, 
+		"buy_price": 5, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {
+			"requires_items": [GJALLARHORN.resource_path]
+		}
+	}, 
+	BULLET_7.resource_path: {
+		"sell_price": 1, 
+		"buy_price": 1, 
+		"category": "weapon_consumable", 
+		"unlock_conditions": {
+			"requires_items": [VULCAN_S_FURY.resource_path]
+		}
+	}, 
 }
 
 static func get_sell_price(item: ItemData) -> int:
-    var data = master_data.get(item.resource_path)
-    return data["sell_price"] if data else 0
+	var data = master_data.get(item.resource_path)
+	return data["sell_price"] if data else 0
 
 static func get_buy_price(item: ItemData) -> int:
-    var data = master_data.get(item.resource_path)
-    return data["buy_price"] if data else 0
+	var data = master_data.get(item.resource_path)
+	return data["buy_price"] if data else 0
 
 static func get_category(item: ItemData) -> String:
-    var data = master_data.get(item.resource_path)
-    return data["category"] if data else ""
+	var data = master_data.get(item.resource_path)
+	return data["category"] if data else ""
 
 static func get_unlock_conditions(item: ItemData) -> Dictionary:
-    var data = master_data.get(item.resource_path)
-    return data["unlock_conditions"] if data else {}
+	var data = master_data.get(item.resource_path)
+	return data["unlock_conditions"] if data else {}

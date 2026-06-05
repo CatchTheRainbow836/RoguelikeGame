@@ -4,32 +4,32 @@ class_name IdleSteamReaverState
 var reaver: SteamReaver
 
 func _ready() -> void :
-    super._ready()
-    await owner.ready
-    reaver = owner as SteamReaver
-    if reaver:
-        speed = reaver.speed
-        accel = reaver.accel
-        wander_radius = reaver.wander_radius
-        view_distance = reaver.view_distance
-        fov_degrees = reaver.fov_degrees
+	super._ready()
+	await owner.ready
+	reaver = owner as SteamReaver
+	if reaver:
+		speed = reaver.speed
+		accel = reaver.accel
+		wander_radius = reaver.wander_radius
+		view_distance = reaver.view_distance
+		fov_degrees = reaver.fov_degrees
 
 func enter() -> void :
-    pass
+	pass
 
 func exit() -> void :
-    pass
+	pass
 
 func physics_update(delta: float) -> void :
-    _vision_timer -= delta
-    if _vision_timer <= 0.0:
-        is_player_visible = can_see_player()
-        _vision_timer = vision_check_interval
+	_vision_timer -= delta
+	if _vision_timer <= 0.0:
+		is_player_visible = can_see_player()
+		_vision_timer = vision_check_interval
 
-    if is_player_visible:
-        transition.emit("RunningEnemyState")
-    else:
-        transition.emit("WalkingEnemyState")
+	if is_player_visible:
+		transition.emit("RunningEnemyState")
+	else:
+		transition.emit("WalkingEnemyState")
 
-    owner.velocity = _velocity
-    owner.move_and_slide()
+	owner.velocity = _velocity
+	owner.move_and_slide()

@@ -49,55 +49,55 @@ var slot
 
 
 func _ready() -> void :
-    await owner.ready
-    PLAYER = owner as Player
-    pivot = PLAYER.get_node("Pivot") as Node3D
-    camera = pivot.get_node("Camera3D") as Camera3D
-    inventoryinterface = PLAYER.get_node("UI").get_node("InventoryInterface") as Control
-    weaponinventory = inventoryinterface.get_node("WeaponInventory")
-    reload_label = PLAYER.get_node("UI").get_node("ReloadLabel") as Label
-    bullet_hole_sprite = preload("uid://d2k8ltlwqjwhj")
-    recoilposition = camera.get_node("RecoilPosition")
-    weaponscene = recoilposition.get_node("Weapon")
-    muzzleflash = weaponscene.get_node("MuzzleFlash")
-    light = muzzleflash.get_node("OmniLight3D")
-    emitter = muzzleflash.get_node("GPUParticles3D")
+	await owner.ready
+	PLAYER = owner as Player
+	pivot = PLAYER.get_node("Pivot") as Node3D
+	camera = pivot.get_node("Camera3D") as Camera3D
+	inventoryinterface = PLAYER.get_node("UI").get_node("InventoryInterface") as Control
+	weaponinventory = inventoryinterface.get_node("WeaponInventory")
+	reload_label = PLAYER.get_node("UI").get_node("ReloadLabel") as Label
+	bullet_hole_sprite = preload("uid://d2k8ltlwqjwhj")
+	recoilposition = camera.get_node("RecoilPosition")
+	weaponscene = recoilposition.get_node("Weapon")
+	muzzleflash = weaponscene.get_node("MuzzleFlash")
+	light = muzzleflash.get_node("OmniLight3D")
+	emitter = muzzleflash.get_node("GPUParticles3D")
 
-    slot = PLAYER.weapon_inventory_data.slot_datas[0]
+	slot = PLAYER.weapon_inventory_data.slot_datas[0]
 
 
 var current_weapon_item: ItemDataWeapon = null
 
 func _update_weapon():
-    if PLAYER and PLAYER.weapon_inventory_data:
-        slot = PLAYER.weapon_inventory_data.slot_datas[0]
-    else:
-        slot = null
+	if PLAYER and PLAYER.weapon_inventory_data:
+		slot = PLAYER.weapon_inventory_data.slot_datas[0]
+	else:
+		slot = null
 
-    var new_weapon_item = slot.item_data if slot and slot.item_data is ItemDataWeapon else null
+	var new_weapon_item = slot.item_data if slot and slot.item_data is ItemDataWeapon else null
 
-    if current_weapon_item == new_weapon_item:
-        return
+	if current_weapon_item == new_weapon_item:
+		return
 
-    for child in weaponscene.get_children():
-        if child.name not in ["MuzzleFlash", "OmniLight3D", "GPUParticles3D"]:
-            child.queue_free()
+	for child in weaponscene.get_children():
+		if child.name not in ["MuzzleFlash", "OmniLight3D", "GPUParticles3D"]:
+			child.queue_free()
 
-    current_weapon_item = new_weapon_item
+	current_weapon_item = new_weapon_item
 
-    if new_weapon_item:
-        weaponscene.visible = true
-        var weapon = new_weapon_item
-        var weapon_inst = weapon.model_scene.instantiate()
-        weapon_inst.scale.z = 0.4
-        weaponscene.add_child(weapon_inst)
+	if new_weapon_item:
+		weaponscene.visible = true
+		var weapon = new_weapon_item
+		var weapon_inst = weapon.model_scene.instantiate()
+		weapon_inst.scale.z = 0.4
+		weaponscene.add_child(weapon_inst)
 
-        range = weapon.range
-        idle_sway_adjustment = weapon.idle_sway_adjustment
-        idle_sway_rotation_strength = weapon.idle_sway_rotation_strength
-        random_sway_amount = weapon.random_sway_amount
+		range = weapon.range
+		idle_sway_adjustment = weapon.idle_sway_adjustment
+		idle_sway_rotation_strength = weapon.idle_sway_rotation_strength
+		random_sway_amount = weapon.random_sway_amount
 
-        if reload_label:
-            reload_label.text = "%d / %d" % [weapon.bullets_loaded, weapon.max_bullets_loaded]
-    else:
-        weaponscene.visible = false
+		if reload_label:
+			reload_label.text = "%d / %d" % [weapon.bullets_loaded, weapon.max_bullets_loaded]
+	else:
+		weaponscene.visible = false
