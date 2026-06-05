@@ -1,5 +1,6 @@
-extends NavigationRegion3D
 
+extends NavigationRegion3D
+"""
 const W: = 8
 const WALL_HEIGHT: = 4
 const GRID_SIZE: = 20
@@ -670,3 +671,4 @@ func create_elevator_visual(cell: Vector2) -> MeshInstance3D:
 	mesh.mesh = box
 	mesh.position = Vector3(cell.x, 0.5, cell.y)
 	return mesh
+"""

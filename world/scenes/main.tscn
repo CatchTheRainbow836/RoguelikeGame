@@ -65,10 +65,6 @@
 [ext_resource type="PackedScene" uid="uid://buxhkapuyehvt" path="res://item/pick_up/pick_up.tscn" id="63"]
 [ext_resource type="Script" uid="uid://d2amkc46bbqxi" path="res://world/scripts/test_spawner.gd" id="64"]
 [ext_resource type="Script" uid="uid://b752dh6uieq8g" path="res://world/scripts/navigation_region_3d.gd" id="65"]
-[ext_resource type="PackedScene" uid="uid://b31dsd0jxadqv" path="res://world/scenes/wall.tscn" id="66"]
-[ext_resource type="PackedScene" uid="uid://c6p6jsidjwune" path="res://world/scenes/floor.tscn" id="67"]
-[ext_resource type="PackedScene" uid="uid://usbhsma4k6fu" path="res://world/scenes/roof.tscn" id="68"]
-[ext_resource type="PackedScene" uid="uid://bkj57vle36mp" path="res://world/scenes/button_scene.tscn" id="69"]
 [ext_resource type="PackedScene" uid="uid://coilixa2e7fu" path="res://interactable/shop.tscn" id="70"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_043iq"]
@@ -400,8 +396,7 @@ script = ExtResource("4")
 slot_datas = Array[ExtResource("6")]([SubResource("Resource_3666i"), SubResource("Resource_62sy8"), SubResource("Resource_nh4mh"), SubResource("Resource_7yb1u"), SubResource("Resource_mm2v2"), SubResource("Resource_y45sx"), SubResource("Resource_gppt6"), SubResource("Resource_2uroq"), SubResource("Resource_esbet"), SubResource("Resource_4grg1"), SubResource("Resource_narg2"), SubResource("Resource_60vj2"), SubResource("Resource_g6ou3"), SubResource("Resource_nbeus"), SubResource("Resource_jou6m"), SubResource("Resource_6g0iw"), SubResource("Resource_18l5u"), SubResource("Resource_lu18h"), SubResource("Resource_27wko"), SubResource("Resource_ip2fq"), SubResource("Resource_bctyu"), SubResource("Resource_4nkdf"), SubResource("Resource_fs85w"), SubResource("Resource_t0r42"), SubResource("Resource_mb3eg"), SubResource("Resource_1r6xg"), SubResource("Resource_rbolo"), SubResource("Resource_musct"), SubResource("Resource_utlwe"), SubResource("Resource_gogdr"), SubResource("Resource_hvmo0"), SubResource("Resource_k6ui7"), SubResource("Resource_fodgg"), SubResource("Resource_exc5p"), SubResource("Resource_5y5vo"), SubResource("Resource_imhme"), SubResource("Resource_sbh33"), SubResource("Resource_d2yeo"), SubResource("Resource_ijeyo"), SubResource("Resource_880gk"), SubResource("Resource_87xvj"), SubResource("Resource_q2im4"), SubResource("Resource_k3elm"), SubResource("Resource_c8j2e"), SubResource("Resource_ryc36"), SubResource("Resource_73wfh"), SubResource("Resource_n5rya"), SubResource("Resource_hg3x4"), SubResource("Resource_mrag6"), SubResource("Resource_x3cu4"), SubResource("Resource_3km8o"), SubResource("Resource_ywfai"), SubResource("Resource_2mm6i"), SubResource("Resource_3k07v"), SubResource("Resource_4mbff"), SubResource("Resource_dx172"), SubResource("Resource_thpuy")])
 metadata/_custom_type_script = "uid://dxl3c04wvk7wb"
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_yaehf"]
-border_size = 3.0
+[sub_resource type="NavigationMesh" id="NavigationMesh_gppt6"]
 
 [node name="Main" type="Node" unique_id=2019358963]
 script = ExtResource("1")
@@ -429,12 +424,8 @@ script = ExtResource("64")
 [node name="WorldStructures" type="Node" parent="." unique_id=670655489]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="WorldStructures" unique_id=1772018668]
-navigation_mesh = SubResource("NavigationMesh_yaehf")
+navigation_mesh = SubResource("NavigationMesh_gppt6")
 script = ExtResource("65")
-wall_scene = ExtResource("66")
-floor_scene = ExtResource("67")
-roof_scene = ExtResource("68")
-button_scene = ExtResource("69")
 
 [node name="Shop" parent="." unique_id=198105987 instance=ExtResource("70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)

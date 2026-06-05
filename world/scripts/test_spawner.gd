@@ -1,5 +1,6 @@
-extends Node3D
 
+extends Node3D
+"""
 const W = 8
 const GRID_SIZE = 20
 const RENDER_DISTANCE_STEPS = 15
@@ -333,3 +334,5 @@ func _on_maze_changed():
 	if current_floor_type == "combat":
 		for i in range(max_enemies):
 			spawn_enemy_if_needed()
+
+"""
