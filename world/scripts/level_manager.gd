@@ -75,6 +75,7 @@ var player_start_cell: Vector2 = Vector2(0, 0)
 var current_elevator: Dictionary = {}
 var can_ascend: bool = false
 var arena_center_cell: Vector2 = Vector2(-1, -1)
+var is_boss_spawned: bool = false
 
 # Spawner State
 enum Floor {
@@ -148,6 +149,7 @@ var departure_nodes
 
 var spawner_node: Node = null
 var boss_fight_active: bool = false
+var enemy_spawning_locked: bool = false
 var current_button_cell: Vector2 = Vector2(-1, -1)
 var current_boss: Node3D = null
 var current_indicator: Node3D = null
@@ -459,16 +461,37 @@ func _on_elevator_entered(body: Node, area: Area3D, cell: Vector2) -> void:
 		print("Elevator not ready – defeat the boss first!")
 		return
 	print("elevator entered successfully by player")
-	area.set_deferred("monitoring", false)
-	area.queue_free()
-	if current_elevator.has("visual") and is_instance_valid(current_elevator["visual"]):
-		current_elevator["visual"].queue_free()
-	current_elevator.clear()
+	
+	# Clean up indicators
+	var indicators = get_tree().get_nodes_in_group("elevator_indicator")
+	for ind in indicators:
+		if is_instance_valid(ind):
+			ind.queue_free()
+	
+	# Transition to next floor
+	await transition_to_next_floor()
 
-	departure_nodes = create_departure_enclosure(cell)
+func transition_to_next_floor() -> void:
+	print("LevelManager: Starting level transition...")
+	
+	# 5-second elevator ride
+	print("LevelManager: Elevator ride started (5s)...")
+	await get_tree().create_timer(5.0).timeout
+	print("LevelManager: Elevator ride finished.")
+	
+	# 1. Clear All Extraneous Entities
+	print("LevelManager: Clearing old enemies...")
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	current_enemy_count = 0
+	
+	# 2. Clear the Existing Maze Geometry
+	print("LevelManager: Clearing old maze...")
 	clear_maze()
-	await get_tree().process_frame
-
+	
+	# Reset state
 	grid.clear()
 	adj.clear()
 	visited.clear()
@@ -477,6 +500,32 @@ func _on_elevator_entered(body: Node, area: Area3D, cell: Vector2) -> void:
 	walls.clear()
 	floors.clear()
 	roofs.clear()
+	boss_fight_active = false
+	current_elevator.clear()
+	
+	await get_tree().process_frame
+	
+	# 3. Progress and Regenerate the New Maze
+	print("LevelManager: Advancing to next floor...")
+	var next_floor = (current_floor + 1) % floor_data.size()
+	set_floor(next_floor)
+	
+	print("LevelManager: Starting next floor generation...")
+	build_grid(0, 0)
+	carve_out_maze(Vector2(0, 0))
+	build_3d_maze()
+	
+	await get_tree().process_frame
+	
+	setup_initial_elevator()
+	rebake_navigation()
+	await nav_region.bake_finished
+	
+	if current_floor_type == "combat":
+		for i in range(max_enemies):
+			spawn_enemy_if_needed()
+			
+	print("LevelManager: Transition complete.")
 
 func create_departure_enclosure(cell: Vector2) -> Array:
 	var nodes = []
@@ -667,21 +716,29 @@ func _set_node_collision_enabled(node: Node, enabled: bool) -> void:
 func set_maze_visibility(active_cells_list: Array) -> void:
 	for cell in floors:
 		var visible_val = cell in active_cells_list
+		if boss_fight_active:
+			visible_val = true
 		if is_instance_valid(floors[cell]):
 			floors[cell].visible = visible_val
 			_set_node_collision_enabled(floors[cell], visible_val)
 	for cell in roofs:
 		var visible_val = cell in active_cells_list
+		if boss_fight_active:
+			visible_val = true
 		if is_instance_valid(roofs[cell]):
 			roofs[cell].visible = visible_val
 			_set_node_collision_enabled(roofs[cell], visible_val)
 	for cell in walls:
+		# Rendering Override: If boss fight is active, force visibility for arena walls
 		var visible_val = cell in active_cells_list
+		if boss_fight_active:
+			visible_val = true
+			
 		for dir in walls[cell]:
 			if is_instance_valid(walls[cell][dir]):
 				walls[cell][dir].visible = visible_val
 				_set_node_collision_enabled(walls[cell][dir], visible_val)
-
+				
 func get_cells_in_render_distance(start_cell: Vector2, max_steps: int) -> Array:
 	if max_steps < 0:
 		return []
@@ -727,9 +784,9 @@ func find_path(start: Vector2, end: Vector2) -> Array:
 	return []
 
 func spawn_enemy_if_needed() -> void:
-	if current_enemy_count >= max_enemies:
+	if boss_fight_active or enemy_spawning_locked:
 		return
-	if not navigation_ready or not nav_region or not player:
+	if get_tree().get_nodes_in_group("enemies").size() >= max_enemies:
 		return
 	if not current_elevator.has("cell"):
 		return
@@ -830,18 +887,70 @@ func _set_collision_enabled(node: Node, enabled: bool) -> void:
 	for child in node.get_children():
 		_set_collision_enabled(child, enabled)
 
+var walls_to_animate = []
 func _on_button_destroyed_in_manager(cell: Vector2) -> void:
 	print("Button destroyed at cell ", cell)
 	if current_floor_type == "combat":
+		# 1. Immediate Floor Enemy Purge
+		print("Purging all enemies...")
+		for enemy in get_tree().get_nodes_in_group("enemies").duplicate():
+			if is_instance_valid(enemy):
+				enemy.queue_free()
+		
 		print("Starting boss fight")
 		boss_fight_active = true
 		current_button_cell = cell
-		await remove_arena_walls(cell, 3)
-		var arena_cells = get_arena_cells(cell, 2)
-		arena_cells.erase(cell)
-		if arena_cells.is_empty():
-			arena_cells = [cell]
-		var spawn_cell = arena_cells[randi() % arena_cells.size()]
+		
+		# 2. Collect internal walls (exclude perimeter)
+		var arena_cells = get_arena_cells(cell, 3)
+		for c in arena_cells:
+			# Check if cell is on the perimeter (radius 3)
+			var dx = abs(c.x - cell.x) / W
+			var dy = abs(c.y - cell.y) / W
+			if dx < 3 and dy < 3:
+				if walls.has(c):
+					for dir in walls[c]:
+						var w = walls[c][dir]
+						if is_instance_valid(w):
+							# 3. Group Swap for Rendering Override
+							w.remove_from_group("walls")
+							w.add_to_group("walls_to_remove")
+							walls_to_animate.append(w)
+		
+	await remove_arena_walls_keep_internal(cell, 3)
+	
+	await animate_arena_walls_falling(cell, walls_to_animate)
+	
+	var radius = 3
+	var dir_vectors = {
+		"right": Vector2(W, 0), 
+		"left": Vector2(-W, 0), 
+		"down": Vector2(0, W), 
+		"up": Vector2(0, -W)
+	}
+	for dx in range(-radius, radius + 1):
+		for dy in range(-radius, radius + 1):
+			if abs(dx) == radius or abs(dy) == radius:
+				var border_cell = cell + Vector2(dx * W, dy * W)
+				if grid.has(border_cell):
+					for dir in dir_vectors:
+						var neighbor = border_cell + dir_vectors[dir]
+						if not grid.has(neighbor):
+							# Check if wall exists in this direction
+							var wall_exists = walls.has(border_cell) and walls[border_cell].has(dir) and is_instance_valid(walls[border_cell][dir])
+							if not wall_exists:
+								print("Generating missing perimeter wall at: ", border_cell, " dir: ", dir)
+								spawn_wall(border_cell, dir)
+		
+		if is_boss_spawned:
+			return
+		is_boss_spawned = true
+		print("Spawning boss...")
+		var spawn_cells = get_arena_cells(cell, 2)
+		spawn_cells.erase(cell)
+		if spawn_cells.is_empty():
+			spawn_cells = [cell]
+		var spawn_cell = spawn_cells[randi() % spawn_cells.size()]
 		if boss_tier and boss_tier.size() > 0:
 			var boss = boss_tier[0].instantiate()
 			boss.position = Vector3(spawn_cell.x, 0.0, spawn_cell.y)
@@ -856,12 +965,48 @@ func _on_button_destroyed_in_manager(cell: Vector2) -> void:
 			push_error("No boss scene assigned for this floor!")
 			enable_elevator()
 			boss_fight_active = false
-	elif current_floor_type == "shop":
-		print("Shop floor – elevator activated")
-		enable_elevator()
-	else:
-		print("Unknown floor - elevator activated")
-		enable_elevator()
+
+
+func remove_arena_walls_keep_internal(center_cell: Vector2, radius: int) -> void:
+	var cells_in_arena = get_arena_cells(center_cell, radius)
+	var dir_vectors = {
+		"right": Vector2(W, 0), 
+		"left": Vector2( - W, 0), 
+		"down": Vector2(0, W), 
+		"up": Vector2(0, - W)
+	}
+	for cell in cells_in_arena:
+		for dir in dir_vectors.keys():
+			var neighbor = cell + dir_vectors[dir]
+			if neighbor not in cells_in_arena:
+				if walls.has(cell) and walls[cell].has(dir):
+					var wall_node = walls[cell][dir]
+					if is_instance_valid(wall_node):
+						wall_node.queue_free()
+					walls[cell].erase(dir)
+	await get_tree().process_frame
+
+func animate_arena_walls_falling(center_cell: Vector2, walls_to_animate: Array) -> void:
+	print("LevelManager: Animating arena walls falling...")
+	var center_pos = Vector3(center_cell.x, 0.0, center_cell.y)
+	var max_delay = 0.0
+	var delay_multiplier = 0.05
+	
+	for w in walls_to_animate:
+		if not is_instance_valid(w): continue
+		var dist = w.global_position.distance_to(center_pos)
+		var delay = dist * delay_multiplier
+		if delay > max_delay:
+			max_delay = delay
+		
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUINT)
+		tween.tween_interval(delay)
+		tween.tween_property(w, "position:y", -WALL_HEIGHT, 1.0)
+		tween.tween_callback(w.queue_free)
+	
+	await get_tree().create_timer(max_delay + 1.0).timeout
+	print("LevelManager: Arena walls cleared.")
 
 func _on_boss_defeated() -> void:
 	print("Boss defeated")

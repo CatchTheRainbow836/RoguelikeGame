@@ -63,8 +63,6 @@
 [ext_resource type="Resource" uid="uid://cy2f2vkaugs3v" path="res://item/items/resources/tithonus'_curse.tres" id="61"]
 [ext_resource type="Resource" uid="uid://5hau8gtkyho7" path="res://item/items/resources/aegis_fragment.tres" id="62"]
 [ext_resource type="PackedScene" uid="uid://buxhkapuyehvt" path="res://item/pick_up/pick_up.tscn" id="63"]
-[ext_resource type="Script" uid="uid://d2amkc46bbqxi" path="res://world/scripts/test_spawner.gd" id="64"]
-[ext_resource type="Script" uid="uid://b752dh6uieq8g" path="res://world/scripts/navigation_region_3d.gd" id="65"]
 [ext_resource type="PackedScene" uid="uid://coilixa2e7fu" path="res://interactable/shop.tscn" id="70"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_043iq"]
@@ -419,13 +417,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 10, 0)
 
 [node name="Spawner" type="Node3D" parent="." unique_id=1826812616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
-script = ExtResource("64")
 
 [node name="WorldStructures" type="Node" parent="." unique_id=670655489]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="WorldStructures" unique_id=1772018668]
 navigation_mesh = SubResource("NavigationMesh_gppt6")
-script = ExtResource("65")
 
 [node name="Shop" parent="." unique_id=198105987 instance=ExtResource("70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
