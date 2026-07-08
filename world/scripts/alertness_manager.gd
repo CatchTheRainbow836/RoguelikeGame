@@ -48,9 +48,6 @@ func _on_update_timer() -> void :
 	_expire_old_alerts()
 
 
-
-
-
 func _expire_old_alerts() -> void :
 	for i in range(_alerts.size() - 1, -1, -1):
 		_alerts[i].lifetime -= UPDATE_INTERVAL
