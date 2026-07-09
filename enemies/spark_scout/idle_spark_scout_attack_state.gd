@@ -1,7 +1,7 @@
 extends DefaultEnemyAttackState
 class_name IdleSparkScoutAttackState
 
-var attack_range: float
+#var attack_range: float
 
 func _ready() -> void :
 	super._ready()

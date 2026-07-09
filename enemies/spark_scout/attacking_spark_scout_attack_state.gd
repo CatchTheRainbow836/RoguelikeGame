@@ -2,14 +2,14 @@ extends DefaultEnemyAttackState
 class_name AttackingSparkScoutAttackState
 
 var attack_timer: Timer
-var attack_damage: float
-var attack_range: float
-var attack_cooldown: float
+#var attack_damage: float
+#var attack_range: float
+#var attack_cooldown: float
 var spread: float
 var pivot: Node3D
-var _last_attack_time: float = 0.0
+#var _last_attack_time: float = 0.0
 
-@onready var animation_player = owner.get_node("Pivot/exported-model/AnimationPlayer") as AnimationPlayer
+#@onready var animation_player = owner.get_node("Pivot/exported-model/AnimationPlayer") as AnimationPlayer
 
 func _ready() -> void :
 	super._ready()

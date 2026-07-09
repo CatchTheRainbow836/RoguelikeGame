@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cnlcyfs8en4ci" path="res://enemies/scrap_crawler/idle_scrap_crawler_attack_state.gd" id="7"]
 [ext_resource type="Script" uid="uid://bqemnhfa7y3n6" path="res://enemies/scrap_crawler/attacking_scrap_crawler_attack_state.gd" id="8"]
 [ext_resource type="Script" uid="uid://b5pp6sguhqder" path="res://enemies/scrap_crawler/label_3d.gd" id="9"]
+[ext_resource type="Script" uid="uid://bvi6dsaiyd7hw" path="res://enemies/scrap_crawler/scrap_crawler_control_center.gd" id="10_5y1yn"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lkbx1"]
 height = 1.0
@@ -93,3 +94,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Scrap Crawler"
 script = ExtResource("9")
+
+[node name="EnemyControlCenter" type="Node" parent="." unique_id=638143014]
+script = ExtResource("10_5y1yn")

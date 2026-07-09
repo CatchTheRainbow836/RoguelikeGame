@@ -11,6 +11,7 @@ const RENDER_DISTANCE_STEPS: int = 15
 
 # Enemy Preloads
 const SCRAP_CRAWLER = preload("uid://c3edd0nr0blp6")
+"""
 const SPARK_SCOUT = preload("uid://c60lmfg5ysnad")
 const GEAR_WARDEN = preload("uid://c5aofok1mcuvb")
 const ARC_TURRET = preload("uid://dj54fnm4b1khp")
@@ -49,6 +50,7 @@ const DRILLHEAD_HUSK = preload("uid://cicny0lttecf2")
 const STEAMCRAG_BEHEMOTH = preload("uid://dweefp20aumai")
 const VEIN_HARVESTER = preload("uid://d0x8tljcdlxgt")
 const CRUCIBLE_CORE = preload("uid://duvfjokukixcv")
+"""
 
 const INDICATOR_SCENE = preload("uid://bnny3ninl1l72")
 
@@ -58,27 +60,22 @@ const INDICATOR_SCENE = preload("uid://bnny3ninl1l72")
 @export var roof_scene: PackedScene = preload("uid://usbhsma4k6fu")
 @export var button_scene: PackedScene = preload("uid://bkj57vle36mp")
 
-# ------------------------------------------------------------
-# Alert System (merged)
-# ------------------------------------------------------------
-const DIRECT_FALLOFF_FACTOR: float = 5.0      # multiplied by intensity for falloff distance
-const INDIRECT_FALLOFF_FACTOR: float = 2.5    # multiplied by intensity for indirect falloff
-const INDIRECT_INTENSITY_RATIO: float = 0.3   # indirect sound starts weaker
-const DETECTION_THRESHOLD: float = 0.5        # values below this are ignored
-const ALERT_LIFETIME_SCALE: float = 1.0       # lifetime = intensity * scale
+const DIRECT_FALLOFF_FACTOR: float = 5.0
+const INDIRECT_FALLOFF_FACTOR: float = 2.5
+const INDIRECT_INTENSITY_RATIO: float = 0.3
+const DETECTION_THRESHOLD: float = 0.5
+const ALERT_LIFETIME_SCALE: float = 1.0
 const ALERT_MIN_LIFETIME: float = 0.2
 const ALERT_EXPIRE_UPDATE_INTERVAL: float = 0.1
 const PLAYER_ALERT_INTERVAL: float = 0.1
 
-# Visualisation
 const ALERT_CUBE_HEIGHT: float = 0.1
 const ALERT_CUBE_Y_OFFSET: float = 0.05
 const ALERT_VISUAL_UPDATE_INTERVAL: float = 0.1
 
-var _alerts: Array = []   # each: { "cell":Vector2, "intensity":float, "lifetime":float, "direct_values":Dictionary }
+var _alerts: Array = []
 var _alert_grids_dirty: bool = true
 
-# Cached per‑cell maximum alert values
 var _direct_grid: Dictionary = {}    # cell -> max direct value
 var _indirect_grid: Dictionary = {}  # cell -> max indirect value
 var _combined_grid: Dictionary = {}  # cell -> max combined value
@@ -124,6 +121,14 @@ enum Floor {
 var floor_data: Dictionary = {
 	Floor.RUSTWORKS: {
 		"type": "combat",
+		"low_tier": [SCRAP_CRAWLER]
+	}
+}
+
+"""
+var floor_data: Dictionary = {
+	Floor.RUSTWORKS: {
+		"type": "combat",
 		"low_tier": [SCRAP_CRAWLER, SPARK_SCOUT],
 		"mid_tier": [GEAR_WARDEN, ARC_TURRET],
 		"upper_tier": [STEAM_REAVER, CORE_JUGGER],
@@ -165,7 +170,7 @@ var floor_data: Dictionary = {
 		"boss_tier": [CRUCIBLE_CORE]
 	}
 }
-
+"""
 var current_floor: Floor = Floor.RUSTWORKS
 var current_floor_type: String = "combat"
 var low_tier: Array = []

@@ -1,47 +1,14 @@
 extends DefaultEnemyMovementState
 class_name ScrapCrawlerWalkingState
 
-func _ready() -> void :
-	super._ready()
-
-func enter() -> void :
-	print("scrap_crawler entered walking state")
-	pass
-
-func exit() -> void :
-	print("scrap_crawler exited walking state")
-	pass
-
-func physics_update(delta: float) -> void :
-	_vision_timer -= delta
-
-	if _vision_timer <= 0.0:
-		is_player_visible = can_see_player()
-		_vision_timer = vision_check_interval
-
-	if is_player_visible:
-		if can_see_player() == false: return
-		transition.emit("RunningEnemyState")
+func enter() -> void:
+	movement_mode = MovementMode.WANDER
+	if control_center:
+		current_speed = control_center.walk_speed
+		current_accel = control_center.acceleration
 	else:
-		_wander_timer -= delta
-		if navigation_agent_3d.is_navigation_finished() or _wander_timer <= 0.0:
-			if _wander_timer <= 0.0:
-				_pick_new_wander_target()
-				_wander_timer = wander_interval
+		current_speed = 3.0
+		current_accel = 10.0
 
-		if not navigation_agent_3d.is_navigation_finished():
-			var next_pos = navigation_agent_3d.get_next_path_position()
-			var move_dir = (next_pos - owner.global_transform.origin)
-			move_dir.y = 0.0
-
-			if move_dir.length() > 0.2:
-				move_dir = move_dir.normalized()
-				pivot.look_at(pivot.global_position + move_dir, Vector3.UP)
-				_velocity.x = move_toward(_velocity.x, move_dir.x * speed, accel * delta)
-				_velocity.z = move_toward(_velocity.z, move_dir.z * speed, accel * delta)
-			else:
-				_velocity.x = move_toward(_velocity.x, 0.0, accel * delta)
-				_velocity.z = move_toward(_velocity.z, 0.0, accel * delta)
-
-	owner.velocity = _velocity
-	owner.move_and_slide()
+func physics_update(delta: float) -> void:
+	apply_movement(delta, current_speed, current_accel)
