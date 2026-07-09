@@ -24,6 +24,10 @@ var view_distance: float
 var fov_degrees: float
 var alert_duration: float
 
+var search_duration: float
+var investigate_duration: float
+var search_wander_interval: float
+
 var last_alert_strength: float = 0.0
 var alert_position: Vector3 = Vector3.ZERO
 var last_alert_time: float = -1.0
@@ -59,6 +63,9 @@ func setup(enemy: CharacterBody3D) -> void:
 	view_distance = stats.get("view_distance", 20.0)
 	fov_degrees = stats.get("fov_degrees", 90.0)
 	alert_duration = stats.get("alert_duration", 5.0)
+	search_duration = stats.get("search_duration", 6.0)
+	investigate_duration = stats.get("investigate_duration", 8.0)
+	search_wander_interval = stats.get("search_wander_interval", 1.5)
 
 	enemy.max_health = max_health
 	enemy.current_health = current_health
@@ -93,7 +100,7 @@ func can_see_player() -> bool:
 	params.from = pivot.global_position + Vector3.UP * 0.5
 	params.to = PLAYER.global_position + Vector3.UP * 1.0
 	params.exclude = [owner_enemy, pivot]
-	params.collision_mask = 4294967295 
+	params.collision_mask = 4294967295
 	var res = space.intersect_ray(params)
 	return res.size() > 0 and res.get("collider") == PLAYER
 

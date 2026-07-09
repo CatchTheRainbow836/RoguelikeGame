@@ -3,10 +3,8 @@ class_name ScrapCrawlerControlCenter
 
 var _search_timer: float = 0.0
 var _investigate_timer: float = 0.0
-var _search_duration: float = 10.0
-var _investigate_duration: float = 8.0
-
 var _search_origin: Vector3 = Vector3.ZERO
+var _search_wander_timer: float = 0.0
 
 func _decide_action(delta: float) -> void:
 	if can_see_player():
@@ -27,9 +25,9 @@ func _decide_action(delta: float) -> void:
 	if _was_chasing:
 		_was_chasing = false
 		current_ai_state = AIState.SEARCH
-		_search_timer = _search_duration
+		_search_timer = search_duration
 		_search_origin = last_seen_player_pos
-		navigation_agent_3d.target_position = _search_origin
+		_pick_search_target()
 		_transition_movement("RunningEnemyState")
 		_transition_attack("IdleAttackState")
 		return
@@ -56,7 +54,7 @@ func _decide_action(delta: float) -> void:
 			_transition_attack("IdleAttackState")
 			_transition_movement("RunningEnemyState")
 			navigation_agent_3d.target_position = alert_position
-			_investigate_timer = _investigate_duration
+			_investigate_timer = investigate_duration
 			if dist_to_alert < 1.5:
 				_search_origin = alert_position
 				_enter_search_state()
@@ -74,17 +72,20 @@ func _decide_action(delta: float) -> void:
 
 func _enter_search_state() -> void:
 	current_ai_state = AIState.SEARCH
-	_search_timer = _search_duration
+	_search_timer = search_duration
+	_search_wander_timer = 0.0
 	_transition_movement("RunningEnemyState")
-	_pick_search_target()
 
 func _handle_search(delta: float) -> void:
 	_search_timer -= delta
 	if _search_timer <= 0.0:
 		current_ai_state = AIState.PATROL
 		return
-	if navigation_agent_3d.is_navigation_finished():
+
+	_search_wander_timer -= delta
+	if _search_wander_timer <= 0.0:
 		_pick_search_target()
+		_search_wander_timer = search_wander_interval
 
 func _handle_investigate(delta: float) -> void:
 	_investigate_timer -= delta

@@ -12,13 +12,6 @@ var movement_mode: int = MovementMode.IDLE
 var current_speed: float = 0.0
 var current_accel: float = 10.0
 
-###Legacy
-var speed
-var accel
-var view_distance
-var wander_radius
-var _vision_timer
-var is_player_visible
 func can_see_player():
 	pass
 var vision_check_interval
@@ -27,8 +20,6 @@ func _pick_new_wander_target():
 	pass
 var wander_interval
 var PLAYER
-
-####
 
 var _velocity: Vector3 = Vector3.ZERO
 
@@ -65,3 +56,20 @@ func apply_movement(delta: float, speed: float, accel_val: float) -> void:
 
 	owner_enemy.velocity = _velocity
 	owner_enemy.move_and_slide()
+
+func look_at_target(target: Vector3, delta: float, turn_speed: float = 6.0) -> void:
+	if not pivot:
+		return
+	var to_target = target - pivot.global_position
+	to_target.y = 0.0
+	if to_target.length_squared() < 0.001:
+		return
+	var target_transform = pivot.global_transform.looking_at(
+		pivot.global_position - to_target,
+		Vector3.UP,
+		true
+	)
+	pivot.global_transform.basis = pivot.global_transform.basis.slerp(
+		target_transform.basis,
+		turn_speed * delta
+	)

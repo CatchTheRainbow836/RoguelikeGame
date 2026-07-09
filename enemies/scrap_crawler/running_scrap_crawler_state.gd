@@ -13,12 +13,4 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	apply_movement(delta, current_speed, current_accel)
 	if control_center and control_center.PLAYER:
-		var to_target = control_center.PLAYER.global_position - pivot.global_position
-		to_target.y = 0.0
-		if to_target.length_squared() > 0.001:
-			var target_transform = pivot.global_transform.looking_at(
-				pivot.global_position - to_target, Vector3.UP, true
-			)
-			pivot.global_transform.basis = pivot.global_transform.basis.slerp(
-				target_transform.basis, 6.0 * delta
-			)
+		look_at_target(control_center.PLAYER.global_position, delta)
