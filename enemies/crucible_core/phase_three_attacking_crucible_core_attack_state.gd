@@ -132,7 +132,7 @@ func _fire_gun() -> void :
 		if player_hit.is_in_group("player") and player_hit.has_method("take_damage"):
 			player_hit.take_damage(recorded_weapon.damage)
 
-	AlertnessManager.add_alert(owner.global_position, 3)
+	LevelManager.add_alert(owner.global_position, 3)
 	_add_muzzle_flash()
 	_add_recoil()
 	_rotate_weapon_to_aim()
@@ -172,7 +172,7 @@ func _fire_blowpipe() -> void :
 
 	_add_muzzle_flash()
 	_add_recoil()
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 	_rotate_weapon_to_aim()
 
 func _apply_poison(enemy: Node) -> void :
@@ -221,7 +221,7 @@ func _fire_rocket() -> void :
 	_rocket_explode(impact_point)
 	_add_muzzle_flash()
 	_add_recoil()
-	AlertnessManager.add_alert(owner.global_position, 5)
+	LevelManager.add_alert(owner.global_position, 5)
 	_rotate_weapon_to_aim()
 
 func _rocket_explode(position: Vector3) -> void :
@@ -306,7 +306,7 @@ func _machine_gun_continuous_fire() -> void :
 
 	_add_muzzle_flash()
 	_add_recoil()
-	AlertnessManager.add_alert(owner.global_position, 3.5)
+	LevelManager.add_alert(owner.global_position, 3.5)
 	_rotate_weapon_to_aim()
 
 func _swing_sword() -> void :
@@ -327,7 +327,7 @@ func _swing_sword() -> void :
 		var collider = hit.collider
 		if collider.is_in_group("player") and collider.has_method("take_damage"):
 			collider.take_damage(recorded_weapon.damage)
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 	_play_swing_animation()
 	var idle_state = get_parent().get_node("IdleAttackState") as PhaseThreeIdleCrucibleCoreAttackState
 	if idle_state:
@@ -354,7 +354,7 @@ func _swing_vorpal() -> void :
 				collider.take_damage(recorded_weapon.damage + 60)
 			else:
 				collider.take_damage(recorded_weapon.damage)
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 	_play_swing_animation()
 	var idle_state = get_parent().get_node("IdleAttackState") as PhaseThreeIdleCrucibleCoreAttackState
 	if idle_state:
@@ -378,7 +378,7 @@ func _swing_scythe() -> void :
 		var collider = hit.collider
 		if collider.is_in_group("player") and collider.has_method("take_damage"):
 			collider.take_damage(recorded_weapon.damage)
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 	_play_swing_animation()
 
 func _throw_projectile() -> void :
@@ -580,7 +580,7 @@ func _throw_hammer() -> void :
 				else:
 					wall_hit = true
 			hammer.global_position = new_pos
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 			if wall_hit or hammer.global_position.distance_to(start_pos) > range:
 				outbound = false
 		else:
@@ -601,7 +601,7 @@ func _throw_hammer() -> void :
 						collider.take_damage(recorded_weapon.damage)
 						enemies_hit_inbound[collider] = true
 			hammer.global_position = new_pos
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 			var pickup_radius = 2.0
 			if hammer.global_position.distance_to(PLAYER.global_position) <= pickup_radius:
 				hammer.queue_free()
@@ -711,7 +711,7 @@ func _throw_spear() -> void :
 						enemies_hit_outbound[collider] = true
 
 			spear.global_position = new_pos
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 
 			if dir.length_squared() > 0.001:
 				spear.look_at(spear.global_position + dir, Vector3.UP)
@@ -740,7 +740,7 @@ func _throw_spear() -> void :
 						enemies_hit_inbound[collider] = true
 
 			spear.global_position = new_pos
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 
 			if move_dir.length_squared() > 0.001:
 				spear.look_at(spear.global_position + move_dir, Vector3.UP)
@@ -842,7 +842,7 @@ func _create_smoke_cloud(position: Vector3) -> void :
 	smoke_area.add_child(shape)
 	get_tree().current_scene.add_child(smoke_area)
 	smoke_area.global_position = position
-	AlertnessManager.add_alert(position, 0.4)
+	LevelManager.add_alert(position, 0.4)
 	smoke_area.body_entered.connect( func(body):
 		if body.is_in_group("enemies"):
 			var enemy_state_machine = body.get_node_or_null("EnemyStateMachine") as StateMachine

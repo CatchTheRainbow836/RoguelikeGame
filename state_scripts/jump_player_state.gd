@@ -4,7 +4,7 @@ extends PlayerMovementState
 @export var TOP_ANIM_SPEED: float = 2.2
 
 func enter() -> void :
-	AlertnessManager.add_alert(PLAYER.global_position, 1)
+	LevelManager.add_alert(PLAYER.global_position, 1)
 
 	PLAYER.velocity.y = JUMP_VELOCITY
 	var horiz_speed: = Vector2(PLAYER.velocity.x, PLAYER.velocity.z).length()

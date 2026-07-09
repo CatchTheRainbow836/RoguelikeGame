@@ -221,7 +221,7 @@ func fire_gun():
 	add_muzzle_flash()
 	add_recoil()
 
-	AlertnessManager.add_alert(owner.global_position, 3)
+	LevelManager.add_alert(owner.global_position, 3)
 
 func create_bullet_hole(hit: Dictionary) -> void :
 	if not bullet_hole_sprite or hit.is_empty():
@@ -277,7 +277,7 @@ func swing_sword():
 	var weapon: = slot.item_data as ItemDataWeapon
 	weapon_fired.emit()
 
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 
 	var sword_model = weaponscene
 
@@ -437,7 +437,7 @@ func _explode(position: Vector3, damage: float, radius: float):
 	get_tree().current_scene.add_child(light)
 	light.global_position = position
 
-	AlertnessManager.add_alert(position, 5)
+	LevelManager.add_alert(position, 5)
 
 	var tween = create_tween()
 	tween.parallel().tween_property(sphere, "scale", Vector3.ZERO, 0.5)
@@ -574,7 +574,7 @@ func _create_smoke_cloud(position: Vector3, weapon: ItemDataWeapon):
 	get_tree().current_scene.add_child(smoke_area)
 	smoke_area.global_position = position
 
-	AlertnessManager.add_alert(position, 0.4)
+	LevelManager.add_alert(position, 0.4)
 
 	smoke_area.body_entered.connect( func(body):
 		var enemy_state_machine = body.get_node_or_null("EnemyStateMachine") as StateMachine
@@ -708,7 +708,7 @@ func _stun_explode(position: Vector3, weapon: ItemDataWeapon):
 	get_tree().current_scene.add_child(light)
 	light.global_position = position
 
-	AlertnessManager.add_alert(position, 3.5)
+	LevelManager.add_alert(position, 3.5)
 
 	var tween = create_tween()
 	tween.parallel().tween_property(sphere, "scale", Vector3.ZERO, 0.5)
@@ -811,7 +811,7 @@ func fire_blowpipe():
 	add_muzzle_flash()
 	add_recoil()
 
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 
 func _apply_poison(enemy: Node):
 	var poison_timer = Timer.new()
@@ -927,7 +927,7 @@ func throw_hammer():
 
 			hammer.global_position = new_pos
 
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 
 			if wall_hit or hammer.global_position.distance_to(start_pos) > range:
 				outbound = false
@@ -956,7 +956,7 @@ func throw_hammer():
 
 			hammer.global_position = new_pos
 
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 
 
 			var pickup_radius = 2.0
@@ -1007,7 +1007,7 @@ func swing_scythe():
 	var weapon: = slot.item_data as ItemDataWeapon
 	weapon_fired.emit()
 
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 
 
 	var sword_model = weaponscene
@@ -1063,7 +1063,7 @@ func swing_vorpal():
 	var weapon: = slot.item_data as ItemDataWeapon
 	weapon_fired.emit()
 
-	AlertnessManager.add_alert(owner.global_position, 1.5)
+	LevelManager.add_alert(owner.global_position, 1.5)
 
 	var sword_model = weaponscene
 
@@ -1162,7 +1162,7 @@ func fire_rocket():
 	add_muzzle_flash()
 	add_recoil()
 
-	AlertnessManager.add_alert(owner.global_position, 3)
+	LevelManager.add_alert(owner.global_position, 3)
 
 func _rocket_explode(position: Vector3, weapon: ItemDataWeapon):
 	var radius = 5.0
@@ -1187,7 +1187,7 @@ func _rocket_explode(position: Vector3, weapon: ItemDataWeapon):
 	get_tree().current_scene.add_child(light)
 	light.global_position = position
 
-	AlertnessManager.add_alert(owner.global_position, 5)
+	LevelManager.add_alert(owner.global_position, 5)
 
 	var tween = create_tween()
 	tween.parallel().tween_property(sphere, "scale", Vector3.ZERO, 0.5)
@@ -1320,7 +1320,7 @@ func throw_spear():
 
 			spear.global_position = new_pos
 
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 
 			if dir.length_squared() > 0.001:
 				spear.look_at(spear.global_position + dir, Vector3.UP)
@@ -1352,7 +1352,7 @@ func throw_spear():
 
 			spear.global_position = new_pos
 
-			AlertnessManager.add_alert(new_pos, 1.5)
+			LevelManager.add_alert(new_pos, 1.5)
 
 			if move_dir.length_squared() > 0.001:
 				spear.look_at(spear.global_position + move_dir, Vector3.UP)
@@ -1472,7 +1472,7 @@ func _machine_gun_fire(weapon: ItemDataWeapon):
 	add_muzzle_flash()
 	add_recoil()
 
-	AlertnessManager.add_alert(owner.global_position, 3.5)
+	LevelManager.add_alert(owner.global_position, 3.5)
 
 func _stop_machine_gun():
 	if has_node("MachineGunTimer"):

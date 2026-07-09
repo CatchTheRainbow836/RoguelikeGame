@@ -22,7 +22,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalScript="*res://world/scripts/Global.gd"
-AlertnessManager="*uid://dorg2rryn52d6"
 ShopMasterData="*uid://oh8ye7nx1660"
 LevelManager="*uid://ctmvbne4ex86n"
 

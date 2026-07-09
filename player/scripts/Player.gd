@@ -67,8 +67,8 @@ func _physics_process(delta: float) -> void :
 		_alert_timer -= delta
 		if _alert_timer <= 0.0:
 			var intensity = clamp(speed / MAX_SPEED_FOR_ALERT, 0.0, 1.0) * MAX_ALERT_INTENSITY
-			AlertnessManager.add_alert(global_position, intensity)
-			_alert_timer = AlertnessManager.PLAYER_ALERT_INTERVAL
+			LevelManager.add_alert(global_position, intensity)
+			_alert_timer = LevelManager.PLAYER_ALERT_INTERVAL
 	else:
 		_alert_timer = 0.0
 

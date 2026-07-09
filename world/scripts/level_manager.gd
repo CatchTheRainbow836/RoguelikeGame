@@ -58,6 +58,40 @@ const INDICATOR_SCENE = preload("uid://bnny3ninl1l72")
 @export var roof_scene: PackedScene = preload("uid://usbhsma4k6fu")
 @export var button_scene: PackedScene = preload("uid://bkj57vle36mp")
 
+# ------------------------------------------------------------
+# Alert System (merged)
+# ------------------------------------------------------------
+const DIRECT_FALLOFF_FACTOR: float = 5.0      # multiplied by intensity for falloff distance
+const INDIRECT_FALLOFF_FACTOR: float = 2.5    # multiplied by intensity for indirect falloff
+const INDIRECT_INTENSITY_RATIO: float = 0.3   # indirect sound starts weaker
+const DETECTION_THRESHOLD: float = 0.5        # values below this are ignored
+const ALERT_LIFETIME_SCALE: float = 1.0       # lifetime = intensity * scale
+const ALERT_MIN_LIFETIME: float = 0.2
+const ALERT_EXPIRE_UPDATE_INTERVAL: float = 0.1
+const PLAYER_ALERT_INTERVAL: float = 0.1
+
+# Visualisation
+const ALERT_CUBE_HEIGHT: float = 0.1
+const ALERT_CUBE_Y_OFFSET: float = 0.05
+const ALERT_VISUAL_UPDATE_INTERVAL: float = 0.1
+
+var _alerts: Array = []   # each: { "cell":Vector2, "intensity":float, "lifetime":float, "direct_values":Dictionary }
+var _alert_grids_dirty: bool = true
+
+# Cached per‑cell maximum alert values
+var _direct_grid: Dictionary = {}    # cell -> max direct value
+var _indirect_grid: Dictionary = {}  # cell -> max indirect value
+var _combined_grid: Dictionary = {}  # cell -> max combined value
+
+var _alert_visual_holder: Node3D = null
+var _alert_cubes: Dictionary = {}    # cell -> MeshInstance3D (only for cells currently above threshold)
+var _visual_update_timer: float = 0.0
+var _expire_update_timer: float = 0.0
+
+# ------------------------------------------------------------
+# Original Level Manager State
+# ------------------------------------------------------------
+
 # Navigation State
 var grid: Array = []
 var visited: Array = []
@@ -221,6 +255,10 @@ func deferred_init() -> void:
 		print("LevelManager: Spawning initial enemies...")
 		for i in range(max_enemies):
 			spawn_enemy_if_needed()
+			
+	# --- Alert system setup ---
+	_setup_alert_system()
+	
 	print("LevelManager: Initialization finished.")
 	
 func _process(delta: float) -> void:
@@ -234,7 +272,221 @@ func _process(delta: float) -> void:
 
 	if current_floor_type == "combat" and get_child_count() < max_enemies:
 		spawn_enemy_if_needed()
+		
+	# Alert updates (no timers, uses delta directly)
+	_update_alerts_expiry(delta)
+	_update_alert_visuals(delta)
 
+# ------------------------------------------------------------
+# Alert System Implementation
+# ------------------------------------------------------------
+func _setup_alert_system() -> void:
+	# Visual holder
+	_alert_visual_holder = Node3D.new()
+	_alert_visual_holder.name = "AlertVisuals"
+	add_child(_alert_visual_holder)
+	# Grids start empty
+	_clear_alert_grids()
+
+func add_alert(position: Vector3, intensity: float, lifetime: float = -1.0) -> void:
+	var cell = get_cell_from_world(position)
+	if lifetime < 0:
+		lifetime = max(intensity * ALERT_LIFETIME_SCALE, ALERT_MIN_LIFETIME)
+	
+	# Precompute direct sound reachable cells via BFS
+	var direct_vals = _precompute_direct(cell, intensity)
+	
+	_alerts.append({
+		"cell": cell,
+		"intensity": intensity,
+		"lifetime": lifetime,
+		"direct_values": direct_vals
+	})
+	_alert_grids_dirty = true
+
+func get_alert_value(world_position: Vector3) -> float:
+	var target_cell = get_cell_from_world(world_position)
+	if _alert_grids_dirty:
+		_rebuild_alert_grids()
+	var val = _combined_grid.get(target_cell, 0.0)
+	if val >= DETECTION_THRESHOLD:
+		return val
+	return 0.0
+
+func _precompute_direct(origin_cell: Vector2, intensity: float) -> Dictionary:
+	var direct_vals = {}
+	var falloff_dist = intensity * DIRECT_FALLOFF_FACTOR
+	if falloff_dist <= 0:
+		return direct_vals
+	# BFS to find shortest steps to all reachable cells
+	var visited = {}
+	var queue = [origin_cell]
+	visited[origin_cell] = 0
+	while queue.size() > 0:
+		var current = queue.pop_front()
+		var steps = visited[current]
+		var dist = steps * W
+		var val = intensity * exp(-dist / falloff_dist)
+		if val >= DETECTION_THRESHOLD:
+			direct_vals[current] = val
+		# continue BFS to neighbours even if value is below threshold? No, we can stop expanding if current value already below threshold, but since value decays, neighbours will be even lower. So we break expansion for this branch.
+		if val < DETECTION_THRESHOLD:
+			continue
+		for neighbor in adj.get(current, []):
+			if not visited.has(neighbor):
+				visited[neighbor] = steps + 1
+				queue.append(neighbor)
+	return direct_vals
+
+func _rebuild_alert_grids() -> void:
+	_direct_grid.clear()
+	_indirect_grid.clear()
+	_combined_grid.clear()
+	
+	# Iterate active alerts
+	for alert in _alerts:
+		var origin_cell = alert["cell"]
+		var intensity = alert["intensity"]
+		var direct_vals = alert["direct_values"]
+		# Direct contributions
+		for cell in direct_vals:
+			var val = direct_vals[cell]
+			if val > _direct_grid.get(cell, 0.0):
+				_direct_grid[cell] = val
+		
+		# Indirect contributions: compute for all cells within a radius where value > threshold
+		var indirect_intensity = intensity * INDIRECT_INTENSITY_RATIO
+		var falloff_dist = intensity * INDIRECT_FALLOFF_FACTOR
+		if falloff_dist > 0:
+			# Determine max distance from threshold: value = indirect_intensity * exp(-dist/falloff_dist) > DETECTION_THRESHOLD
+			# => dist < -falloff_dist * ln(DETECTION_THRESHOLD/indirect_intensity)
+			# but only if indirect_intensity > threshold. If not, no indirect at all.
+			if indirect_intensity > DETECTION_THRESHOLD:
+				var max_dist = -falloff_dist * log(DETECTION_THRESHOLD / indirect_intensity)
+				# Search all grid cells within max_dist in world-space (Euclidean)
+				for target_cell in grid:
+					var dx = target_cell.x - origin_cell.x
+					var dz = target_cell.y - origin_cell.y
+					var dist = sqrt(dx*dx + dz*dz)
+					if dist <= max_dist:
+						var val = indirect_intensity * exp(-dist / falloff_dist)
+						if val > _indirect_grid.get(target_cell, 0.0):
+							_indirect_grid[target_cell] = val
+	
+	# Combine
+	for cell in grid:
+		var d = _direct_grid.get(cell, 0.0)
+		var i = _indirect_grid.get(cell, 0.0)
+		_combined_grid[cell] = max(d, i)
+	
+	_alert_grids_dirty = false
+
+func _update_alerts_expiry(delta: float) -> void:
+	_expire_update_timer += delta
+	if _expire_update_timer < ALERT_EXPIRE_UPDATE_INTERVAL:
+		return
+	_expire_update_timer = 0.0
+	var changed = false
+	for i in range(_alerts.size() - 1, -1, -1):
+		_alerts[i].lifetime -= ALERT_EXPIRE_UPDATE_INTERVAL
+		if _alerts[i].lifetime <= 0.0:
+			_alerts.remove_at(i)
+			changed = true
+	if changed:
+		_alert_grids_dirty = true
+
+func _clear_alerts() -> void:
+	_alerts.clear()
+	_clear_alert_grids()
+	_clear_all_alert_cubes()
+
+func _clear_alert_grids() -> void:
+	_direct_grid.clear()
+	_indirect_grid.clear()
+	_combined_grid.clear()
+	_alert_grids_dirty = false
+
+# ------------------------------------------------------------
+# Alert Visualisation
+# ------------------------------------------------------------
+func _update_alert_visuals(delta: float) -> void:
+	_visual_update_timer += delta
+	if _visual_update_timer < ALERT_VISUAL_UPDATE_INTERVAL:
+		return
+	_visual_update_timer = 0.0
+	
+	if _alert_grids_dirty:
+		_rebuild_alert_grids()
+	
+	# Determine which cells currently need cubes (value >= threshold)
+	var needed_cells = {}
+	for cell in _combined_grid:
+		if _combined_grid[cell] >= DETECTION_THRESHOLD:
+			needed_cells[cell] = _combined_grid[cell]
+	
+	# Remove cubes for cells that are no longer above threshold
+	for cell in _alert_cubes.keys():
+		if not needed_cells.has(cell):
+			var cube = _alert_cubes[cell]
+			if is_instance_valid(cube):
+				cube.queue_free()
+			# Use safer deletion from dict by marking, then loop after
+			_alert_cubes.erase(cell)  # Will modify dict during iteration? We're iterating keys, safe to erase inside? Godot allows, but we'll collect keys to delete.
+	
+	# We'll re-iterate properly: collect to_remove first
+	var to_remove = []
+	for cell in _alert_cubes:
+		if not needed_cells.has(cell):
+			to_remove.append(cell)
+	for cell in to_remove:
+		var cube = _alert_cubes[cell]
+		if is_instance_valid(cube):
+			cube.queue_free()
+		_alert_cubes.erase(cell)
+	
+	# Add or update cubes for needed cells
+	for cell in needed_cells:
+		var value = needed_cells[cell]
+		if not _alert_cubes.has(cell):
+			# Create new cube
+			var cube = MeshInstance3D.new()
+			var box = BoxMesh.new()
+			box.size = Vector3(W, ALERT_CUBE_HEIGHT, W)
+			cube.mesh = box
+			cube.position = Vector3(cell.x, ALERT_CUBE_Y_OFFSET, cell.y)
+			var mat = StandardMaterial3D.new()
+			mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			cube.material_override = mat
+			_alert_visual_holder.add_child(cube)
+			_alert_cubes[cell] = cube
+		# Update color
+		var cube = _alert_cubes[cell]
+		if is_instance_valid(cube):
+			cube.visible = true
+			# Map value from threshold up to some max (clamp) for alpha
+			# Use intensity scaling: max expected value around intensity of alert, but we can map relative to 2.0 for bright red
+			var intensity = clamp((value - DETECTION_THRESHOLD) / 2.0, 0.0, 1.0)
+			var alpha = lerp(0.2, 1.0, intensity)
+			cube.material_override.albedo_color = Color(1, 0, 0, alpha)
+	
+	# Hide any cubes that remain in _alert_cubes but not in needed_cells? Should be none after removal.
+	# For safety, iterate and hide if not needed
+	for cell in _alert_cubes:
+		if not needed_cells.has(cell):
+			var cube = _alert_cubes[cell]
+			if is_instance_valid(cube):
+				cube.visible = false
+
+func _clear_all_alert_cubes() -> void:
+	for cube in _alert_cubes.values():
+		if is_instance_valid(cube):
+			cube.queue_free()
+	_alert_cubes.clear()
+
+# ------------------------------------------------------------
+# Rest of original Level Manager (unchanged except maze change clean‑up)
+# ------------------------------------------------------------
 func rebake_navigation() -> void:
 	if not nav_region:
 		printerr("LevelManager: Cannot bake - nav_region is null!")
@@ -478,6 +730,9 @@ func transition_to_next_floor() -> void:
 	print("LevelManager: Elevator ride started (5s)...")
 	await get_tree().create_timer(5.0).timeout
 	print("LevelManager: Elevator ride finished.")
+	
+	# Clear alerts (issue 8)
+	_clear_alerts()
 	
 	# 1. Clear All Extraneous Entities
 	print("LevelManager: Clearing old enemies...")
@@ -861,7 +1116,7 @@ func update_active_enemies() -> void:
 		return
 	var player_cell = get_cell_from_world(player.global_position)
 	active_cells = get_cells_in_render_distance(player_cell, RENDER_DISTANCE_STEPS)
-	for enemy in get_children():
+	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if enemy == current_boss or enemy == current_indicator:
 			continue
 		var enemy_cell = get_cell_from_world(enemy.global_position)
@@ -1037,6 +1292,9 @@ func set_floor(floor_id: Floor) -> void:
 	print("Switched to floor: ", floor_id, " (type: ", current_floor_type, ")")
 
 func _on_maze_changed() -> void:
+	# Clear alerts on maze change (issue 8)
+	_clear_alerts()
+	
 	for child in get_children():
 		if child.is_in_group("enemies") or child.is_in_group("boss") or child.is_in_group("elevator_indicator"):
 			child.queue_free()

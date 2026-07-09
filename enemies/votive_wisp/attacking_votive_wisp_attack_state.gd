@@ -66,7 +66,7 @@ func _explode(position: Vector3) -> void :
 	explosion_container.add_child(light)
 	light.position = Vector3.ZERO
 
-	AlertnessManager.add_alert(position, 5)
+	LevelManager.add_alert(position, 5)
 
 	var tween: = explosion_container.create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)

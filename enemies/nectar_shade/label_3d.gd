@@ -29,4 +29,4 @@ func _process(delta: float) -> void :
 
 	target_enemy = best_enemy
 
-	text = "Nectar Shade" + "\n" + enemy_state_machine.CURRENT_STATE.name + "\n" + attack_state_machine.CURRENT_STATE.name + "\n" + "can_see_player: " + str(enemy_state_machine.get_node("RunningEnemyState").can_see_player()) + "\n" + "alertness: " + str(AlertnessManager.get_alert_value(owner.global_position)) + "\n" + "alert timer: " + str(enemy_state_machine.get_node("RunningEnemyState").alert_timer) + "\n" + "target enemy: " + str(target_enemy) + ", distance: " + str(best_path_length)
+	text = "Nectar Shade" + "\n" + enemy_state_machine.CURRENT_STATE.name + "\n" + attack_state_machine.CURRENT_STATE.name + "\n" + "can_see_player: " + str(enemy_state_machine.get_node("RunningEnemyState").can_see_player()) + "\n" + "alertness: " + str(LevelManager.get_alert_value(owner.global_position)) + "\n" + "alert timer: " + str(enemy_state_machine.get_node("RunningEnemyState").alert_timer) + "\n" + "target enemy: " + str(target_enemy) + ", distance: " + str(best_path_length)

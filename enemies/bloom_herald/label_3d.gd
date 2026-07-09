@@ -9,4 +9,4 @@ func _process(delta: float) -> void :
 
 	var time_elapsed: float = (Time.get_ticks_msec() / 1000.0) - owner.last_attack_time
 
-	text = "Bloom Herald" + "\n" + enemy_state_machine.CURRENT_STATE.name + "\n" + attack_state_machine.CURRENT_STATE.name + "\n" + "can_see_player: " + str(enemy_state_machine.get_node("RunningEnemyState").can_see_player()) + "\n" + "alertness: " + str(AlertnessManager.get_alert_value(owner.global_position)) + "\n" + "alert timer: " + str(enemy_state_machine.get_node("RunningEnemyState").alert_timer) + "\n" + "time elapsed: " + str(time_elapsed)
+	text = "Bloom Herald" + "\n" + enemy_state_machine.CURRENT_STATE.name + "\n" + attack_state_machine.CURRENT_STATE.name + "\n" + "can_see_player: " + str(enemy_state_machine.get_node("RunningEnemyState").can_see_player()) + "\n" + "alertness: " + str(LevelManager.get_alert_value(owner.global_position)) + "\n" + "alert timer: " + str(enemy_state_machine.get_node("RunningEnemyState").alert_timer) + "\n" + "time elapsed: " + str(time_elapsed)

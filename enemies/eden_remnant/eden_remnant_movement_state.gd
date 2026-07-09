@@ -58,7 +58,7 @@ func can_see_player() -> bool:
 				var res: Dictionary = space.intersect_ray(params)
 				if res.size() > 0 and res.get("collider") == PLAYER:
 					visual_detected = true
-	var alertness = AlertnessManager.get_alert_value(owner.global_position)
+	var alertness = LevelManager.get_alert_value(owner.global_position)
 	var sound_detected = alertness >= alertness_threshold
 	return visual_detected or sound_detected
 
