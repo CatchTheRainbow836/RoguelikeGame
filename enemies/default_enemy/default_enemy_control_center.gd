@@ -28,6 +28,17 @@ var search_duration: float
 var investigate_duration: float
 var search_wander_interval: float
 
+# Additional stats used by some enemies
+var preferred_distance: float = 0.0
+var spread: float = 0.0
+
+# Flying / hovering stats
+var target_altitude: float = 0.0
+var altitude_tolerance: float = 0.3
+var bob_amplitude: float = 0.0
+var bob_frequency: float = 0.0
+var hover_strafe_speed: float = 0.0
+
 var last_alert_strength: float = 0.0
 var alert_position: Vector3 = Vector3.ZERO
 var last_alert_time: float = -1.0
@@ -42,8 +53,12 @@ var _search_patrol_radius: float = 4.0
 var last_seen_player_pos: Vector3 = Vector3.ZERO
 var _was_chasing: bool = false
 
+# Target that movement states can look at (set by AI each frame)
+var look_target: Vector3 = Vector3.ZERO
+
 func setup(enemy: CharacterBody3D) -> void:
 	owner_enemy = enemy
+	enemy_type = owner_enemy.scene_file_path.get_file().get_basename()
 	pivot = enemy.get_node("Pivot")
 	navigation_agent_3d = enemy.get_node("NavigationAgent3D")
 	movement_state_machine = enemy.get_node("EnemyStateMachine")
@@ -66,6 +81,15 @@ func setup(enemy: CharacterBody3D) -> void:
 	search_duration = stats.get("search_duration", 6.0)
 	investigate_duration = stats.get("investigate_duration", 8.0)
 	search_wander_interval = stats.get("search_wander_interval", 1.5)
+
+	preferred_distance = stats.get("preferred_distance", 0.0)
+	spread = stats.get("spread", 0.0)
+
+	target_altitude = stats.get("target_altitude", 0.0)
+	altitude_tolerance = stats.get("altitude_tolerance", 0.3)
+	bob_amplitude = stats.get("bob_amplitude", 0.0)
+	bob_frequency = stats.get("bob_frequency", 0.0)
+	hover_strafe_speed = stats.get("hover_strafe_speed", 0.0)
 
 	enemy.max_health = max_health
 	enemy.current_health = current_health

@@ -1,49 +1,15 @@
 extends DefaultEnemyMovementState
 class_name IdleSparkScoutState
 
-var scout: SparkScout
+func enter() -> void:
+	movement_mode = MovementMode.IDLE
+	current_speed = 0.0
+	current_accel = control_center.acceleration if control_center else 10.0
 
-func _ready() -> void :
-	super._ready()
-	await owner.ready
-	scout = owner as SparkScout
-	if scout:
-		speed = scout.speed
-		accel = scout.accel
-		view_distance = scout.attack_range
-		wander_radius = scout.wander_radius
-
-func enter() -> void :
-	pass
-
-func exit() -> void :
-	pass
-
-func physics_update(delta: float) -> void :
-	_vision_timer -= delta
-	if _vision_timer <= 0.0:
-		is_player_visible = can_see_player()
-		_vision_timer = vision_check_interval
-
-	if is_player_visible:
-		transition.emit("RunningEnemyState")
-	else:
-		maintain_altitude(delta)
-		_velocity.x = move_toward(_velocity.x, 0.0, accel * delta)
-		_velocity.z = move_toward(_velocity.z, 0.0, accel * delta)
-
-	owner.velocity = _velocity
-	owner.move_and_slide()
-
-func maintain_altitude(delta: float) -> void :
-	if not scout:
-		return
-	var current_y = owner.global_position.y
-	var target_y = scout.target_altitude + sin(scout.bob_phase) * scout.bob_amplitude
-	scout.bob_phase += scout.bob_frequency * delta
-
-	var y_error = target_y - current_y
-	if abs(y_error) > scout.altitude_tolerance:
-		_velocity.y = move_toward(_velocity.y, y_error * 5.0, accel * delta)
-	else:
-		_velocity.y = move_toward(_velocity.y, 0.0, accel * delta)
+func physics_update(delta: float) -> void:
+	apply_movement(delta, 0.0, current_accel)
+	if control_center:
+		var target_y = control_center.target_altitude + sin(control_center._bob_phase) * control_center.bob_amplitude
+		maintain_altitude(target_y, delta)
+	
+	look_at_target(control_center.look_target, delta)

@@ -17,5 +17,28 @@ const DATA = {
 		"search_duration": 6.0,
 		"investigate_duration": 8.0,
 		"search_wander_interval": 1.5
+	},
+	"spark_scout": {
+		"max_health": 5.0,
+		"attack_damage": 4.0,
+		"attack_range": 10.0,
+		"preferred_distance": 5.0,
+		"attack_cooldown": 0.5,
+		"spread": 0.1,
+		"run_speed": 8.0,
+		"walk_speed": 4.0,
+		"acceleration": 10.0,
+		"wander_radius": 8.0,
+		"view_distance": 15.0,
+		"fov_degrees": 90.0,
+		"alert_duration": 5.0,
+		"search_duration": 6.0,
+		"investigate_duration": 8.0,
+		"search_wander_interval": 1.5,
+		"target_altitude": 1.5,
+		"altitude_tolerance": 0.1,
+		"bob_amplitude": 0.3,
+		"bob_frequency": 6.0,
+		"hover_strafe_speed": 3.0
 	}
 }

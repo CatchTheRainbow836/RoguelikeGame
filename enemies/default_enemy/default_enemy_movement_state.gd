@@ -73,3 +73,13 @@ func look_at_target(target: Vector3, delta: float, turn_speed: float = 6.0) -> v
 		target_transform.basis,
 		turn_speed * delta
 	)
+
+func maintain_altitude(target_y: float, delta: float) -> void:
+	var current_y = owner_enemy.global_position.y
+	var y_error = target_y - current_y
+	var tolerance = control_center.altitude_tolerance
+	
+	if abs(y_error) > tolerance:
+		_velocity.y = move_toward(_velocity.y, y_error * 5.0, current_accel * delta)
+	else:
+		_velocity.y = move_toward(_velocity.y, 0.0, current_accel * delta)

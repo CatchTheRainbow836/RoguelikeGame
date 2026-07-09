@@ -11,8 +11,8 @@ const RENDER_DISTANCE_STEPS: int = 15
 
 # Enemy Preloads
 const SCRAP_CRAWLER = preload("uid://c3edd0nr0blp6")
-"""
 const SPARK_SCOUT = preload("uid://c60lmfg5ysnad")
+"""
 const GEAR_WARDEN = preload("uid://c5aofok1mcuvb")
 const ARC_TURRET = preload("uid://dj54fnm4b1khp")
 const STEAM_REAVER = preload("uid://3ta633hexlh1")
@@ -121,7 +121,7 @@ enum Floor {
 var floor_data: Dictionary = {
 	Floor.RUSTWORKS: {
 		"type": "combat",
-		"low_tier": [SCRAP_CRAWLER]
+		"low_tier": [SPARK_SCOUT]
 	}
 }
 

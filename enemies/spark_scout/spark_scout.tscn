@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cawsaq1fsahvp" path="res://enemies/spark_scout/idle_spark_scout_attack_state.gd" id="7"]
 [ext_resource type="Script" uid="uid://dowlso7kra73f" path="res://enemies/spark_scout/attacking_spark_scout_attack_state.gd" id="8"]
 [ext_resource type="Script" uid="uid://buc8bjwllew2r" path="res://enemies/spark_scout/label_3d.gd" id="9"]
+[ext_resource type="Script" uid="uid://c7ngtpc8h0gx7" path="res://enemies/spark_scout/spark_scout_control_center.gd" id="10_km4vr"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ad20k"]
 
@@ -17,6 +18,22 @@
 [node name="Spark Scout" type="CharacterBody3D" unique_id=499324077]
 collision_layer = 9
 script = ExtResource("1")
+max_health = null
+attack_damage = null
+attack_range = null
+preferred_distance = null
+attack_cooldown = null
+spread = null
+speed = null
+accel = null
+turn_speed = null
+wander_radius = null
+alert_duration = null
+target_altitude = null
+altitude_tolerance = null
+bob_amplitude = null
+bob_frequency = null
+hover_strafe_speed = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -63,3 +80,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Spark Scout"
 script = ExtResource("9")
+
+[node name="EnemyControlCenter" type="Node" parent="." unique_id=471223796]
+script = ExtResource("10_km4vr")

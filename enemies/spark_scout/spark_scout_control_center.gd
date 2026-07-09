@@ -1,0 +1,160 @@
+extends DefaultEnemyControlCenter
+class_name SparkScoutControlCenter
+
+var _search_timer: float = 0.0
+var _investigate_timer: float = 0.0
+var _search_origin: Vector3 = Vector3.ZERO
+var _search_wander_timer: float = 0.0
+
+var _hover_angle: float = 0.0
+var _bob_phase: float = 0.0
+
+func _ready() -> void:
+	_hover_angle = randf_range(0, TAU)
+	_bob_phase = randf_range(0, TAU)
+
+func _decide_action(delta: float) -> void:
+	# Update bobbing phase
+	_bob_phase += bob_frequency * delta
+
+	if can_see_player():
+		last_seen_player_pos = PLAYER.global_position
+		_was_chasing = true
+
+		current_ai_state = AIState.CHASE
+		# Compute target position (strafing around preferred distance)
+		var to_player = PLAYER.global_position - owner_enemy.global_position
+		var dist = to_player.length()
+		var dir_to_player = to_player.normalized()
+
+		# Update hover angle for strafe
+		_hover_angle += hover_strafe_speed * delta
+
+		var target_pos: Vector3
+		if dist <= attack_range:
+			# Within attack range: strafe around
+			var right = Vector3(dir_to_player.z, 0, -dir_to_player.x).normalized()
+			var strafe_offset = right * sin(_hover_angle) * (preferred_distance * 0.5)
+			var ideal_pos = PLAYER.global_position - dir_to_player * preferred_distance
+			target_pos = ideal_pos + strafe_offset
+		else:
+			# Outside attack range: move towards preferred distance
+			target_pos = PLAYER.global_position - dir_to_player * preferred_distance
+
+		target_pos.y = target_altitude + sin(_bob_phase) * bob_amplitude
+
+		navigation_agent_3d.target_position = target_pos
+		look_target = PLAYER.global_position
+
+		if dist <= attack_range:
+			_transition_movement("IdleEnemyState")   # stays in place (hovers)
+		else:
+			_transition_movement("RunningEnemyState")
+		_transition_attack("AttackingAttackState")
+		return
+
+	# Player not visible
+	if _was_chasing:
+		_was_chasing = false
+		current_ai_state = AIState.SEARCH
+		_search_timer = search_duration
+		_search_origin = last_seen_player_pos
+		_pick_search_target()
+		_transition_movement("RunningEnemyState")
+		_transition_attack("IdleAttackState")
+		look_target = last_seen_player_pos
+		return
+
+	var alert_data = get_alert_info()
+	var alert_value = alert_data.get("value", 0.0)
+	var alert_pos = alert_data.get("position", Vector3.ZERO)
+
+	if alert_value > alertness_threshold:
+		last_alert_strength = alert_value
+		alert_position = alert_pos
+		last_alert_time = Time.get_ticks_msec() / 1000.0
+
+		var dist_to_alert = owner_enemy.global_position.distance_to(alert_position)
+		var ignore = false
+
+		if last_alert_strength < 0.7 and dist_to_alert > 15.0:
+			ignore = randf() < 0.8
+		elif last_alert_strength < 0.9 and dist_to_alert > 10.0:
+			ignore = randf() < 0.4
+
+		if not ignore:
+			current_ai_state = AIState.INVESTIGATE
+			_transition_attack("IdleAttackState")
+			_transition_movement("RunningEnemyState")
+			navigation_agent_3d.target_position = alert_position
+			look_target = alert_position
+			_investigate_timer = investigate_duration
+			if dist_to_alert < 1.5:
+				_search_origin = alert_position
+				_enter_search_state()
+			return
+
+	match current_ai_state:
+		AIState.SEARCH:
+			_handle_search(delta)
+		AIState.INVESTIGATE:
+			_handle_investigate(delta)
+		_:
+			current_ai_state = AIState.PATROL
+			_transition_attack("IdleAttackState")
+			_handle_patrol(delta)
+
+func _enter_search_state() -> void:
+	current_ai_state = AIState.SEARCH
+	_search_timer = search_duration
+	_search_wander_timer = 0.0
+	_transition_movement("RunningEnemyState")
+
+func _handle_search(delta: float) -> void:
+	_search_timer -= delta
+	if _search_timer <= 0.0:
+		current_ai_state = AIState.PATROL
+		return
+
+	_search_wander_timer -= delta
+	if _search_wander_timer <= 0.0:
+		_pick_search_target()
+		_search_wander_timer = search_wander_interval
+
+func _handle_investigate(delta: float) -> void:
+	_investigate_timer -= delta
+	if _investigate_timer <= 0.0 or navigation_agent_3d.is_target_reachable() == false:
+		_search_origin = alert_position
+		_enter_search_state()
+
+func _handle_patrol(delta: float) -> void:
+	_patrol_timer -= delta
+	if _patrol_timer <= 0.0 or navigation_agent_3d.is_navigation_finished():
+		_pick_new_wander_target()
+		_patrol_timer = _patrol_interval
+	_transition_movement("WalkingEnemyState")
+
+func _pick_search_target() -> void:
+	var offset = Vector3(
+		randf_range(-_search_patrol_radius, _search_patrol_radius),
+		0,
+		randf_range(-_search_patrol_radius, _search_patrol_radius)
+	)
+	navigation_agent_3d.target_position = _search_origin + offset
+
+func _pick_new_wander_target() -> void:
+	if not navigation_agent_3d:
+		return
+	var origin = owner_enemy.global_position
+	var offset = Vector3(
+		randf_range(-wander_radius, wander_radius),
+		0,
+		randf_range(-wander_radius, wander_radius)
+	)
+	var candidate = origin + offset
+	for i in range(5):
+		navigation_agent_3d.target_position = candidate
+		if navigation_agent_3d.is_target_reachable():
+			break
+		offset *= 0.7
+		candidate = origin + offset

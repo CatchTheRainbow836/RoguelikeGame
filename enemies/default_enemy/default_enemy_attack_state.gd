@@ -14,11 +14,6 @@ var melee_shape: CollisionShape3D
 var _last_attack_time: float = 0.0
 var _attack_hit_done: bool = false
 
-###Legacy
-var PLAYER
-var running_enemy_state
-###
-
 func _ready() -> void:
 	await owner.ready
 	owner_enemy = owner as CharacterBody3D
@@ -85,3 +80,47 @@ func _on_melee_hit(body: Node3D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):
 		body.take_damage(attack_damage)
 		_attack_hit_done = true
+
+func perform_ranged_attack(anim_name: String = "Flying Forward Super", spread: float = 0.0) -> void:
+	var current_time = Time.get_ticks_msec() / 1000.0
+	if current_time - _last_attack_time < attack_cooldown:
+		return
+	_last_attack_time = current_time
+
+	var pivot_node = owner_enemy.get_node("Pivot")
+	var player = control_center.PLAYER
+	if not player:
+		return
+
+	var from = pivot_node.global_transform.origin
+	var to_player = player.global_position - from
+	var distance = to_player.length()
+	if distance > attack_range:
+		return
+
+	var dir = to_player.normalized()
+	var player_target = player.global_position + Vector3.UP * 1.5
+	var spread_dist = distance * spread
+	var target_pos = player_target + Vector3(
+		randf_range(-spread_dist, spread_dist),
+		randf_range(-spread_dist * 0.5, spread_dist * 0.5),
+		randf_range(-spread_dist, spread_dist)
+	)
+
+	var space = owner_enemy.get_world_3d().direct_space_state
+	var params = PhysicsRayQueryParameters3D.new()
+	params.from = from + dir * 0.1
+	params.to = target_pos
+	params.exclude = [owner_enemy, pivot_node]
+	params.collision_mask = 4294967295
+
+	var result = space.intersect_ray(params)
+	if result.size() > 0:
+		var collider = result.get("collider")
+		if collider == player or (collider is Node and collider.is_in_group("player")):
+			player.take_damage(attack_damage)
+
+	if animation_player:
+		var original_length = animation_player.get_animation(anim_name).length
+		animation_player.play(anim_name)
+		owner_enemy.block_animation_for(original_length)
