@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dany4ks4brkwv" path="res://enemies/gear_warden/idle_gear_warden_attack_state.gd" id="7"]
 [ext_resource type="Script" uid="uid://dtwmwomqumly2" path="res://enemies/gear_warden/attacking_gear_warden_attack_state.gd" id="8"]
 [ext_resource type="Script" uid="uid://c6bhwqwchdajr" path="res://enemies/gear_warden/shielding_gear_warden_attack_state.gd" id="9"]
+[ext_resource type="Script" uid="uid://dvo5pfage0pib" path="res://enemies/gear_warden/label_3d.gd" id="10_d0kcq"]
+[ext_resource type="Script" uid="uid://bijld3jk4txlb" path="res://enemies/gear_warden/gear_warden_control_center.gd" id="10_nyp7f"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qymcv"]
 bottom_radius = 1.0
@@ -19,6 +21,16 @@ points = PackedVector3Array(-0.18300337, -0.9767149, -0.9767149, 0.09037921, -0.
 [node name="Gear Warden" type="CharacterBody3D" unique_id=499324077]
 collision_layer = 9
 script = ExtResource("1")
+max_health = null
+attack_damage = null
+attack_range = null
+attack_cooldown = null
+speed = null
+accel = null
+wander_radius = null
+view_distance = null
+fov_degrees = null
+alert_duration = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=784594888]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -67,3 +79,7 @@ script = ExtResource("9")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 billboard = 1
 text = "Gear Warden"
+script = ExtResource("10_d0kcq")
+
+[node name="EnemyControlCenter" type="Node" parent="." unique_id=1215703999]
+script = ExtResource("10_nyp7f")

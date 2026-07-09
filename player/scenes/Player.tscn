@@ -99,7 +99,7 @@ metadata/_custom_type_script = "uid://wtjnbu6suapx"
 
 [sub_resource type="Resource" id="Resource_lnwue"]
 script = ExtResource("2")
-slot_datas = [SubResource("Resource_nyeso"), SubResource("Resource_btc3q"), SubResource("Resource_be1ro"), null, null, null, null, null, null, null, null, SubResource("Resource_ysybh"), SubResource("Resource_3jgoj"), SubResource("Resource_8ywbr"), SubResource("Resource_sglx3"), SubResource("Resource_msyuy"), SubResource("Resource_iekba"), SubResource("Resource_3pw13")]
+slot_datas = Array[ExtResource("4")]([SubResource("Resource_nyeso"), SubResource("Resource_btc3q"), SubResource("Resource_be1ro"), null, null, null, null, null, null, null, null, SubResource("Resource_ysybh"), SubResource("Resource_3jgoj"), SubResource("Resource_8ywbr"), SubResource("Resource_sglx3"), SubResource("Resource_msyuy"), SubResource("Resource_iekba"), SubResource("Resource_3pw13")])
 metadata/_custom_type_script = "uid://dxl3c04wvk7wb"
 
 [sub_resource type="Resource" id="Resource_qk5qu"]
@@ -109,12 +109,12 @@ metadata/_custom_type_script = "uid://wtjnbu6suapx"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
 script = ExtResource("14")
-slot_datas = [SubResource("Resource_qk5qu")]
+slot_datas = Array[ExtResource("4")]([SubResource("Resource_qk5qu")])
 metadata/_custom_type_script = "uid://duaj02vqf7lxc"
 
 [sub_resource type="Resource" id="Resource_stbqk"]
 script = ExtResource("16")
-slot_datas = [null]
+slot_datas = Array[ExtResource("4")]([null])
 metadata/_custom_type_script = "uid://b3nposq4bg8ox"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aqcbf"]

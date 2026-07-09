@@ -1,67 +1,16 @@
 extends DefaultEnemyMovementState
 class_name RunningGearWardenState
 
-var alert_duration: float
-var alert_timer: float = 0.0
-var attack_range: float
-var warden: GearWarden
-
-func _ready() -> void :
-	super._ready()
-	await owner.ready
-	warden = owner as GearWarden
-	if warden:
-		speed = warden.speed
-		accel = warden.accel
-		wander_radius = warden.wander_radius
-		view_distance = warden.view_distance
-		fov_degrees = warden.fov_degrees
-		attack_range = warden.attack_range
-		alert_duration = warden.alert_duration
-
-func enter() -> void :
-	super.enter()
-	alert_timer = alert_duration
-
-func exit() -> void :
-	super.exit()
-
-func physics_update(delta: float) -> void :
-	_vision_timer -= delta
-	if _vision_timer <= 0.0:
-		is_player_visible = can_see_player()
-		_vision_timer = vision_check_interval
-
-	if is_player_visible:
-		navigation_agent_3d.target_position = PLAYER.global_position
-		alert_timer = alert_duration
+func enter() -> void:
+	movement_mode = MovementMode.MOVE_TO
+	if control_center:
+		current_speed = control_center.run_speed
+		current_accel = control_center.acceleration
 	else:
-		alert_timer -= delta
-		if alert_timer <= 0.0:
-			transition.emit("WalkingEnemyState")
-			return
+		current_speed = 4.0
+		current_accel = 8.0
 
-	var distance_to_player = owner.global_position.distance_to(PLAYER.global_position)
-	if distance_to_player <= attack_range:
-		_velocity = Vector3.ZERO
-		owner.velocity = _velocity
-		owner.move_and_slide()
-		return
-
-	if not navigation_agent_3d.is_navigation_finished():
-		var next_pos = navigation_agent_3d.get_next_path_position()
-		var move_dir = (next_pos - owner.global_transform.origin)
-		move_dir.y = 0.0
-		if move_dir.length() > 0.2:
-			move_dir = move_dir.normalized()
-			pivot.look_at(pivot.global_position + move_dir, Vector3.UP)
-			_velocity.x = move_toward(_velocity.x, move_dir.x * speed, accel * delta)
-			_velocity.z = move_toward(_velocity.z, move_dir.z * speed, accel * delta)
-		else:
-			_velocity.x = move_toward(_velocity.x, 0.0, accel * delta)
-			_velocity.z = move_toward(_velocity.z, 0.0, accel * delta)
-
-	_look_at_player_smooth(delta)
-
-	owner.velocity = _velocity
-	owner.move_and_slide()
+func physics_update(delta: float) -> void:
+	apply_movement(delta, current_speed, current_accel)
+	if control_center and control_center.look_target != Vector3.ZERO:
+		look_at_target(control_center.look_target, delta)

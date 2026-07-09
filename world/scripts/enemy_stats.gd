@@ -40,5 +40,43 @@ const DATA = {
 		"bob_amplitude": 0.3,
 		"bob_frequency": 6.0,
 		"hover_strafe_speed": 3.0
+	},
+	"gear_warden": {
+		"max_health": 80.0,
+		"attack_damage": 5.0,
+		"attack_range": 2.0,
+		"attack_cooldown": 1.5,
+		"run_speed": 4.0,
+		"walk_speed": 2.5,
+		"acceleration": 8.0,
+		"wander_radius": 8.0,
+		"view_distance": 20.0,
+		"fov_degrees": 90.0,
+		"alert_duration": 5.0,
+		"search_duration": 6.0,
+		"investigate_duration": 8.0,
+		"search_wander_interval": 1.5,
+		"shield_damage_multiplier": 0.25
+	},
+	"arc_turret": {
+		"max_health": 60.0,
+		"attack_damage": 8.0,
+		"attack_range": 30.0,
+		"attack_cooldown": 0.5,
+		"spread": 0.1,
+		"turn_speed": 6.0,
+		"idle_rotate_speed": 2.0,
+		"idle_rotate_interval": 3.0,
+		"idle_rotate_range": 180.0,
+		"run_speed": 0.0,
+		"walk_speed": 0.0,
+		"acceleration": 0.0,
+		"wander_radius": 0.0,
+		"view_distance": 30.0,
+		"fov_degrees": 90.0,
+		"alert_duration": 5.0,
+		"search_duration": 4.0,
+		"investigate_duration": 6.0,
+		"search_wander_interval": 1.0
 	}
 }

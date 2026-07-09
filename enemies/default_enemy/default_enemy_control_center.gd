@@ -28,7 +28,7 @@ var search_duration: float
 var investigate_duration: float
 var search_wander_interval: float
 
-# Additional stats used by some enemies
+# Additional stats
 var preferred_distance: float = 0.0
 var spread: float = 0.0
 
@@ -38,6 +38,15 @@ var altitude_tolerance: float = 0.3
 var bob_amplitude: float = 0.0
 var bob_frequency: float = 0.0
 var hover_strafe_speed: float = 0.0
+
+# Shielding stat
+var shield_damage_multiplier: float = 1.0
+
+# Turret rotation
+var turn_speed: float = 6.0
+var idle_rotate_speed: float = 2.0
+var idle_rotate_interval: float = 3.0
+var idle_rotate_range: float = 180.0
 
 var last_alert_strength: float = 0.0
 var alert_position: Vector3 = Vector3.ZERO
@@ -53,7 +62,6 @@ var _search_patrol_radius: float = 4.0
 var last_seen_player_pos: Vector3 = Vector3.ZERO
 var _was_chasing: bool = false
 
-# Target that movement states can look at (set by AI each frame)
 var look_target: Vector3 = Vector3.ZERO
 
 func setup(enemy: CharacterBody3D) -> void:
@@ -90,6 +98,13 @@ func setup(enemy: CharacterBody3D) -> void:
 	bob_amplitude = stats.get("bob_amplitude", 0.0)
 	bob_frequency = stats.get("bob_frequency", 0.0)
 	hover_strafe_speed = stats.get("hover_strafe_speed", 0.0)
+
+	shield_damage_multiplier = stats.get("shield_damage_multiplier", 1.0)
+
+	turn_speed = stats.get("turn_speed", 6.0)
+	idle_rotate_speed = stats.get("idle_rotate_speed", 2.0)
+	idle_rotate_interval = stats.get("idle_rotate_interval", 3.0)
+	idle_rotate_range = stats.get("idle_rotate_range", 180.0)
 
 	enemy.max_health = max_health
 	enemy.current_health = current_health
